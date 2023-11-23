@@ -1,0 +1,55 @@
+// 设置网站背景图片
+body{
+    //background:url(https://source.unsplash.com/random/800x600); // 随机背景图片
+    background:url(/images/bg.jpg); // 设置背景图片
+    //background-color:#eee;  // 设置背景颜色
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;
+}
+
+// 自定义鼠标样式
+body {
+  cursor: url('https://cdn.jsdelivr.net/gh/TRHX/CDN-for-itrhx.com@1.0/images/mouse.cur '),auto;
+}
+
+
+//文章背板的颜色rgb
+.main-inner > .sub-menu, .main-inner > .post-block, .main-inner > .tabs-comment, .main-inner > .comments, .main-inner > .pagination{
+    background: rgba(255,255,255,0.9);      //此处使用十六进制颜色代码，         也可以使用rgba进行调色，
+                                //实际效果为白色透明色底板              rgba的第四参数即为透明度
+}
+
+//侧边框的透明度设置
+.sidebar {
+  opacity: 0.9;
+}
+
+//菜单栏的调色
+.header-inner {     
+  background: rgba(255,255,255,0.9);
+}
+
+//搜索框透明
+.popup {        
+  opacity: 0.5;
+}
+
+.main-inner {
+    background-color: rgba(255, 255, 255, 0);  //主体背景透明
+}
+
+/****************************** 自定义页脚跳动的心样式 ******************************/
+@keyframes heartAnimate {
+    0%,100%{transform:scale(1);}
+    10%,30%{transform:scale(0.9);}
+    20%,40%,60%,80%{transform:scale(1.1);}
+    50%,70%{transform:scale(1.1);}
+}
+#animate {
+    animation: heartAnimate 1.33s ease-in-out infinite;
+}
+.with-love {
+    color: rgb(204,0,0); //rgb(255, 113, 168);
+}
