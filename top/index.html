@@ -35,26 +35,29 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="码农009的技术博客">
+    <meta name="description" content="var APP_ID &#x3D; &quot;FmrBHAJa1fEUdPOvXyANbPJ5-gzGzoHsz&quot;;  &#x2F;&#x2F;输入个人LeanCloud账号AppID   var APP_KEY &#x3D; &quot;Dx4BoLx3FnaC90LK6h8IEgLk&quot;;  &#x2F;&#x2F;输入个人LeanCloud账号AppKey   AV.init({     appId: APP_ID,     appKey:">
 <meta property="og:type" content="website">
-<meta property="og:title" content="码农009">
-<meta property="og:url" content="http://example.com/categories/iOS/OC/index.html">
+<meta property="og:title" content="热门文章Top10">
+<meta property="og:url" content="http://example.com/top/index.html">
 <meta property="og:site_name" content="码农009">
-<meta property="og:description" content="码农009的技术博客">
+<meta property="og:description" content="var APP_ID &#x3D; &quot;FmrBHAJa1fEUdPOvXyANbPJ5-gzGzoHsz&quot;;  &#x2F;&#x2F;输入个人LeanCloud账号AppID   var APP_KEY &#x3D; &quot;Dx4BoLx3FnaC90LK6h8IEgLk&quot;;  &#x2F;&#x2F;输入个人LeanCloud账号AppKey   AV.init({     appId: APP_ID,     appKey:">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-03T18:44:43.000Z">
+<meta property="article:modified_time" content="2023-11-23T11:42:34.324Z">
 <meta property="article:author" content="code009">
 <meta property="article:tag" content="iOS开发,前端开发,Android开发,React Native开发,个人博客">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/categories/iOS/OC/">
+<link rel="canonical" href="http://example.com/top/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"categories/iOS/OC/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"http://example.com/top/index.html","path":"top/index.html","title":"热门文章Top10"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>分类: OC | 码农009</title>
+<title>热门文章Top10 | 码农009
+</title>
   
 
 
@@ -456,130 +459,75 @@ if(canvas.getContext){
 
     </div>
 
-    <div class="main-inner category posts-collapse">
+    <div class="main-inner page posts-expand">
 
 
-  
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h1 class="collection-header">OC
-          <small>分类</small>
-        </h1>
-      </div>
+    
+    
+    
+    <div class="post-block" lang="zh-CN"><header class="post-header">
+
+<h1 class="post-title" itemprop="name headline">热门文章Top10
+</h1>
+
+<div class="post-meta-container">
+</div>
+
+</header>
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+      
+      <div class="post-body">
+          <div id="post-rank">
+  <ol>
+  </ol>
+</div>
+
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.10.0/dist/av-min.js"></script>
+<script>
+  var APP_ID = "FmrBHAJa1fEUdPOvXyANbPJ5-gzGzoHsz";  //输入个人LeanCloud账号AppID
+  var APP_KEY = "Dx4BoLx3FnaC90LK6h8IEgLk";  //输入个人LeanCloud账号AppKey
+  AV.init({
+    appId: APP_ID,
+    appKey: APP_KEY
+  });
+
+
+  var query = new AV.Query('Counter');//表名
+  query.descending('time'); //结果按阅读次数降序排序
+  query.limit(10);  //最终只返回10条结果
+  query.find().then( response => {
+    var content = response.reduce( (accum, {attributes}) => {
+      accum += `<li><p><div class="prefix">【热度 ${attributes.time} ℃】<a href="${attributes.url}">${attributes.title}</a></div></p></li>`
+      return accum;
+    },"")
+    document.querySelector("#post-rank ol").innerHTML = content;
+  })
+  .catch( error => {
+    console.log(error);
+  });
+</script>
+
+<style type="text/css">
+  #post-rank {
+    text-align: left;
+  }
+  #post-rank .prefix {
+    color: #ff4d4f;
+    display: inline-block;
+  }
+</style>
+
+      </div>
+      
+      
+      
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-13T11:37:48+08:00"
-              content="2021-07-13">
-          07-13
-        </time>
-      </div>
+    
+    
 
-      <div class="post-title">
-        <a class="post-title-link" href="/2021/07/13/NSInvocation%E5%92%8CperformSelector%E7%9A%84%E7%94%A8%E6%B3%95/" itemprop="url">
-          <span itemprop="name">NSInvocation和performSelector的用法</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-07-12T14:51:10+08:00"
-              content="2021-07-12">
-          07-12
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2021/07/12/iOS%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url">
-          <span itemprop="name">iOS基础面试题</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-30T16:39:17+08:00"
-              content="2021-06-30">
-          06-30
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2021/06/30/iOS%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url">
-          <span itemprop="name">iOS多线程面试题</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-28T16:57:11+08:00"
-              content="2021-06-28">
-          06-28
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2021/06/28/%E5%86%85%E5%AD%98%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="url">
-          <span itemprop="name">内存面试题</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-06-28T14:56:22+08:00"
-              content="2021-06-28">
-          06-28
-        </time>
-      </div>
-
-      <div class="post-title">
-        <a class="post-title-link" href="/2021/06/28/iOS%E5%AE%9A%E6%97%B6%E5%99%A8%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" itemprop="url">
-          <span itemprop="name">iOS定时器使用总结</span>
-        </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-    </div>
-  </div>
-  
-  
-  
 
 </div>
   </main>
