@@ -84,3 +84,7 @@
 {%- endif %}
 
 {{- next_inject('footer') }}
+
+{% if theme.footer.runtime.enable %}
+  {% include 'web-runtime.swig' %}  
+{% endif %}
