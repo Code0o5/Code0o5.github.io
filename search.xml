@@ -38,45 +38,6 @@
       </tags>
   </entry>
   <entry>
-    <title>NSInvocation和performSelector的用法</title>
-    <url>/2021/07/13/NSInvocation%E5%92%8CperformSelector%E7%9A%84%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p><code>NSInvocation</code>和<code>performSelector</code>是<code>OC</code>中不直接调用方法的两种方式。与通过对象直接调用方法不同的是，直接调用方法需要在编译前声明方法，否则编译器会报错；而<code>NSInvocation</code>和<code>performSelector</code>不需要，这也是<code>runtime</code>的一种应用方式。</p>
-<p><code>NSInvocation</code>是<code>OC</code>的一个类，该类保存了方法所属的对象&#x2F;方法名称&#x2F;参数&#x2F;返回值，可以说一个<code>NSInvocation</code>对象就是一个方法。和方法签名类<code>NSMethodSignature</code>共同完成方法的调用。</p>
-<p><code>performSelector</code>是<code>NSObject</code>类的一个实例方法，<code>OC</code>中的对象最终都继承自<code>NSObject</code>类，所以所有的对象都能通过该方法来调用指定的方法。通常先用<code>respondsToSelector</code>判断方法存在，然后在用<code>performSelector</code>调用。</p>
-<p>两者区别：</p>
-<ul>
-<li><code>performSelector:withObject</code>，完成简单的消息调用，对于参数个数大于2或者有返回值的方法，就不太好处理</li>
-<li><code>NSInvocation</code>，对参数个数没有限制，可以处理多个参数和有返回值的方法调用</li>
-</ul>
-<hr>
-<h2 id="2-基本使用"><a href="#2-基本使用" class="headerlink" title="2. 基本使用"></a>2. 基本使用</h2><h3 id="2-1-performSelector"><a href="#2-1-performSelector" class="headerlink" title="2.1 performSelector"></a>2.1 <code>performSelector</code></h3><p>根据参数个数使用指定以<code>performSelector</code>开头的方法，返回值均可以可无，如果有返回值<code>performSelector</code>方法将其返回。</p>
-<ul>
-<li><p>调用没有参数，没有返回值的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用有一个参数的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector withObject:(id)object;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>调用有两个参数的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="2-2-NSInvocation"><a href="#2-2-NSInvocation" class="headerlink" title="2.2 NSInvocation"></a>2.2 <code>NSInvocation</code></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 方法签名(方法的描述)</span><br><span class="line">NSMethodSignature *signature = [[Weakself class] instanceMethodSignatureForSelector:@selector(test3:par2:par3:)];</span><br><span class="line">if (signature == nil) &#123;</span><br><span class="line">      // 方法不存在，提示或抛出异常</span><br><span class="line">      NSLog(@&quot;%@方法不存在&quot;,NSStringFromSelector(@selector(test3:par2:par3:)));</span><br><span class="line">      return;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // NSInvocation : 利用一个NSInvocation对象包装一次方法调用（方法调用者、方法名、方法参数、方法返回值）</span><br><span class="line">  NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];</span><br><span class="line">  // 设置方法调用者</span><br><span class="line">  invocation.target = Weakself;</span><br><span class="line">  // 方法名，一定要和方法签名类中的一致</span><br><span class="line">  invocation.selector = @selector(test3:par2:par3:);</span><br><span class="line"></span><br><span class="line">  // 设置参数,默认已经有self和_cmd两个参数了</span><br><span class="line">  NSString *par1 = @&quot;参数1&quot;;</span><br><span class="line">  NSString *par2 = @&quot;参数2&quot;;</span><br><span class="line">  NSString *par3 = @&quot;参数3&quot;;</span><br><span class="line">  [invocation setArgument:&amp;par1 atIndex:2];</span><br><span class="line">  [invocation setArgument:&amp;par2 atIndex:3];</span><br><span class="line">  [invocation setArgument:&amp;par3 atIndex:4];</span><br><span class="line"></span><br><span class="line">  // 调用方法</span><br><span class="line">  [invocation invoke];</span><br><span class="line"></span><br><span class="line">  // 获取返回值</span><br><span class="line"> id returnValue = nil;</span><br><span class="line">  // 有返回值类型，才去获得返回值</span><br><span class="line"> if (signature.methodReturnLength) &#123;</span><br><span class="line">     [invocation getReturnValue:&amp;returnValue];</span><br><span class="line">     NSLog(@&quot;返回值:%@&quot;,returnValue);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>附：<a href="https://github.com/Code0o5/NSInvocationDemo">源码下载</a></p>
-]]></content>
-      <categories>
-        <category>iOS</category>
-        <category>OC</category>
-        <category>基础知识</category>
-      </categories>
-      <tags>
-        <tag>OC</tag>
-        <tag>NSInvocation</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CocoaPods安装教程</title>
     <url>/2021/04/26/CocoaPods%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/</url>
     <content><![CDATA[<h3 id="CocoaPods简介"><a href="#CocoaPods简介" class="headerlink" title="CocoaPods简介"></a><code>CocoaPods</code>简介</h3><p><code>CocoaPods</code>是用<code>Ruby</code>写的，用于<code>iOS</code>开发中第三方开源库的管理。安装<code>CocoaPods</code>要用到<code>gem</code>。</p>
@@ -274,55 +235,42 @@
       </tags>
   </entry>
   <entry>
-    <title>Swift基础面试题</title>
-    <url>/2021/06/30/Swift%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="1-iOS-类（class）和结构体（struct）有什么区别？"><a href="#1-iOS-类（class）和结构体（struct）有什么区别？" class="headerlink" title="1. iOS 类（class）和结构体（struct）有什么区别？"></a>1. iOS 类（class）和结构体（struct）有什么区别？</h2><ul>
-<li><p>答案</p>
-<blockquote>
-<p>Swift 中，类是引用类型，结构体是值类型。值类型在传递和赋值时将进行复制，而引用类型则只会使用引用对象的一个”指向”。所以他们两者之间的区别就是两个类型的区别。</p>
-</blockquote>
-</li>
-<li><p>示例1，类引用和传值</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Temperature &#123;</span><br><span class="line">  var value: Float = 37.0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">  var temp: Temperature?</span><br><span class="line"></span><br><span class="line">  func sick() &#123;</span><br><span class="line">    temp?.value = 41.0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let A = Person()</span><br><span class="line">let B = Person()</span><br><span class="line">let temp = Temperature()</span><br><span class="line"></span><br><span class="line">A.temp = temp</span><br><span class="line">B.temp = temp</span><br><span class="line">A.sick()</span><br><span class="line">print(&quot;\(String(describing: A.temp?.value))&quot;)</span><br><span class="line">print(&quot;\(String(describing: B.temp?.value))&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<blockquote>
-<p><strong>Optional(41.0)</strong></p>
-<p><strong>Optional(41.0)</strong></p>
-</blockquote>
-</li>
-<li><p>示例2，结构体引用和传值</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct Temperature &#123;</span><br><span class="line">  var value: Float = 37.0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">  var temp: Temperature?</span><br><span class="line"></span><br><span class="line">  func sick() &#123;</span><br><span class="line">    temp?.value = 41.0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let A = Person()</span><br><span class="line">let B = Person()</span><br><span class="line">let temp = Temperature()</span><br><span class="line"></span><br><span class="line">A.temp = temp</span><br><span class="line">B.temp = temp</span><br><span class="line">A.sick()</span><br><span class="line">print(&quot;\(String(describing: A.temp?.value))&quot;)</span><br><span class="line">print(&quot;\(String(describing: B.temp?.value))&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<blockquote>
-<p><strong>Optional(41.0)</strong></p>
-<p><strong>Optional(37.0)</strong></p>
-</blockquote>
-</li>
-<li><p>说明</p>
-<blockquote>
-<p>内存中，引用类型诸如类是在堆（heap）上，而值类型诸如结构体实在栈（stack）上进行存储和操作。相比于栈上的操作，堆上的操作更加复杂耗时，所以苹果官方推荐使用结构体，这样可以提高 App 运行的效率。</p>
-</blockquote>
-<blockquote>
-<p><strong>class有这几个功能struct没有的：</strong></p>
-<p>class可以继承，这样子类可以使用父类的特性和方法 类型转换可以在runtime的时候检查和解释一个实例的类型 可以用deinit来释放资源，一个类可以被多次引用</p>
-</blockquote>
-<blockquote>
-<p><strong>struct也有这样几个优势：</strong></p>
-<p>结构较小，适用于复制操作，相比于一个class的实例被多次引用更加安全。 无须担心内存memory leak或者多线程冲突问题</p>
-</blockquote>
-</li>
+    <title>NSInvocation和performSelector的用法</title>
+    <url>/2021/07/13/NSInvocation%E5%92%8CperformSelector%E7%9A%84%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h2><p><code>NSInvocation</code>和<code>performSelector</code>是<code>OC</code>中不直接调用方法的两种方式。与通过对象直接调用方法不同的是，直接调用方法需要在编译前声明方法，否则编译器会报错；而<code>NSInvocation</code>和<code>performSelector</code>不需要，这也是<code>runtime</code>的一种应用方式。</p>
+<p><code>NSInvocation</code>是<code>OC</code>的一个类，该类保存了方法所属的对象&#x2F;方法名称&#x2F;参数&#x2F;返回值，可以说一个<code>NSInvocation</code>对象就是一个方法。和方法签名类<code>NSMethodSignature</code>共同完成方法的调用。</p>
+<p><code>performSelector</code>是<code>NSObject</code>类的一个实例方法，<code>OC</code>中的对象最终都继承自<code>NSObject</code>类，所以所有的对象都能通过该方法来调用指定的方法。通常先用<code>respondsToSelector</code>判断方法存在，然后在用<code>performSelector</code>调用。</p>
+<p>两者区别：</p>
+<ul>
+<li><code>performSelector:withObject</code>，完成简单的消息调用，对于参数个数大于2或者有返回值的方法，就不太好处理</li>
+<li><code>NSInvocation</code>，对参数个数没有限制，可以处理多个参数和有返回值的方法调用</li>
 </ul>
+<hr>
+<h2 id="2-基本使用"><a href="#2-基本使用" class="headerlink" title="2. 基本使用"></a>2. 基本使用</h2><h3 id="2-1-performSelector"><a href="#2-1-performSelector" class="headerlink" title="2.1 performSelector"></a>2.1 <code>performSelector</code></h3><p>根据参数个数使用指定以<code>performSelector</code>开头的方法，返回值均可以可无，如果有返回值<code>performSelector</code>方法将其返回。</p>
+<ul>
+<li><p>调用没有参数，没有返回值的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用有一个参数的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector withObject:(id)object;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用有两个参数的方法</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-2-NSInvocation"><a href="#2-2-NSInvocation" class="headerlink" title="2.2 NSInvocation"></a>2.2 <code>NSInvocation</code></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 方法签名(方法的描述)</span><br><span class="line">NSMethodSignature *signature = [[Weakself class] instanceMethodSignatureForSelector:@selector(test3:par2:par3:)];</span><br><span class="line">if (signature == nil) &#123;</span><br><span class="line">      // 方法不存在，提示或抛出异常</span><br><span class="line">      NSLog(@&quot;%@方法不存在&quot;,NSStringFromSelector(@selector(test3:par2:par3:)));</span><br><span class="line">      return;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // NSInvocation : 利用一个NSInvocation对象包装一次方法调用（方法调用者、方法名、方法参数、方法返回值）</span><br><span class="line">  NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];</span><br><span class="line">  // 设置方法调用者</span><br><span class="line">  invocation.target = Weakself;</span><br><span class="line">  // 方法名，一定要和方法签名类中的一致</span><br><span class="line">  invocation.selector = @selector(test3:par2:par3:);</span><br><span class="line"></span><br><span class="line">  // 设置参数,默认已经有self和_cmd两个参数了</span><br><span class="line">  NSString *par1 = @&quot;参数1&quot;;</span><br><span class="line">  NSString *par2 = @&quot;参数2&quot;;</span><br><span class="line">  NSString *par3 = @&quot;参数3&quot;;</span><br><span class="line">  [invocation setArgument:&amp;par1 atIndex:2];</span><br><span class="line">  [invocation setArgument:&amp;par2 atIndex:3];</span><br><span class="line">  [invocation setArgument:&amp;par3 atIndex:4];</span><br><span class="line"></span><br><span class="line">  // 调用方法</span><br><span class="line">  [invocation invoke];</span><br><span class="line"></span><br><span class="line">  // 获取返回值</span><br><span class="line"> id returnValue = nil;</span><br><span class="line">  // 有返回值类型，才去获得返回值</span><br><span class="line"> if (signature.methodReturnLength) &#123;</span><br><span class="line">     [invocation getReturnValue:&amp;returnValue];</span><br><span class="line">     NSLog(@&quot;返回值:%@&quot;,returnValue);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>附：<a href="https://github.com/Code0o5/NSInvocationDemo">源码下载</a></p>
 ]]></content>
       <categories>
         <category>iOS</category>
-        <category>Swift</category>
-        <category>面试题</category>
+        <category>OC</category>
+        <category>基础知识</category>
       </categories>
       <tags>
-        <tag>swift</tag>
-        <tag>面试题</tag>
+        <tag>OC</tag>
+        <tag>NSInvocation</tag>
       </tags>
   </entry>
   <entry>
@@ -392,110 +340,6 @@
       </categories>
       <tags>
         <tag>科学上网</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>iOS多线程面试题</title>
-    <url>/2021/06/30/iOS%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="1-什么是GCD-？谈谈你对GCD的理解？"><a href="#1-什么是GCD-？谈谈你对GCD的理解？" class="headerlink" title="1. 什么是GCD ？谈谈你对GCD的理解？"></a>1. 什么是GCD ？谈谈你对GCD的理解？</h2><ul>
-<li><p>答案</p>
-<blockquote>
-<p>GCD是Grand Central Dispatch的缩写。</p>
-<p>Grand Central Dispatch (GCD)是Apple开发的一个多核编程的较新的解决方法。在Mac OS X 10.6雪豹中首次推出，并在最近引入到了iOS4.0。</p>
-<p>GCD是一个替代诸如NSThread等技术的很高效和强大的技术。GCD完全可以处理诸如数据锁定和资源泄漏等复杂的异步编程问题。</p>
-</blockquote>
-</li>
-<li><p>简单使用，异步执行任务</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 创建一个队列</span><br><span class="line">    dispatch_queue_t myQueue =  dispatch_queue_create(&quot;com.iphonedevblog.post&quot;,  NULL);</span><br><span class="line">    // 异步执行任务</span><br><span class="line">    dispatch_async(myQueue, ^&#123;</span><br><span class="line">        NSLog(@&quot;线程:%@&quot;,[NSThread currentThread]);</span><br><span class="line">        </span><br><span class="line">        // 回到主队列更新界面</span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            self.view.backgroundColor = [UIColor redColor];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<blockquote>
-<p><strong>线程:&lt;NSThread: 0x6000024b1180&gt;{number &#x3D; 7, name &#x3D; (null)}</strong></p>
-</blockquote>
-</li>
-<li><p>线程的暂停和恢复（只能在子线程，主线程不起作用）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_suspend(&lt;#dispatch_object_t  _Nonnull object#&gt;) // 暂停线程</span><br><span class="line">dispatch_resume(&lt;#dispatch_object_t  _Nonnull object#&gt;)  // 恢复线程</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>iOS</category>
-        <category>OC</category>
-        <category>面试题</category>
-      </categories>
-      <tags>
-        <tag>OC</tag>
-        <tag>面试题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GCP实例创建使用</title>
-    <url>/2021/06/22/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="1-创建防火墙规则"><a href="#1-创建防火墙规则" class="headerlink" title="1.  创建防火墙规则"></a>1.  创建防火墙规则</h2><ul>
-<li><p>前往<a href="https://console.cloud.google.com/">谷歌云</a>，在菜单栏找到<code>VPC网络-&gt;防火墙</code></p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-105655@2x.png"></p>
-</li>
-<li><p>点击创建防火墙规则，分别创建入站和出站规则</p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-110453@2x.png"></p>
-</li>
-</ul>
-<hr>
-<h2 id="2-创建虚拟机实例"><a href="#2-创建虚拟机实例" class="headerlink" title="2. 创建虚拟机实例"></a>2. 创建虚拟机实例</h2><ul>
-<li><p>菜单栏找到<code>compute engine -&gt; 虚拟机实例</code></p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-110630@2x.png"></p>
-</li>
-<li><p>点击创建实例，填写实例名称，选择地区和区域，机器配置选择最低配置的N1型，内存选614MB</p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-111350@2x.png"></p>
-</li>
-<li><p>启动磁盘处选择系统类型，防火墙勾选允许http流量和https流量，添加入站和出站规则</p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-111720@2x.png"></p>
-</li>
-<li><p>点击创建，完成实例创建</p>
-</li>
-</ul>
-<hr>
-<h2 id="3-实例配置"><a href="#3-实例配置" class="headerlink" title="3. 实例配置"></a>3. 实例配置</h2><p>完成实例创建，还需要对虚拟机实例设置允许root登录，设置root密码才能在其他的终端通过ssh远程链接。</p>
-<h3 id="3-1-设置静态IP"><a href="#3-1-设置静态IP" class="headerlink" title="3.1 设置静态IP"></a>3.1 设置静态IP</h3><p>谷歌云实例默认是临时IP，实例重启以后IP可能会变，需要设置成静态IP。</p>
-<ul>
-<li><p>菜单栏找到<code>VPC网络-&gt;外部IP地址</code></p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-112432@2x.png"></p>
-</li>
-<li><p>找到对应实例，设置IP为静态</p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-112552@2x.png"></p>
-</li>
-<li><p>设置静态IP完成</p>
-</li>
-</ul>
-<h3 id="3-2-允许root登录配置"><a href="#3-2-允许root登录配置" class="headerlink" title="3.2  允许root登录配置"></a>3.2  允许root登录配置</h3><ul>
-<li><p>点击实例后的<code>SSH</code>链接，在弹出的窗口中允许权限</p>
-</li>
-<li><p>连接上以后，获取管理员权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo -i</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改<code>/etc/ssh/sshd_config</code>文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改以下项为<code>yes</code></p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-113702@2x.png"></p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-113726@2x.png"></p>
-</li>
-<li><p>修改完成，保存退出</p>
-</li>
-<li><p>设置root密码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">passwd root</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>两次输入密码，完成root密码设置</p>
-</li>
-<li><p>在谷歌云虚拟机实例列表，重启实例。然后就可以在其他终端通过root账号和密码远程登录虚拟机实例。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>VPS</category>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>VPS</tag>
-        <tag>GCP</tag>
       </tags>
   </entry>
   <entry>
@@ -638,12 +482,441 @@
       </tags>
   </entry>
   <entry>
+    <title>iOS多线程面试题</title>
+    <url>/2021/06/30/iOS%E5%A4%9A%E7%BA%BF%E7%A8%8B%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="1-什么是GCD-？谈谈你对GCD的理解？"><a href="#1-什么是GCD-？谈谈你对GCD的理解？" class="headerlink" title="1. 什么是GCD ？谈谈你对GCD的理解？"></a>1. 什么是GCD ？谈谈你对GCD的理解？</h2><ul>
+<li><p>答案</p>
+<blockquote>
+<p>GCD是Grand Central Dispatch的缩写。</p>
+<p>Grand Central Dispatch (GCD)是Apple开发的一个多核编程的较新的解决方法。在Mac OS X 10.6雪豹中首次推出，并在最近引入到了iOS4.0。</p>
+<p>GCD是一个替代诸如NSThread等技术的很高效和强大的技术。GCD完全可以处理诸如数据锁定和资源泄漏等复杂的异步编程问题。</p>
+</blockquote>
+</li>
+<li><p>简单使用，异步执行任务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 创建一个队列</span><br><span class="line">    dispatch_queue_t myQueue =  dispatch_queue_create(&quot;com.iphonedevblog.post&quot;,  NULL);</span><br><span class="line">    // 异步执行任务</span><br><span class="line">    dispatch_async(myQueue, ^&#123;</span><br><span class="line">        NSLog(@&quot;线程:%@&quot;,[NSThread currentThread]);</span><br><span class="line">        </span><br><span class="line">        // 回到主队列更新界面</span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            self.view.backgroundColor = [UIColor redColor];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<blockquote>
+<p><strong>线程:&lt;NSThread: 0x6000024b1180&gt;{number &#x3D; 7, name &#x3D; (null)}</strong></p>
+</blockquote>
+</li>
+<li><p>线程的暂停和恢复（只能在子线程，主线程不起作用）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_suspend(&lt;#dispatch_object_t  _Nonnull object#&gt;) // 暂停线程</span><br><span class="line">dispatch_resume(&lt;#dispatch_object_t  _Nonnull object#&gt;)  // 恢复线程</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>iOS</category>
+        <category>OC</category>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>OC</tag>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GCP实例创建使用</title>
+    <url>/2021/06/22/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="1-创建防火墙规则"><a href="#1-创建防火墙规则" class="headerlink" title="1.  创建防火墙规则"></a>1.  创建防火墙规则</h2><ul>
+<li><p>前往<a href="https://console.cloud.google.com/">谷歌云</a>，在菜单栏找到<code>VPC网络-&gt;防火墙</code></p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-105655@2x.png"></p>
+</li>
+<li><p>点击创建防火墙规则，分别创建入站和出站规则</p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-110453@2x.png"></p>
+</li>
+</ul>
+<hr>
+<h2 id="2-创建虚拟机实例"><a href="#2-创建虚拟机实例" class="headerlink" title="2. 创建虚拟机实例"></a>2. 创建虚拟机实例</h2><ul>
+<li><p>菜单栏找到<code>compute engine -&gt; 虚拟机实例</code></p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-110630@2x.png"></p>
+</li>
+<li><p>点击创建实例，填写实例名称，选择地区和区域，机器配置选择最低配置的N1型，内存选614MB</p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-111350@2x.png"></p>
+</li>
+<li><p>启动磁盘处选择系统类型，防火墙勾选允许http流量和https流量，添加入站和出站规则</p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-111720@2x.png"></p>
+</li>
+<li><p>点击创建，完成实例创建</p>
+</li>
+</ul>
+<hr>
+<h2 id="3-实例配置"><a href="#3-实例配置" class="headerlink" title="3. 实例配置"></a>3. 实例配置</h2><p>完成实例创建，还需要对虚拟机实例设置允许root登录，设置root密码才能在其他的终端通过ssh远程链接。</p>
+<h3 id="3-1-设置静态IP"><a href="#3-1-设置静态IP" class="headerlink" title="3.1 设置静态IP"></a>3.1 设置静态IP</h3><p>谷歌云实例默认是临时IP，实例重启以后IP可能会变，需要设置成静态IP。</p>
+<ul>
+<li><p>菜单栏找到<code>VPC网络-&gt;外部IP地址</code></p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-112432@2x.png"></p>
+</li>
+<li><p>找到对应实例，设置IP为静态</p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-112552@2x.png"></p>
+</li>
+<li><p>设置静态IP完成</p>
+</li>
+</ul>
+<h3 id="3-2-允许root登录配置"><a href="#3-2-允许root登录配置" class="headerlink" title="3.2  允许root登录配置"></a>3.2  允许root登录配置</h3><ul>
+<li><p>点击实例后的<code>SSH</code>链接，在弹出的窗口中允许权限</p>
+</li>
+<li><p>连接上以后，获取管理员权限</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo -i</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改<code>/etc/ssh/sshd_config</code>文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改以下项为<code>yes</code></p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-113702@2x.png"></p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-113726@2x.png"></p>
+</li>
+<li><p>修改完成，保存退出</p>
+</li>
+<li><p>设置root密码</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">passwd root</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两次输入密码，完成root密码设置</p>
+</li>
+<li><p>在谷歌云虚拟机实例列表，重启实例。然后就可以在其他终端通过root账号和密码远程登录虚拟机实例。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>VPS</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>VPS</tag>
+        <tag>GCP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Swift基础面试题</title>
+    <url>/2021/06/30/Swift%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="1-iOS-类（class）和结构体（struct）有什么区别？"><a href="#1-iOS-类（class）和结构体（struct）有什么区别？" class="headerlink" title="1. iOS 类（class）和结构体（struct）有什么区别？"></a>1. iOS 类（class）和结构体（struct）有什么区别？</h2><ul>
+<li><p>答案</p>
+<blockquote>
+<p>Swift 中，类是引用类型，结构体是值类型。值类型在传递和赋值时将进行复制，而引用类型则只会使用引用对象的一个”指向”。所以他们两者之间的区别就是两个类型的区别。</p>
+</blockquote>
+</li>
+<li><p>示例1，类引用和传值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Temperature &#123;</span><br><span class="line">  var value: Float = 37.0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">  var temp: Temperature?</span><br><span class="line"></span><br><span class="line">  func sick() &#123;</span><br><span class="line">    temp?.value = 41.0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let A = Person()</span><br><span class="line">let B = Person()</span><br><span class="line">let temp = Temperature()</span><br><span class="line"></span><br><span class="line">A.temp = temp</span><br><span class="line">B.temp = temp</span><br><span class="line">A.sick()</span><br><span class="line">print(&quot;\(String(describing: A.temp?.value))&quot;)</span><br><span class="line">print(&quot;\(String(describing: B.temp?.value))&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<blockquote>
+<p><strong>Optional(41.0)</strong></p>
+<p><strong>Optional(41.0)</strong></p>
+</blockquote>
+</li>
+<li><p>示例2，结构体引用和传值</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct Temperature &#123;</span><br><span class="line">  var value: Float = 37.0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">  var temp: Temperature?</span><br><span class="line"></span><br><span class="line">  func sick() &#123;</span><br><span class="line">    temp?.value = 41.0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let A = Person()</span><br><span class="line">let B = Person()</span><br><span class="line">let temp = Temperature()</span><br><span class="line"></span><br><span class="line">A.temp = temp</span><br><span class="line">B.temp = temp</span><br><span class="line">A.sick()</span><br><span class="line">print(&quot;\(String(describing: A.temp?.value))&quot;)</span><br><span class="line">print(&quot;\(String(describing: B.temp?.value))&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<blockquote>
+<p><strong>Optional(41.0)</strong></p>
+<p><strong>Optional(37.0)</strong></p>
+</blockquote>
+</li>
+<li><p>说明</p>
+<blockquote>
+<p>内存中，引用类型诸如类是在堆（heap）上，而值类型诸如结构体实在栈（stack）上进行存储和操作。相比于栈上的操作，堆上的操作更加复杂耗时，所以苹果官方推荐使用结构体，这样可以提高 App 运行的效率。</p>
+</blockquote>
+<blockquote>
+<p><strong>class有这几个功能struct没有的：</strong></p>
+<p>class可以继承，这样子类可以使用父类的特性和方法 类型转换可以在runtime的时候检查和解释一个实例的类型 可以用deinit来释放资源，一个类可以被多次引用</p>
+</blockquote>
+<blockquote>
+<p><strong>struct也有这样几个优势：</strong></p>
+<p>结构较小，适用于复制操作，相比于一个class的实例被多次引用更加安全。 无须担心内存memory leak或者多线程冲突问题</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>iOS</category>
+        <category>Swift</category>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+        <tag>swift</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>iOS定时器使用总结</title>
+    <url>/2021/06/28/iOS%E5%AE%9A%E6%97%B6%E5%99%A8%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p><code>iOS</code>定时器主要有以下三种：</p>
+<ol>
+<li><code>NSTimer</code></li>
+<li><code>CADisplayLink</code></li>
+<li><code>dispatch_source_t</code></li>
+</ol>
+<p>其中<code>NSTimer</code>和<code>CADisplayLink</code>是基于<code>NSRunLoop</code>实现的，而<code>RunLoop</code>会在跑完一圈再去检查定时器是否满足规定的时间间隔，如果未达到，<code>RunLoop</code>会进入下一轮任务处理，这就可能导致定时器存在计数误差，<code>dispatch_source_t</code>是<code>GCD</code>内封装的定时器，只依赖于系统内核，所以较准时。</p>
+<h2 id="1-NSTimer用法"><a href="#1-NSTimer用法" class="headerlink" title="1. NSTimer用法"></a>1. <code>NSTimer</code>用法</h2><h3 id="1-1-创建NSTimer"><a href="#1-1-创建NSTimer" class="headerlink" title="1.1 创建NSTimer"></a>1.1 创建<code>NSTimer</code></h3><ul>
+<li><p>通过<code>scheduledTimer</code>开头的类方法创建</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) &#123;</span><br><span class="line">     NSLog(@&quot;111&quot;);</span><br><span class="line">&#125;];</span><br><span class="line">或</span><br><span class="line">[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];</span><br></pre></td></tr></table></figure>
+
+<p><code>timeInterval</code>执行之前等待的时间。该方法会自动创建<code>NSTimer</code>对象，并加入主线程的<code>RunLoop</code>的<code>default mode</code>上，然后自动启动，执行指定的代码。</p>
+</li>
+<li><p>通过<code>timerWithTimeInterval</code>开头的类方法创建</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) &#123;</span><br><span class="line">     NSLog(@&quot;111&quot;);</span><br><span class="line">&#125;];</span><br><span class="line">[[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];</span><br><span class="line">或者</span><br><span class="line">NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];</span><br><span class="line">[[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];</span><br></pre></td></tr></table></figure>
+
+<p>该方法只创建并返回一个定时器，不会把定时器加入<code>RunLoop</code>，需要手动添加到<code>RunLoop</code>，然后自动启动，执行指定的代码。</p>
+</li>
+</ul>
+<h3 id="1-2-NSTimer启动和停止"><a href="#1-2-NSTimer启动和停止" class="headerlink" title="1.2 NSTimer启动和停止"></a>1.2 <code>NSTimer</code>启动和停止</h3><ul>
+<li><p>启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.timer fire]; // 测试发现没什么用</span><br><span class="line">self.timer.fireDate = [NSDate distantPast]; // 和self.timer.fireDate = [NSDate distantFuture];对应</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.timer.fireDate = [NSDate distantFuture];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置计时器无效</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.timer invalidate]; </span><br></pre></td></tr></table></figure>
+
+<p>只有设置定时器无效，定时器对当前控制器的持有才会释放，才不会出现循环引用的情况，就算设置定时器为<code>nil</code>，也不行；所以通常在<code>viewWillDisappear</code>方法中设置定时器无效。</p>
+</li>
+</ul>
+<h3 id="1-3-注意事项"><a href="#1-3-注意事项" class="headerlink" title="1.3 注意事项"></a>1.3 注意事项</h3><p><code>1.1</code>中创建<code>NSTimer</code>的两种方法中，可能会导致<code>NSTimer</code>对象和当前控制器对象循环引用：</p>
+<ul>
+<li><p>如果是<code>block</code>形式执行指定的代码，<code>NSTimer</code>对象不会持有当前控制器对象，即使在控制器要销毁的时候，不停止并销毁定时器也不影响控制器的释放，因为<code>NSTimer</code>对象没有持有控制器，控制器能正常释放，释放以后定时器还能继续执行指定的代码，因为主<code>RunLoop</code>对象持有了定时器，定时器并没有被释放。</p>
+</li>
+<li><p>如果是<code>target</code>方式指定执行代码，<code>NSTimer</code>会持有当前控制器，如果在控制器释放前不销毁定时器，解除<code>NSTimer</code>对象对控制器的持有，那么将会出现循环引用，导致控制器和<code>NSTimer</code>对象都不能释放。</p>
+</li>
+<li><p><code>NSTimer</code>对其<code>target</code>持有的方式是<code>autorelease</code>方式, 即<code>target</code>会在其指定的<code>runloop</code>下一次执行时查看是否进行释放， 若<code>repeats</code>参数为<code>YES</code>, 则<code>timer</code>未释放情况下, <code>target</code>不会释放, 因而会引起循环引用; 若<code>repeats</code>参数设置为<code>NO</code>, 则<code>target</code>可以被释放而不会存在循环引用.</p>
+</li>
+<li><p><code>NSTimer</code>引发循环引用原理</p>
+<blockquote>
+<p>Current RunLoop -&gt; CFRunLoopMode -&gt; sources数组 -&gt; __NSCFTimer -&gt; _NSTimerBlockTarget -&gt; self</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="1-4-NSTimer循环引用解决方案"><a href="#1-4-NSTimer循环引用解决方案" class="headerlink" title="1.4 NSTimer循环引用解决方案"></a>1.4 <code>NSTimer</code>循环引用解决方案</h3><ul>
+<li><p>引入<code>WeakContainer</code>，弱持有<code>target</code>对象</p>
+<ul>
+<li><p>新建<code>WeakContainer</code>类，内部弱持有<code>target</code>，并转发消息</p>
+<p><code>WeakContainer.h</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_BEGIN</span><br><span class="line"></span><br><span class="line">@interface WeakContainer : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic, weak) id target;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure>
+
+<p><code>WeakContainer.m</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &quot;WeakContainer.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation WeakContainer</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target</span><br><span class="line">&#123;</span><br><span class="line">    self = [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        self.target = target;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 消息转发</span><br><span class="line">- (id)forwardingTargetForSelector:(SEL)aSelector</span><br><span class="line">&#123;</span><br><span class="line">    if ([self.target respondsToSelector:aSelector]) &#123;</span><br><span class="line">        return self.target;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return [super forwardingTargetForSelector:aSelector];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置定时器<code>target</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:[[WeakContainer alloc]initWithTarget:self] selector:@selector(timerAction) userInfo:nil repeats:YES];</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在控制器的<code>dealloc</code>方法中停止定时器，否则控制器释放，定时器还在运行，导致程序崩溃</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    self.timer.fireDate = [NSDate distantFuture];</span><br><span class="line">    NSLog(@&quot;释放了%s&quot;,__FUNCTION__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>使用<code>NSProxy</code>抽象类</p>
+<blockquote>
+<p>NSProxy是除了NSObject之外的另一个基类，是一个抽象类，只能继承它，重写其消息转发的方法，将消息转发给另一个对象。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)forwardInvocation:(NSInvocation *)invocation;</span><br><span class="line">- (nullable NSMethodSignature *)methodSignatureForSelector:(SEL)sel NS_SWIFT_UNAVAILABLE(&quot;NSInvocation and related APIs not available&quot;);</span><br></pre></td></tr></table></figure>
+
+<p>除了重载消息转发机制的两个方法之外，NSProxy也没有其他功能了。即，使用NSProxy注定是用来转发消息的。</p>
+<ul>
+<li>NSProxy可以用来模拟多继承，proxy对象处理多个不同Class对象的消息。</li>
+<li>继承自NSProxy的代理类会自动转发消息，而继承自NSObject的则不会，需要自行根据消息转发机制来进行处理。</li>
+<li>NSObject的Category中的方法不能转发</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>创建<code>WeakProxy</code>类</p>
+<p><code>WeakProxy.h</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_BEGIN</span><br><span class="line"></span><br><span class="line">@interface WeakProxy : NSProxy</span><br><span class="line"></span><br><span class="line">@property (nonatomic, weak) id target;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure>
+
+<p><code>WeakProxy.m</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &quot;WeakProxy.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation WeakProxy</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target</span><br><span class="line">&#123;</span><br><span class="line">    self = [WeakProxy alloc];</span><br><span class="line">    self.target = target;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSMethodSignature *)methodSignatureForSelector:(SEL)sel &#123;</span><br><span class="line">    return [self.target methodSignatureForSelector:sel];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)forwardInvocation:(NSInvocation *)invocation &#123;</span><br><span class="line">    [invocation invokeWithTarget:self.target];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>设置定时器同<code>WeakContainer</code>方式</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="2-CADisplayLink用法"><a href="#2-CADisplayLink用法" class="headerlink" title="2. CADisplayLink用法"></a>2. <code>CADisplayLink</code>用法</h2><h3 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h3><p><code>CADisplayLink</code>是和屏幕刷新率同步的频率调用<code>target</code>的，按照iOS设备屏幕的刷新率60次&#x2F;秒，就是一秒调用60次<code>target</code>。<code>CADisplayLink</code>以特定模式注册到<code>Runloop</code>后，每当屏幕显示内容刷新结束的时候，<code>Runloop</code>就会向<code>CADisplayLink</code>指定的<code>target</code>发送一次指定的<code>selector</code>消息， <code>CADisplayLink</code>类对应的<code>selector</code>就会被调用一次。</p>
+<p>延迟iOS设备的屏幕刷新频率是固定的，CADisplayLink在正常情况下会在每次刷新结束都被调用，精确度相当高。但如果调用的方法比较耗时，超过了屏幕刷新周期，就会导致跳过若干次回调调用机会。如果CPU过于繁忙，无法保证屏幕60次&#x2F;秒的刷新率，就会导致跳过若干次调用回调方法的机会，跳过次数取决CPU的忙碌程度。</p>
+<h3 id="2-2-使用场景"><a href="#2-2-使用场景" class="headerlink" title="2.2 使用场景"></a>2.2 使用场景</h3><p>从原理上可以看出，CADisplayLink适合做界面的不停重绘，比如视频播放的时候需要不停地获取下一帧用于界面渲染。</p>
+<h3 id="2-3-基本使用"><a href="#2-3-基本使用" class="headerlink" title="2.3 基本使用"></a>2.3 基本使用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(timerAction)];</span><br><span class="line">[self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];</span><br></pre></td></tr></table></figure>
+
+<p>添加到<code>RunLoop</code>以后，定时器就开始调用<code>target</code>。</p>
+<h3 id="2-4-主要属性和方法"><a href="#2-4-主要属性和方法" class="headerlink" title="2.4 主要属性和方法"></a>2.4 主要属性和方法</h3><ul>
+<li><code>preferredFramesPerSecond属性</code>：每秒调用<code>target</code>的次数，默认和每秒屏幕刷新次数一致，也就是60，设置该属性为1以后，每一秒调用一次<code>target</code></li>
+<li><code>paused属性</code>：判断定时器是否处于暂停状态（getter方法），设置定时器暂停和恢复（setter方法）</li>
+<li><code>invalidate方法</code>：设置定时器无效，和<code>NSTimer</code>的该方法效果相同</li>
+</ul>
+<h3 id="2-5-注意事项"><a href="#2-5-注意事项" class="headerlink" title="2.5 注意事项"></a>2.5 注意事项</h3><p>和<code>NSTimer</code>一样，都有可能出现循环引用，切记在控制器消失时调用<code>invalidate</code>方法。</p>
+<hr>
+<h2 id="3-dispatch-source-t用法"><a href="#3-dispatch-source-t用法" class="headerlink" title="3. dispatch_source_t用法"></a>3. <code>dispatch_source_t</code>用法</h2><h3 id="3-1-基本使用"><a href="#3-1-基本使用" class="headerlink" title="3.1 基本使用"></a>3.1 基本使用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//创建全局队列</span><br><span class="line">dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);</span><br><span class="line"></span><br><span class="line">//使用全局队列创建计时器</span><br><span class="line">_sourceTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);</span><br><span class="line"></span><br><span class="line">//定时器延迟时间</span><br><span class="line">NSTimeInterval delayTime = 1.0f;</span><br><span class="line"></span><br><span class="line">//定时器间隔时间</span><br><span class="line">NSTimeInterval timeInterval = 1.0f;</span><br><span class="line"></span><br><span class="line">//设置开始时间</span><br><span class="line">dispatch_time_t startDelayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC));</span><br><span class="line"></span><br><span class="line">//设置计时器</span><br><span class="line">dispatch_source_set_timer(_sourceTimer,startDelayTime,timeInterval*NSEC_PER_SEC,0.1*NSEC_PER_SEC);</span><br><span class="line"></span><br><span class="line">//执行事件</span><br><span class="line">dispatch_source_set_event_handler(_sourceTimer,^&#123;</span><br><span class="line">    NSLog(@&quot;111&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//启动计时器</span><br><span class="line">dispatch_resume(_sourceTimer);</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-2-关键函数"><a href="#3-2-关键函数" class="headerlink" title="3.2 关键函数"></a>3.2 关键函数</h3><ul>
+<li><p>设置定时器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_source_set_timer(dispatch_source_t source, </span><br><span class="line">                          dispatch_time_t start,</span><br><span class="line">                          uint64_t interval, </span><br><span class="line">                          uint64_t leeway);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>start</code>：计时器起始时间，可以通过<code>dispatch_time</code>创建，如果使用<code>DISPATCH_TIME_NOW</code>，则创建后立即执行</li>
+<li><code>interval</code>：计时器间隔时间，可以通过<code>timeInterval * NSEC_PER_SEC</code>来设置，其中<code>timeInterval</code>为对应的秒数</li>
+<li><code>leeway</code>：希望定时器的准确程度。这个参数告诉系统我们需要计时器触发的精准程度。所有的计时器都不会保证100%精准，这个参数用来告诉系统你希望系统保证精准的努力程度。如果你希望一个计时器没五秒触发一次，并且越准越好，那么你传递0为参数。另外，如果是一个周期性任务，比如检查email，那么你会希望每十分钟检查一次，但是不用那么精准。所以你可以传入60，告诉系统60秒的误差是可接受的。这样有什么意义呢？简单来说，就是降低资源消耗。如果系统可以让cpu休息足够长的时间，并在每次醒来的时候执行一个任务集合，而不是不断的醒来睡去以执行任务，那么系统会更高效。如果传入一个比较大的leeway给你的计时器，意味着你允许系统拖延你的计时器来将计时器任务与其他任务联合起来一起执行。</li>
+</ul>
+</li>
+<li><p>暂停定时器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_suspend(dispatch_object_t object);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>销毁（停止）计时器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//销毁定时器</span><br><span class="line">dispatch_source_cancel(_sourceTimer);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>销毁定时器时调用函数</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_source_set_cancel_handler(dispatch_source_t source,</span><br><span class="line">	dispatch_block_t _Nullable handler);</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="3-3-相比前两个定时器优点"><a href="#3-3-相比前两个定时器优点" class="headerlink" title="3.3 相比前两个定时器优点"></a>3.3 相比前两个定时器优点</h3><ul>
+<li>时间准确，误差小</li>
+<li>可以使用子线程，解决定时器跑在主线程上卡UI问题</li>
+</ul>
+<h3 id="3-4-注意事项"><a href="#3-4-注意事项" class="headerlink" title="3.4 注意事项"></a>3.4 注意事项</h3><p>需要将定时器设置为成员变量，且用<code>strong</code>修饰，不然会立即释放，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@property (nonatomic, strong) dispatch_source_t sourceTimer;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>iOS</category>
+        <category>OC</category>
+        <category>基础知识</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+        <tag>OC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cocoapods公有库制作</title>
+    <url>/2021/04/19/cocoapods%E5%85%AC%E6%9C%89%E5%BA%93%E5%88%B6%E4%BD%9C/</url>
+    <content><![CDATA[<h2 id="1-Pod库源码制作"><a href="#1-Pod库源码制作" class="headerlink" title="1. Pod库源码制作"></a>1. <code>Pod</code>库源码制作</h2><h3 id="1-1-下载Cocoapods模板"><a href="#1-1-下载Cocoapods模板" class="headerlink" title="1.1 下载Cocoapods模板"></a>1.1 下载<code>Cocoapods</code>模板</h3><p>执行如下命令，创建一个<code>Pod</code>库项目：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod lib create pod库名</span><br></pre></td></tr></table></figure>
+
+<p>根据提示填写库的信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜  测试demo  pod lib create HYTestPods</span><br><span class="line">Cloning `https://github.com/CocoaPods/pod-template.git` into `HYTestPods`.</span><br><span class="line">Configuring HYTestPods template.</span><br><span class="line"></span><br><span class="line">------------------------------</span><br><span class="line"></span><br><span class="line">To get you started we need to ask a few questions, this should only take a minute.</span><br><span class="line"></span><br><span class="line">If this is your first time we recommend running through with the guide:</span><br><span class="line"> - https://guides.cocoapods.org/making/using-pod-lib-create.html</span><br><span class="line"> ( hold cmd and click links to open in a browser. )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">What platform do you want to use?? [ iOS / macOS ]</span><br><span class="line"> &gt; iOS</span><br><span class="line"></span><br><span class="line">What language do you want to use?? [ Swift / ObjC ]</span><br><span class="line"> &gt; ObjC</span><br><span class="line"></span><br><span class="line">Would you like to include a demo application with your library? [ Yes / No ]</span><br><span class="line"> &gt; Yes</span><br><span class="line"></span><br><span class="line">Which testing frameworks will you use? [ Specta / Kiwi / None ]</span><br><span class="line"> &gt;</span><br><span class="line">specta</span><br><span class="line">Would you like to do view based testing? [ Yes / No ]</span><br><span class="line"> &gt; No</span><br><span class="line"></span><br><span class="line">What is your class prefix?</span><br><span class="line"> &gt; HY</span><br><span class="line">hint: Using &#x27;master&#x27; as the name for the initial branch. This default branch name</span><br><span class="line">hint: is subject to change. To configure the initial branch name to use in all</span><br><span class="line">hint: of your new repositories, which will suppress this warning, call:</span><br><span class="line">hint:</span><br><span class="line">hint: 	git config --global init.defaultBranch &lt;name&gt;</span><br><span class="line">hint:</span><br><span class="line">hint: Names commonly chosen instead of &#x27;master&#x27; are &#x27;main&#x27;, &#x27;trunk&#x27; and</span><br><span class="line">hint: &#x27;development&#x27;. The just-created branch can be renamed via this command:</span><br><span class="line">hint:</span><br><span class="line">hint: 	git branch -m &lt;name&gt;</span><br><span class="line"></span><br><span class="line">Running pod install on your new library.</span><br><span class="line"></span><br><span class="line">Analyzing dependencies</span><br><span class="line">Downloading dependencies</span><br><span class="line">Installing Expecta (1.0.6)</span><br><span class="line">Installing HYTestPods (0.1.0)</span><br><span class="line">Installing Specta (1.0.7)</span><br><span class="line">Generating Pods project</span><br><span class="line">Integrating client project</span><br><span class="line"></span><br><span class="line">[!] Please close any current Xcode sessions and use `HYTestPods.xcworkspace` for this project from now on.</span><br><span class="line">Pod installation complete! There are 3 dependencies from the Podfile and 3 total pods installed.</span><br><span class="line"></span><br><span class="line"> Ace! you&#x27;re ready to go!</span><br><span class="line"> We will start you off by opening your project in Xcode</span><br><span class="line">  open &#x27;HYTestPods/Example/HYTestPods.xcworkspace&#x27;</span><br><span class="line"></span><br><span class="line">To learn more about the template see `https://github.com/CocoaPods/pod-template.git`.</span><br><span class="line">To learn more about creating a new pod, see `https://guides.cocoapods.org/making/making-a-cocoapod`.</span><br></pre></td></tr></table></figure>
+
+<p>执行完成会自动创建指定名称的<code>Pod</code>库目录，并自动打开示例项目。<code>Pod</code>库目录结构如下：</p>
+<img src="http://res.yycode.top:8001/backup/blogImages/iOS制作私有Pod库/QQ20210419-223908@2x.png" style="zoom:50%;" />
+
+<ol>
+<li><code>Example</code>：示例代码</li>
+<li><code>HYTestPod</code>：<code>Classess</code>源代码，<code>Assets</code>资源文件</li>
+<li><code>HYTestPod.podspec</code>：记录库的信息</li>
+</ol>
+<h3 id="1-2-完善Pod配置文件"><a href="#1-2-完善Pod配置文件" class="headerlink" title="1.2 完善Pod配置文件"></a>1.2 完善<code>Pod</code>配置文件</h3><p>在<code>GitHud</code>创建私有库，修改<code>Pod</code>库配置文件<code>[YourPodName].podspec</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Pod::Spec.new do |s|</span><br><span class="line"></span><br><span class="line">  # 库名称</span><br><span class="line">  s.name             = &#x27;HYFramework&#x27;</span><br><span class="line"></span><br><span class="line">  # 指定支持的平台和版本，不写则默认支持所有的平台，如果支持多个平台，则使用下面的deployment_target定义</span><br><span class="line">  #spec.platform      = :ios</span><br><span class="line"></span><br><span class="line">  # 版本号</span><br><span class="line">  s.version          = &#x27;1.0.0&#x27;</span><br><span class="line"></span><br><span class="line">  # 库简短介</span><br><span class="line">  s.summary          = &#x27;自定义OC开发工具集&#x27;</span><br><span class="line"></span><br><span class="line"># This description is used to generate tags and improve search results.</span><br><span class="line">#   * Think: What does it do? Why did you write it? What is the focus?</span><br><span class="line">#   * Try to keep it short, snappy and to the point.</span><br><span class="line">#   * Write the description between the DESC delimiters below.</span><br><span class="line">#   * Finally, don&#x27;t worry about the indent, CocoaPods strips it!</span><br><span class="line"></span><br><span class="line">  # 开源库描述</span><br><span class="line">  s.description      = &lt;&lt;-DESC</span><br><span class="line">一套自定义的OC开发工具集</span><br><span class="line">                       DESC</span><br><span class="line"></span><br><span class="line">  # 开源库地址，或者是博客、社交地址等</span><br><span class="line">  s.homepage         = &#x27;https://github.com/MrChenYoung&#x27;</span><br><span class="line"></span><br><span class="line">  # s.screenshots     = &#x27;www.example.com/screenshots_1&#x27;, &#x27;www.example.com/screenshots_2&#x27;</span><br><span class="line">  </span><br><span class="line">  # 开源协议</span><br><span class="line">  s.license          = &#123; :type =&gt; &#x27;MIT&#x27;, :file =&gt; &#x27;LICENSE&#x27; &#125;</span><br><span class="line"></span><br><span class="line">  # 开源库作者</span><br><span class="line">  s.author           = &#123; &#x27;mrchenyoung&#x27; =&gt; &#x27;chenhuiyiyoung@163.com&#x27; &#125;</span><br><span class="line"></span><br><span class="line">  # 开源库GitHub的路径与tag值，GitHub路径后必须有.git,tag实际就是上面的版本</span><br><span class="line">  s.source           = &#123; :git =&gt; &#x27;https://github.com/mrchenyoung/HYFramework.git&#x27;, :tag =&gt; s.version.to_s &#125;</span><br><span class="line"></span><br><span class="line">  # 社交网址</span><br><span class="line">  # s.social_media_url = &#x27;https://twitter.com/&lt;TWITTER_USERNAME&gt;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  # 开源库最低支持</span><br><span class="line">  s.ios.deployment_target = &#x27;9.0&#x27;</span><br><span class="line"></span><br><span class="line">  # 源库资源文件</span><br><span class="line">  s.source_files = &#x27;HYFramework/Classes/**/*&#x27;</span><br><span class="line">  </span><br><span class="line">  # 是否支持arc</span><br><span class="line">  s.requires_arc = true</span><br><span class="line"></span><br><span class="line">  # s.resource_bundles = &#123;</span><br><span class="line">  #   &#x27;HYFramework&#x27; =&gt; [&#x27;HYFramework/Assets/*.png&#x27;]</span><br><span class="line">  # &#125;</span><br><span class="line"></span><br><span class="line">  # s.public_header_files = &#x27;Pod/Classes/**/*.h&#x27;</span><br><span class="line"></span><br><span class="line">  # 依赖系统库</span><br><span class="line">  # s.frameworks = &#x27;UIKit&#x27;, &#x27;MapKit&#x27;</span><br><span class="line">  </span><br><span class="line">  # 开源库依赖库</span><br><span class="line">  s.dependency &#x27;AFNetworking&#x27;, &#x27;3.2.1&#x27;</span><br><span class="line">  s.dependency &#x27;Masonry&#x27;</span><br><span class="line">  s.dependency &#x27;MBProgressHUD&#x27;</span><br><span class="line">  s.dependency &#x27;MJRefresh&#x27;</span><br><span class="line">  s.dependency &#x27;YYModel&#x27;</span><br><span class="line">  s.dependency &#x27;ZLPhotoBrowser&#x27;</span><br><span class="line">  </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-源码编写"><a href="#1-3-源码编写" class="headerlink" title="1.3 源码编写"></a>1.3 源码编写</h3><p>所有的<code>pod</code>源码都存放在<code>HYTestPod</code>目录下的<code>Classes</code>目录下。示例代码中<code>Pod</code>下有一个<code>Development Pods</code>文件夹，该目录下的<code>HYTestPod</code>目录和<code>pod</code>库根文件夹下的同名目录是相关联的，保证了在示例项目中修改的源码和<code>pod</code>库根目录下同名文件夹下的源码保持一致。</p>
+<img src="http://res.yycode.top:8001/backup/blogImages/iOS制作私有Pod库/QQ20210419-224440@2x.png" style="zoom:50%;" />
+
+
+
+
+
+<h3 id="1-4-Pod配置文件验证"><a href="#1-4-Pod配置文件验证" class="headerlink" title="1.4 Pod配置文件验证"></a>1.4 <code>Pod</code>配置文件验证</h3><p>本地<code>pod</code>库配置文件验证，适用于还没有把源码提交到<code>github</code>前，本地配置的验证（如果关联有其他库，需要带<code>--use-libraries</code>参数）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod lib lint --allow-warnings</span><br></pre></td></tr></table></figure>
+
+
+
+<p>远端<code>pod</code>库配置文件的验证，验证<code>github</code>上库的配置文件：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod spec lint --allow-warnings</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果有如下提示，添加<code>--allow-warnings</code>参数忽略警告：</p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/iOS%E5%88%B6%E4%BD%9C%E7%A7%81%E6%9C%89Pod%E5%BA%93/QQ20210419-225830@2x.png"></p>
+<p>提示<code>HYTestPod passed validation.</code>表示验证通过。</p>
+<hr>
+<h2 id="2-提交代码到GitHub"><a href="#2-提交代码到GitHub" class="headerlink" title="2. 提交代码到GitHub"></a>2. 提交代码到<code>GitHub</code></h2><p>在<code>github</code>创建放<code>pod</code>库源码的代码库，注意<code>pod</code>库配置文件的<code>s.source</code>内的地址要和该库的地址保持一致。然后在<code>pod</code>库的根目录下执行如下命令，提交源码到<code>github</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#添加远端地址</span><br><span class="line">git remote add origin https://github.com/MrChenYoung/HYTestPod.git  </span><br><span class="line">#提交所有内容</span><br><span class="line">git add .  &amp;&amp; git commit -m &#x27;v1.0.0&#x27;</span><br><span class="line">#推送代码到Github</span><br><span class="line">git push origin master  </span><br><span class="line"># 添加 1.0.0 tag</span><br><span class="line">git tag 1.0.0  </span><br><span class="line">#提交tag</span><br><span class="line">git push origin 1.0.0 </span><br></pre></td></tr></table></figure>
+
+<p>现在就可以是在项目<code>podfile</code>文件中添加库信息，执行<code>pod install</code>就可以使用了：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod &#x27;HYTestPod&#x27;, :git =&gt; &#x27;https://github.com/MrChenYoung/HYTestPods.git&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>但是还不能够通过<code>pod search</code>命令搜索到库，而且只有知道<code>pod</code>库的<code>git</code>地址才能够使用。</p>
+<hr>
+<h2 id="3-发布podspec配置文件到公有pod库"><a href="#3-发布podspec配置文件到公有pod库" class="headerlink" title="3. 发布podspec配置文件到公有pod库"></a>3. 发布<code>podspec</code>配置文件到公有<code>pod</code>库</h2><p>需要把<code>pod</code>库的配置文件(.podspec文件)提交到<code>cocoapods</code>的公有管理库，也就是<code>https://github.com/CocoaPods/Specs.git</code>上，才可以通过<code>pod search</code>命令查找到库，并且只要在项目的<code>podfile</code>文件中添加<code>pod  库名</code>就可以安装。</p>
+<h3 id="3-1-注册session"><a href="#3-1-注册session" class="headerlink" title="3.1 注册session"></a>3.1 注册<code>session</code></h3><p>如果是第一次发布<code>podspec</code>文件，会提示<code>[!] You need to run </code>pod trunk register<code> to register a session first.</code>，表示要先注册<code>session</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk register chenhuiyiyoung@163.com &#x27;code009&#x27; --description=&#x27;A description&#x27;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>chenhuiyiyoung@163.com</code>是真正的邮箱，用于注册验证</li>
+<li><code>code009</code>为用户名</li>
+<li><code>A description</code>描述文本</li>
+</ul>
+<p>执行完注册命令，会收到一封验证的邮件，复制邮件中的链接打开验证。通过一下命令查看自己的注册信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure>
+
+<p>给<code>pod</code>库添加拥有者：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk add-owner [POD REP NAME] [NEW EMAIL]</span><br></pre></td></tr></table></figure>
+
+<p>从<code>pod</code>库拥有者列表中移除用户：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk remove-owner [POD REP NAME] [OLD EMAIL]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="3-2-发布podspec"><a href="#3-2-发布podspec" class="headerlink" title="3.2 发布podspec"></a>3.2 发布<code>podspec</code></h3><p>发布<code>podspec</code>文件（如果关联有其他库，需要带<code>--use-libraries</code>参数）：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk push HYTestPods.podspec --allow-warnings</span><br></pre></td></tr></table></figure>
+
+<p>有如下提示，表示发布成功：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Updating spec repo `trunk`</span><br><span class="line"></span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line"> 🎉  Congrats</span><br><span class="line"></span><br><span class="line"> 🚀  HYTestPods (1.0.0) successfully published</span><br><span class="line"> 📅  May 13th, 19:57</span><br><span class="line"> 🌎  https://cocoapods.org/pods/HYTestPods</span><br><span class="line"> 👍  Tell your friends!</span><br><span class="line">--------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
+
+<p>现在就可以在项目的<code>podfile</code>文件中添加<code>pod HYTestPods</code>，然后执行<code>pod install</code>添加库到项目中了。如果<code>pod install</code>提示找不到库，执行<code>pod install --repo-update</code>命令。</p>
+<hr>
+<h2 id="4-pod库版本更新"><a href="#4-pod库版本更新" class="headerlink" title="4. pod库版本更新"></a>4. <code>pod</code>库版本更新</h2><ul>
+<li><p>更新新版本源码</p>
+</li>
+<li><p>更改<code>.podspec</code>文件中<code>s.version</code>字段为最新版本号，如<code>2.0.0</code></p>
+</li>
+<li><p>提交代码到<code>github</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &#x27;new version&#x27;</span><br><span class="line">git tag 2.0.0</span><br><span class="line">git push orign master</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布新版<code>.podspec</code>文件到<code>pod</code>公有库中（如果关联有其他库，需要带<code>--use-libraries</code>参数）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk push HYTestPods.podspec --allow-warnings</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>pod search</code>搜索不到新版本，先执行<code>pod repo update</code>命令，然后在搜索。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>iOS</category>
+        <category>CocoaPods</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>内存面试题</title>
+    <url>/2021/06/28/%E5%86%85%E5%AD%98%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>123456</p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+        <category>OC</category>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>OC</tag>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>个人简历2021</title>
     <url>/2021/06/08/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%862021/</url>
     <content><![CDATA[<h1 style="text-align:center">简  历</h1>
 
 
-<h2 id="陈会毅"><a href="#陈会毅" class="headerlink" title="陈会毅"></a>陈会毅</h2><p><i class="fa fa-phone-square" style="font-size: 18px;"></i> 13761943167&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope"></i> <a href="mailto:&#x63;&#104;&#101;&#110;&#104;&#117;&#105;&#121;&#x69;&#121;&#x6f;&#117;&#110;&#x67;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#104;&#101;&#110;&#104;&#117;&#105;&#121;&#x69;&#121;&#x6f;&#117;&#110;&#x67;&#64;&#x67;&#109;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<h2 id="陈会毅"><a href="#陈会毅" class="headerlink" title="陈会毅"></a>陈会毅</h2><p><i class="fa fa-phone-square" style="font-size: 18px;"></i> 13761943167&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope"></i> <a href="mailto:&#x63;&#104;&#101;&#x6e;&#x68;&#117;&#105;&#x79;&#105;&#121;&#x6f;&#117;&#x6e;&#x67;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#104;&#101;&#x6e;&#x68;&#117;&#105;&#x79;&#105;&#121;&#x6f;&#117;&#x6e;&#x67;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;</a></p>
 <hr>
 <h5 id="个人信息"><a href="#个人信息" class="headerlink" title=" 个人信息"></a><i class="fa fa-user"></i> 个人信息</h5><ul>
 <li>本科&#x2F;软件工程</li>
@@ -920,175 +1193,6 @@
       </tags>
   </entry>
   <entry>
-    <title>iOS定时器使用总结</title>
-    <url>/2021/06/28/iOS%E5%AE%9A%E6%97%B6%E5%99%A8%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p><code>iOS</code>定时器主要有以下三种：</p>
-<ol>
-<li><code>NSTimer</code></li>
-<li><code>CADisplayLink</code></li>
-<li><code>dispatch_source_t</code></li>
-</ol>
-<p>其中<code>NSTimer</code>和<code>CADisplayLink</code>是基于<code>NSRunLoop</code>实现的，而<code>RunLoop</code>会在跑完一圈再去检查定时器是否满足规定的时间间隔，如果未达到，<code>RunLoop</code>会进入下一轮任务处理，这就可能导致定时器存在计数误差，<code>dispatch_source_t</code>是<code>GCD</code>内封装的定时器，只依赖于系统内核，所以较准时。</p>
-<h2 id="1-NSTimer用法"><a href="#1-NSTimer用法" class="headerlink" title="1. NSTimer用法"></a>1. <code>NSTimer</code>用法</h2><h3 id="1-1-创建NSTimer"><a href="#1-1-创建NSTimer" class="headerlink" title="1.1 创建NSTimer"></a>1.1 创建<code>NSTimer</code></h3><ul>
-<li><p>通过<code>scheduledTimer</code>开头的类方法创建</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) &#123;</span><br><span class="line">     NSLog(@&quot;111&quot;);</span><br><span class="line">&#125;];</span><br><span class="line">或</span><br><span class="line">[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];</span><br></pre></td></tr></table></figure>
-
-<p><code>timeInterval</code>执行之前等待的时间。该方法会自动创建<code>NSTimer</code>对象，并加入主线程的<code>RunLoop</code>的<code>default mode</code>上，然后自动启动，执行指定的代码。</p>
-</li>
-<li><p>通过<code>timerWithTimeInterval</code>开头的类方法创建</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) &#123;</span><br><span class="line">     NSLog(@&quot;111&quot;);</span><br><span class="line">&#125;];</span><br><span class="line">[[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];</span><br><span class="line">或者</span><br><span class="line">NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];</span><br><span class="line">[[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];</span><br></pre></td></tr></table></figure>
-
-<p>该方法只创建并返回一个定时器，不会把定时器加入<code>RunLoop</code>，需要手动添加到<code>RunLoop</code>，然后自动启动，执行指定的代码。</p>
-</li>
-</ul>
-<h3 id="1-2-NSTimer启动和停止"><a href="#1-2-NSTimer启动和停止" class="headerlink" title="1.2 NSTimer启动和停止"></a>1.2 <code>NSTimer</code>启动和停止</h3><ul>
-<li><p>启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.timer fire]; // 测试发现没什么用</span><br><span class="line">self.timer.fireDate = [NSDate distantPast]; // 和self.timer.fireDate = [NSDate distantFuture];对应</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>停止</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.timer.fireDate = [NSDate distantFuture];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置计时器无效</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.timer invalidate]; </span><br></pre></td></tr></table></figure>
-
-<p>只有设置定时器无效，定时器对当前控制器的持有才会释放，才不会出现循环引用的情况，就算设置定时器为<code>nil</code>，也不行；所以通常在<code>viewWillDisappear</code>方法中设置定时器无效。</p>
-</li>
-</ul>
-<h3 id="1-3-注意事项"><a href="#1-3-注意事项" class="headerlink" title="1.3 注意事项"></a>1.3 注意事项</h3><p><code>1.1</code>中创建<code>NSTimer</code>的两种方法中，可能会导致<code>NSTimer</code>对象和当前控制器对象循环引用：</p>
-<ul>
-<li><p>如果是<code>block</code>形式执行指定的代码，<code>NSTimer</code>对象不会持有当前控制器对象，即使在控制器要销毁的时候，不停止并销毁定时器也不影响控制器的释放，因为<code>NSTimer</code>对象没有持有控制器，控制器能正常释放，释放以后定时器还能继续执行指定的代码，因为主<code>RunLoop</code>对象持有了定时器，定时器并没有被释放。</p>
-</li>
-<li><p>如果是<code>target</code>方式指定执行代码，<code>NSTimer</code>会持有当前控制器，如果在控制器释放前不销毁定时器，解除<code>NSTimer</code>对象对控制器的持有，那么将会出现循环引用，导致控制器和<code>NSTimer</code>对象都不能释放。</p>
-</li>
-<li><p><code>NSTimer</code>对其<code>target</code>持有的方式是<code>autorelease</code>方式, 即<code>target</code>会在其指定的<code>runloop</code>下一次执行时查看是否进行释放， 若<code>repeats</code>参数为<code>YES</code>, 则<code>timer</code>未释放情况下, <code>target</code>不会释放, 因而会引起循环引用; 若<code>repeats</code>参数设置为<code>NO</code>, 则<code>target</code>可以被释放而不会存在循环引用.</p>
-</li>
-<li><p><code>NSTimer</code>引发循环引用原理</p>
-<blockquote>
-<p>Current RunLoop -&gt; CFRunLoopMode -&gt; sources数组 -&gt; __NSCFTimer -&gt; _NSTimerBlockTarget -&gt; self</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="1-4-NSTimer循环引用解决方案"><a href="#1-4-NSTimer循环引用解决方案" class="headerlink" title="1.4 NSTimer循环引用解决方案"></a>1.4 <code>NSTimer</code>循环引用解决方案</h3><ul>
-<li><p>引入<code>WeakContainer</code>，弱持有<code>target</code>对象</p>
-<ul>
-<li><p>新建<code>WeakContainer</code>类，内部弱持有<code>target</code>，并转发消息</p>
-<p><code>WeakContainer.h</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_BEGIN</span><br><span class="line"></span><br><span class="line">@interface WeakContainer : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic, weak) id target;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure>
-
-<p><code>WeakContainer.m</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &quot;WeakContainer.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation WeakContainer</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target</span><br><span class="line">&#123;</span><br><span class="line">    self = [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        self.target = target;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 消息转发</span><br><span class="line">- (id)forwardingTargetForSelector:(SEL)aSelector</span><br><span class="line">&#123;</span><br><span class="line">    if ([self.target respondsToSelector:aSelector]) &#123;</span><br><span class="line">        return self.target;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return [super forwardingTargetForSelector:aSelector];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置定时器<code>target</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:[[WeakContainer alloc]initWithTarget:self] selector:@selector(timerAction) userInfo:nil repeats:YES];</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在控制器的<code>dealloc</code>方法中停止定时器，否则控制器释放，定时器还在运行，导致程序崩溃</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    self.timer.fireDate = [NSDate distantFuture];</span><br><span class="line">    NSLog(@&quot;释放了%s&quot;,__FUNCTION__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>使用<code>NSProxy</code>抽象类</p>
-<blockquote>
-<p>NSProxy是除了NSObject之外的另一个基类，是一个抽象类，只能继承它，重写其消息转发的方法，将消息转发给另一个对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)forwardInvocation:(NSInvocation *)invocation;</span><br><span class="line">- (nullable NSMethodSignature *)methodSignatureForSelector:(SEL)sel NS_SWIFT_UNAVAILABLE(&quot;NSInvocation and related APIs not available&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>除了重载消息转发机制的两个方法之外，NSProxy也没有其他功能了。即，使用NSProxy注定是用来转发消息的。</p>
-<ul>
-<li>NSProxy可以用来模拟多继承，proxy对象处理多个不同Class对象的消息。</li>
-<li>继承自NSProxy的代理类会自动转发消息，而继承自NSObject的则不会，需要自行根据消息转发机制来进行处理。</li>
-<li>NSObject的Category中的方法不能转发</li>
-</ul>
-</blockquote>
-<ul>
-<li><p>创建<code>WeakProxy</code>类</p>
-<p><code>WeakProxy.h</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_BEGIN</span><br><span class="line"></span><br><span class="line">@interface WeakProxy : NSProxy</span><br><span class="line"></span><br><span class="line">@property (nonatomic, weak) id target;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure>
-
-<p><code>WeakProxy.m</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &quot;WeakProxy.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation WeakProxy</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target</span><br><span class="line">&#123;</span><br><span class="line">    self = [WeakProxy alloc];</span><br><span class="line">    self.target = target;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSMethodSignature *)methodSignatureForSelector:(SEL)sel &#123;</span><br><span class="line">    return [self.target methodSignatureForSelector:sel];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)forwardInvocation:(NSInvocation *)invocation &#123;</span><br><span class="line">    [invocation invokeWithTarget:self.target];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
-
-
-</li>
-<li><p>设置定时器同<code>WeakContainer</code>方式</p>
-</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="2-CADisplayLink用法"><a href="#2-CADisplayLink用法" class="headerlink" title="2. CADisplayLink用法"></a>2. <code>CADisplayLink</code>用法</h2><h3 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h3><p><code>CADisplayLink</code>是和屏幕刷新率同步的频率调用<code>target</code>的，按照iOS设备屏幕的刷新率60次&#x2F;秒，就是一秒调用60次<code>target</code>。<code>CADisplayLink</code>以特定模式注册到<code>Runloop</code>后，每当屏幕显示内容刷新结束的时候，<code>Runloop</code>就会向<code>CADisplayLink</code>指定的<code>target</code>发送一次指定的<code>selector</code>消息， <code>CADisplayLink</code>类对应的<code>selector</code>就会被调用一次。</p>
-<p>延迟iOS设备的屏幕刷新频率是固定的，CADisplayLink在正常情况下会在每次刷新结束都被调用，精确度相当高。但如果调用的方法比较耗时，超过了屏幕刷新周期，就会导致跳过若干次回调调用机会。如果CPU过于繁忙，无法保证屏幕60次&#x2F;秒的刷新率，就会导致跳过若干次调用回调方法的机会，跳过次数取决CPU的忙碌程度。</p>
-<h3 id="2-2-使用场景"><a href="#2-2-使用场景" class="headerlink" title="2.2 使用场景"></a>2.2 使用场景</h3><p>从原理上可以看出，CADisplayLink适合做界面的不停重绘，比如视频播放的时候需要不停地获取下一帧用于界面渲染。</p>
-<h3 id="2-3-基本使用"><a href="#2-3-基本使用" class="headerlink" title="2.3 基本使用"></a>2.3 基本使用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(timerAction)];</span><br><span class="line">[self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];</span><br></pre></td></tr></table></figure>
-
-<p>添加到<code>RunLoop</code>以后，定时器就开始调用<code>target</code>。</p>
-<h3 id="2-4-主要属性和方法"><a href="#2-4-主要属性和方法" class="headerlink" title="2.4 主要属性和方法"></a>2.4 主要属性和方法</h3><ul>
-<li><code>preferredFramesPerSecond属性</code>：每秒调用<code>target</code>的次数，默认和每秒屏幕刷新次数一致，也就是60，设置该属性为1以后，每一秒调用一次<code>target</code></li>
-<li><code>paused属性</code>：判断定时器是否处于暂停状态（getter方法），设置定时器暂停和恢复（setter方法）</li>
-<li><code>invalidate方法</code>：设置定时器无效，和<code>NSTimer</code>的该方法效果相同</li>
-</ul>
-<h3 id="2-5-注意事项"><a href="#2-5-注意事项" class="headerlink" title="2.5 注意事项"></a>2.5 注意事项</h3><p>和<code>NSTimer</code>一样，都有可能出现循环引用，切记在控制器消失时调用<code>invalidate</code>方法。</p>
-<hr>
-<h2 id="3-dispatch-source-t用法"><a href="#3-dispatch-source-t用法" class="headerlink" title="3. dispatch_source_t用法"></a>3. <code>dispatch_source_t</code>用法</h2><h3 id="3-1-基本使用"><a href="#3-1-基本使用" class="headerlink" title="3.1 基本使用"></a>3.1 基本使用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//创建全局队列</span><br><span class="line">dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);</span><br><span class="line"></span><br><span class="line">//使用全局队列创建计时器</span><br><span class="line">_sourceTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);</span><br><span class="line"></span><br><span class="line">//定时器延迟时间</span><br><span class="line">NSTimeInterval delayTime = 1.0f;</span><br><span class="line"></span><br><span class="line">//定时器间隔时间</span><br><span class="line">NSTimeInterval timeInterval = 1.0f;</span><br><span class="line"></span><br><span class="line">//设置开始时间</span><br><span class="line">dispatch_time_t startDelayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC));</span><br><span class="line"></span><br><span class="line">//设置计时器</span><br><span class="line">dispatch_source_set_timer(_sourceTimer,startDelayTime,timeInterval*NSEC_PER_SEC,0.1*NSEC_PER_SEC);</span><br><span class="line"></span><br><span class="line">//执行事件</span><br><span class="line">dispatch_source_set_event_handler(_sourceTimer,^&#123;</span><br><span class="line">    NSLog(@&quot;111&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//启动计时器</span><br><span class="line">dispatch_resume(_sourceTimer);</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="3-2-关键函数"><a href="#3-2-关键函数" class="headerlink" title="3.2 关键函数"></a>3.2 关键函数</h3><ul>
-<li><p>设置定时器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_source_set_timer(dispatch_source_t source, </span><br><span class="line">                          dispatch_time_t start,</span><br><span class="line">                          uint64_t interval, </span><br><span class="line">                          uint64_t leeway);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>start</code>：计时器起始时间，可以通过<code>dispatch_time</code>创建，如果使用<code>DISPATCH_TIME_NOW</code>，则创建后立即执行</li>
-<li><code>interval</code>：计时器间隔时间，可以通过<code>timeInterval * NSEC_PER_SEC</code>来设置，其中<code>timeInterval</code>为对应的秒数</li>
-<li><code>leeway</code>：希望定时器的准确程度。这个参数告诉系统我们需要计时器触发的精准程度。所有的计时器都不会保证100%精准，这个参数用来告诉系统你希望系统保证精准的努力程度。如果你希望一个计时器没五秒触发一次，并且越准越好，那么你传递0为参数。另外，如果是一个周期性任务，比如检查email，那么你会希望每十分钟检查一次，但是不用那么精准。所以你可以传入60，告诉系统60秒的误差是可接受的。这样有什么意义呢？简单来说，就是降低资源消耗。如果系统可以让cpu休息足够长的时间，并在每次醒来的时候执行一个任务集合，而不是不断的醒来睡去以执行任务，那么系统会更高效。如果传入一个比较大的leeway给你的计时器，意味着你允许系统拖延你的计时器来将计时器任务与其他任务联合起来一起执行。</li>
-</ul>
-</li>
-<li><p>暂停定时器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_suspend(dispatch_object_t object);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>销毁（停止）计时器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//销毁定时器</span><br><span class="line">dispatch_source_cancel(_sourceTimer);</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>销毁定时器时调用函数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_source_set_cancel_handler(dispatch_source_t source,</span><br><span class="line">	dispatch_block_t _Nullable handler);</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="3-3-相比前两个定时器优点"><a href="#3-3-相比前两个定时器优点" class="headerlink" title="3.3 相比前两个定时器优点"></a>3.3 相比前两个定时器优点</h3><ul>
-<li>时间准确，误差小</li>
-<li>可以使用子线程，解决定时器跑在主线程上卡UI问题</li>
-</ul>
-<h3 id="3-4-注意事项"><a href="#3-4-注意事项" class="headerlink" title="3.4 注意事项"></a>3.4 注意事项</h3><p>需要将定时器设置为成员变量，且用<code>strong</code>修饰，不然会立即释放，如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@property (nonatomic, strong) dispatch_source_t sourceTimer;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>iOS</category>
-        <category>OC</category>
-        <category>基础知识</category>
-      </categories>
-      <tags>
-        <tag>iOS</tag>
-        <tag>OC</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>内存面试题</title>
-    <url>/2021/06/28/%E5%86%85%E5%AD%98%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>123456</p>
-]]></content>
-      <categories>
-        <category>iOS</category>
-        <category>OC</category>
-        <category>面试题</category>
-      </categories>
-      <tags>
-        <tag>OC</tag>
-        <tag>面试题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>手动申请SSL证书</title>
     <url>/2021/06/22/%E6%89%8B%E5%8A%A8%E7%94%B3%E8%AF%B7SSL%E8%AF%81%E4%B9%A6/</url>
     <content><![CDATA[<h2 id="1-下载KeyManager"><a href="#1-下载KeyManager" class="headerlink" title="1. 下载KeyManager"></a>1. 下载<code>KeyManager</code></h2><ul>
@@ -1129,40 +1233,6 @@
       </tags>
   </entry>
   <entry>
-    <title>测试文章</title>
-    <url>/2023/11/23/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>测试</title>
-    <url>/2023/11/20/%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<table>
-<thead>
-<tr>
-<th>功能</th>
-<th>报价</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>实现在设置中搜索不到<code>信息</code>应用</td>
-<td>800</td>
-</tr>
-<tr>
-<td><code>iMessage</code>信息存储到手机硬盘</td>
-<td>700</td>
-</tr>
-<tr>
-<td>长按列表头像弹出菜单</td>
-<td>500</td>
-</tr>
-<tr>
-<td>总计</td>
-<td>2000</td>
-</tr>
-</tbody></table>
-]]></content>
-  </entry>
-  <entry>
     <title>备忘录</title>
     <url>/2021/07/01/%E5%A4%87%E5%BF%98%E5%BD%95/</url>
     <content><![CDATA[<h2 id="1-网站自动化部署"><a href="#1-网站自动化部署" class="headerlink" title="1. 网站自动化部署"></a>1. 网站自动化部署</h2><h3 id="1-拷贝部署程序"><a href="#1-拷贝部署程序" class="headerlink" title="1.拷贝部署程序"></a>1.拷贝部署程序</h3><p>git clone <a href="https://github.com/MrChenYoung/AutoDeployShell.git">https://github.com/MrChenYoung/AutoDeployShell.git</a> &amp;&amp; chmod -R 700 AutoDeployShell &amp;&amp; cd AutoDeployShell</p>
@@ -1198,10 +1268,10 @@
 <p>progress</p>
 <p>watch progress -q</p>
 <p>progress -w</p>
-<h3 id="3-远程拷贝"><a href="#3-远程拷贝" class="headerlink" title="3. 远程拷贝"></a>3. 远程拷贝</h3><p>scp -r -P 9156 <a href="mailto:&#x72;&#111;&#111;&#116;&#64;&#100;&#x64;&#110;&#115;&#x2e;&#121;&#121;&#99;&#x6f;&#100;&#x65;&#46;&#x74;&#111;&#112;">&#x72;&#111;&#111;&#116;&#64;&#100;&#x64;&#110;&#115;&#x2e;&#121;&#121;&#99;&#x6f;&#100;&#x65;&#46;&#x74;&#111;&#112;</a>:&#x2F;www&#x2F;wwwroot&#x2F;res.yycode.ml&#x2F;NextCloud&#x2F;disk4T&#x2F;电影&#x2F;拆弹专家2 (2020) &#x2F;www&#x2F;wwwroot&#x2F;</p>
+<h3 id="3-远程拷贝"><a href="#3-远程拷贝" class="headerlink" title="3. 远程拷贝"></a>3. 远程拷贝</h3><p>scp -r -P 9156 <a href="mailto:&#x72;&#x6f;&#x6f;&#116;&#64;&#100;&#100;&#x6e;&#115;&#x2e;&#x79;&#121;&#99;&#x6f;&#100;&#x65;&#46;&#x74;&#x6f;&#112;">&#x72;&#x6f;&#x6f;&#116;&#64;&#100;&#100;&#x6e;&#115;&#x2e;&#x79;&#121;&#99;&#x6f;&#100;&#x65;&#46;&#x74;&#x6f;&#112;</a>:&#x2F;www&#x2F;wwwroot&#x2F;res.yycode.ml&#x2F;NextCloud&#x2F;disk4T&#x2F;电影&#x2F;拆弹专家2 (2020) &#x2F;www&#x2F;wwwroot&#x2F;</p>
 <h3 id="4-yum删除指定服务"><a href="#4-yum删除指定服务" class="headerlink" title="4. yum删除指定服务"></a>4. yum删除指定服务</h3><p>yum list installed</p>
 <p>yum remove jellyfin.x86_64</p>
-<h3 id="5-免密登录设置，拷贝本地rsa公钥到远端"><a href="#5-免密登录设置，拷贝本地rsa公钥到远端" class="headerlink" title="5. 免密登录设置，拷贝本地rsa公钥到远端"></a>5. 免密登录设置，拷贝本地rsa公钥到远端</h3><p>ssh-copy-id -i ~&#x2F;.ssh&#x2F;id_rsa.pub <a href="mailto:&#97;&#100;&#x6d;&#105;&#110;&#64;&#x77;&#x77;&#119;&#46;&#121;&#x79;&#x63;&#x6f;&#100;&#101;&#x2e;&#116;&#111;&#x70;">&#97;&#100;&#x6d;&#105;&#110;&#64;&#x77;&#x77;&#119;&#46;&#121;&#x79;&#x63;&#x6f;&#100;&#101;&#x2e;&#116;&#111;&#x70;</a> -p 9156</p>
+<h3 id="5-免密登录设置，拷贝本地rsa公钥到远端"><a href="#5-免密登录设置，拷贝本地rsa公钥到远端" class="headerlink" title="5. 免密登录设置，拷贝本地rsa公钥到远端"></a>5. 免密登录设置，拷贝本地rsa公钥到远端</h3><p>ssh-copy-id -i ~&#x2F;.ssh&#x2F;id_rsa.pub <a href="mailto:&#97;&#100;&#x6d;&#105;&#110;&#x40;&#119;&#119;&#x77;&#x2e;&#x79;&#x79;&#99;&#111;&#100;&#x65;&#46;&#x74;&#111;&#112;">&#97;&#100;&#x6d;&#105;&#110;&#x40;&#119;&#119;&#x77;&#x2e;&#x79;&#x79;&#99;&#111;&#100;&#x65;&#46;&#x74;&#111;&#112;</a> -p 9156</p>
 <hr>
 <h2 id="4-rclone相关"><a href="#4-rclone相关" class="headerlink" title="4. rclone相关"></a>4. rclone相关</h2><h3 id="1-rclone挂载谷歌云盘"><a href="#1-rclone挂载谷歌云盘" class="headerlink" title="1. rclone挂载谷歌云盘"></a>1. rclone挂载谷歌云盘</h3><p>#设置rclone代理</p>
 <p>export HTTP_PROXY&#x3D;<a href="http://127.0.0.1:9002/">http://127.0.0.1:9002</a>;</p>
@@ -1457,113 +1527,43 @@
       </tags>
   </entry>
   <entry>
+    <title>测试文章</title>
+    <url>/2023/11/23/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>测试</title>
+    <url>/2023/11/20/%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>报价</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实现在设置中搜索不到<code>信息</code>应用</td>
+<td>800</td>
+</tr>
+<tr>
+<td><code>iMessage</code>信息存储到手机硬盘</td>
+<td>700</td>
+</tr>
+<tr>
+<td>长按列表头像弹出菜单</td>
+<td>500</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>2000</td>
+</tr>
+</tbody></table>
+]]></content>
+  </entry>
+  <entry>
     <title>第二篇博客</title>
     <url>/2023/11/16/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h1 id="1-标题一"><a href="#1-标题一" class="headerlink" title="1. 标题一"></a>1. 标题一</h1><h1 id="2-标题二"><a href="#2-标题二" class="headerlink" title="2. 标题二"></a>2. 标题二</h1><h1 id="3-标题三"><a href="#3-标题三" class="headerlink" title="3. 标题三"></a>3. 标题三</h1>]]></content>
-  </entry>
-  <entry>
-    <title>cocoapods公有库制作</title>
-    <url>/2021/04/19/cocoapods%E5%85%AC%E6%9C%89%E5%BA%93%E5%88%B6%E4%BD%9C/</url>
-    <content><![CDATA[<h2 id="1-Pod库源码制作"><a href="#1-Pod库源码制作" class="headerlink" title="1. Pod库源码制作"></a>1. <code>Pod</code>库源码制作</h2><h3 id="1-1-下载Cocoapods模板"><a href="#1-1-下载Cocoapods模板" class="headerlink" title="1.1 下载Cocoapods模板"></a>1.1 下载<code>Cocoapods</code>模板</h3><p>执行如下命令，创建一个<code>Pod</code>库项目：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod lib create pod库名</span><br></pre></td></tr></table></figure>
-
-<p>根据提示填写库的信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜  测试demo  pod lib create HYTestPods</span><br><span class="line">Cloning `https://github.com/CocoaPods/pod-template.git` into `HYTestPods`.</span><br><span class="line">Configuring HYTestPods template.</span><br><span class="line"></span><br><span class="line">------------------------------</span><br><span class="line"></span><br><span class="line">To get you started we need to ask a few questions, this should only take a minute.</span><br><span class="line"></span><br><span class="line">If this is your first time we recommend running through with the guide:</span><br><span class="line"> - https://guides.cocoapods.org/making/using-pod-lib-create.html</span><br><span class="line"> ( hold cmd and click links to open in a browser. )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">What platform do you want to use?? [ iOS / macOS ]</span><br><span class="line"> &gt; iOS</span><br><span class="line"></span><br><span class="line">What language do you want to use?? [ Swift / ObjC ]</span><br><span class="line"> &gt; ObjC</span><br><span class="line"></span><br><span class="line">Would you like to include a demo application with your library? [ Yes / No ]</span><br><span class="line"> &gt; Yes</span><br><span class="line"></span><br><span class="line">Which testing frameworks will you use? [ Specta / Kiwi / None ]</span><br><span class="line"> &gt;</span><br><span class="line">specta</span><br><span class="line">Would you like to do view based testing? [ Yes / No ]</span><br><span class="line"> &gt; No</span><br><span class="line"></span><br><span class="line">What is your class prefix?</span><br><span class="line"> &gt; HY</span><br><span class="line">hint: Using &#x27;master&#x27; as the name for the initial branch. This default branch name</span><br><span class="line">hint: is subject to change. To configure the initial branch name to use in all</span><br><span class="line">hint: of your new repositories, which will suppress this warning, call:</span><br><span class="line">hint:</span><br><span class="line">hint: 	git config --global init.defaultBranch &lt;name&gt;</span><br><span class="line">hint:</span><br><span class="line">hint: Names commonly chosen instead of &#x27;master&#x27; are &#x27;main&#x27;, &#x27;trunk&#x27; and</span><br><span class="line">hint: &#x27;development&#x27;. The just-created branch can be renamed via this command:</span><br><span class="line">hint:</span><br><span class="line">hint: 	git branch -m &lt;name&gt;</span><br><span class="line"></span><br><span class="line">Running pod install on your new library.</span><br><span class="line"></span><br><span class="line">Analyzing dependencies</span><br><span class="line">Downloading dependencies</span><br><span class="line">Installing Expecta (1.0.6)</span><br><span class="line">Installing HYTestPods (0.1.0)</span><br><span class="line">Installing Specta (1.0.7)</span><br><span class="line">Generating Pods project</span><br><span class="line">Integrating client project</span><br><span class="line"></span><br><span class="line">[!] Please close any current Xcode sessions and use `HYTestPods.xcworkspace` for this project from now on.</span><br><span class="line">Pod installation complete! There are 3 dependencies from the Podfile and 3 total pods installed.</span><br><span class="line"></span><br><span class="line"> Ace! you&#x27;re ready to go!</span><br><span class="line"> We will start you off by opening your project in Xcode</span><br><span class="line">  open &#x27;HYTestPods/Example/HYTestPods.xcworkspace&#x27;</span><br><span class="line"></span><br><span class="line">To learn more about the template see `https://github.com/CocoaPods/pod-template.git`.</span><br><span class="line">To learn more about creating a new pod, see `https://guides.cocoapods.org/making/making-a-cocoapod`.</span><br></pre></td></tr></table></figure>
-
-<p>执行完成会自动创建指定名称的<code>Pod</code>库目录，并自动打开示例项目。<code>Pod</code>库目录结构如下：</p>
-<img src="http://res.yycode.top:8001/backup/blogImages/iOS制作私有Pod库/QQ20210419-223908@2x.png" style="zoom:50%;" />
-
-<ol>
-<li><code>Example</code>：示例代码</li>
-<li><code>HYTestPod</code>：<code>Classess</code>源代码，<code>Assets</code>资源文件</li>
-<li><code>HYTestPod.podspec</code>：记录库的信息</li>
-</ol>
-<h3 id="1-2-完善Pod配置文件"><a href="#1-2-完善Pod配置文件" class="headerlink" title="1.2 完善Pod配置文件"></a>1.2 完善<code>Pod</code>配置文件</h3><p>在<code>GitHud</code>创建私有库，修改<code>Pod</code>库配置文件<code>[YourPodName].podspec</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Pod::Spec.new do |s|</span><br><span class="line"></span><br><span class="line">  # 库名称</span><br><span class="line">  s.name             = &#x27;HYFramework&#x27;</span><br><span class="line"></span><br><span class="line">  # 指定支持的平台和版本，不写则默认支持所有的平台，如果支持多个平台，则使用下面的deployment_target定义</span><br><span class="line">  #spec.platform      = :ios</span><br><span class="line"></span><br><span class="line">  # 版本号</span><br><span class="line">  s.version          = &#x27;1.0.0&#x27;</span><br><span class="line"></span><br><span class="line">  # 库简短介</span><br><span class="line">  s.summary          = &#x27;自定义OC开发工具集&#x27;</span><br><span class="line"></span><br><span class="line"># This description is used to generate tags and improve search results.</span><br><span class="line">#   * Think: What does it do? Why did you write it? What is the focus?</span><br><span class="line">#   * Try to keep it short, snappy and to the point.</span><br><span class="line">#   * Write the description between the DESC delimiters below.</span><br><span class="line">#   * Finally, don&#x27;t worry about the indent, CocoaPods strips it!</span><br><span class="line"></span><br><span class="line">  # 开源库描述</span><br><span class="line">  s.description      = &lt;&lt;-DESC</span><br><span class="line">一套自定义的OC开发工具集</span><br><span class="line">                       DESC</span><br><span class="line"></span><br><span class="line">  # 开源库地址，或者是博客、社交地址等</span><br><span class="line">  s.homepage         = &#x27;https://github.com/MrChenYoung&#x27;</span><br><span class="line"></span><br><span class="line">  # s.screenshots     = &#x27;www.example.com/screenshots_1&#x27;, &#x27;www.example.com/screenshots_2&#x27;</span><br><span class="line">  </span><br><span class="line">  # 开源协议</span><br><span class="line">  s.license          = &#123; :type =&gt; &#x27;MIT&#x27;, :file =&gt; &#x27;LICENSE&#x27; &#125;</span><br><span class="line"></span><br><span class="line">  # 开源库作者</span><br><span class="line">  s.author           = &#123; &#x27;mrchenyoung&#x27; =&gt; &#x27;chenhuiyiyoung@163.com&#x27; &#125;</span><br><span class="line"></span><br><span class="line">  # 开源库GitHub的路径与tag值，GitHub路径后必须有.git,tag实际就是上面的版本</span><br><span class="line">  s.source           = &#123; :git =&gt; &#x27;https://github.com/mrchenyoung/HYFramework.git&#x27;, :tag =&gt; s.version.to_s &#125;</span><br><span class="line"></span><br><span class="line">  # 社交网址</span><br><span class="line">  # s.social_media_url = &#x27;https://twitter.com/&lt;TWITTER_USERNAME&gt;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  # 开源库最低支持</span><br><span class="line">  s.ios.deployment_target = &#x27;9.0&#x27;</span><br><span class="line"></span><br><span class="line">  # 源库资源文件</span><br><span class="line">  s.source_files = &#x27;HYFramework/Classes/**/*&#x27;</span><br><span class="line">  </span><br><span class="line">  # 是否支持arc</span><br><span class="line">  s.requires_arc = true</span><br><span class="line"></span><br><span class="line">  # s.resource_bundles = &#123;</span><br><span class="line">  #   &#x27;HYFramework&#x27; =&gt; [&#x27;HYFramework/Assets/*.png&#x27;]</span><br><span class="line">  # &#125;</span><br><span class="line"></span><br><span class="line">  # s.public_header_files = &#x27;Pod/Classes/**/*.h&#x27;</span><br><span class="line"></span><br><span class="line">  # 依赖系统库</span><br><span class="line">  # s.frameworks = &#x27;UIKit&#x27;, &#x27;MapKit&#x27;</span><br><span class="line">  </span><br><span class="line">  # 开源库依赖库</span><br><span class="line">  s.dependency &#x27;AFNetworking&#x27;, &#x27;3.2.1&#x27;</span><br><span class="line">  s.dependency &#x27;Masonry&#x27;</span><br><span class="line">  s.dependency &#x27;MBProgressHUD&#x27;</span><br><span class="line">  s.dependency &#x27;MJRefresh&#x27;</span><br><span class="line">  s.dependency &#x27;YYModel&#x27;</span><br><span class="line">  s.dependency &#x27;ZLPhotoBrowser&#x27;</span><br><span class="line">  </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-3-源码编写"><a href="#1-3-源码编写" class="headerlink" title="1.3 源码编写"></a>1.3 源码编写</h3><p>所有的<code>pod</code>源码都存放在<code>HYTestPod</code>目录下的<code>Classes</code>目录下。示例代码中<code>Pod</code>下有一个<code>Development Pods</code>文件夹，该目录下的<code>HYTestPod</code>目录和<code>pod</code>库根文件夹下的同名目录是相关联的，保证了在示例项目中修改的源码和<code>pod</code>库根目录下同名文件夹下的源码保持一致。</p>
-<img src="http://res.yycode.top:8001/backup/blogImages/iOS制作私有Pod库/QQ20210419-224440@2x.png" style="zoom:50%;" />
-
-
-
-
-
-<h3 id="1-4-Pod配置文件验证"><a href="#1-4-Pod配置文件验证" class="headerlink" title="1.4 Pod配置文件验证"></a>1.4 <code>Pod</code>配置文件验证</h3><p>本地<code>pod</code>库配置文件验证，适用于还没有把源码提交到<code>github</code>前，本地配置的验证（如果关联有其他库，需要带<code>--use-libraries</code>参数）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod lib lint --allow-warnings</span><br></pre></td></tr></table></figure>
-
-
-
-<p>远端<code>pod</code>库配置文件的验证，验证<code>github</code>上库的配置文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod spec lint --allow-warnings</span><br></pre></td></tr></table></figure>
-
-
-
-<p>如果有如下提示，添加<code>--allow-warnings</code>参数忽略警告：</p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/iOS%E5%88%B6%E4%BD%9C%E7%A7%81%E6%9C%89Pod%E5%BA%93/QQ20210419-225830@2x.png"></p>
-<p>提示<code>HYTestPod passed validation.</code>表示验证通过。</p>
-<hr>
-<h2 id="2-提交代码到GitHub"><a href="#2-提交代码到GitHub" class="headerlink" title="2. 提交代码到GitHub"></a>2. 提交代码到<code>GitHub</code></h2><p>在<code>github</code>创建放<code>pod</code>库源码的代码库，注意<code>pod</code>库配置文件的<code>s.source</code>内的地址要和该库的地址保持一致。然后在<code>pod</code>库的根目录下执行如下命令，提交源码到<code>github</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#添加远端地址</span><br><span class="line">git remote add origin https://github.com/MrChenYoung/HYTestPod.git  </span><br><span class="line">#提交所有内容</span><br><span class="line">git add .  &amp;&amp; git commit -m &#x27;v1.0.0&#x27;</span><br><span class="line">#推送代码到Github</span><br><span class="line">git push origin master  </span><br><span class="line"># 添加 1.0.0 tag</span><br><span class="line">git tag 1.0.0  </span><br><span class="line">#提交tag</span><br><span class="line">git push origin 1.0.0 </span><br></pre></td></tr></table></figure>
-
-<p>现在就可以是在项目<code>podfile</code>文件中添加库信息，执行<code>pod install</code>就可以使用了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod &#x27;HYTestPod&#x27;, :git =&gt; &#x27;https://github.com/MrChenYoung/HYTestPods.git&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>但是还不能够通过<code>pod search</code>命令搜索到库，而且只有知道<code>pod</code>库的<code>git</code>地址才能够使用。</p>
-<hr>
-<h2 id="3-发布podspec配置文件到公有pod库"><a href="#3-发布podspec配置文件到公有pod库" class="headerlink" title="3. 发布podspec配置文件到公有pod库"></a>3. 发布<code>podspec</code>配置文件到公有<code>pod</code>库</h2><p>需要把<code>pod</code>库的配置文件(.podspec文件)提交到<code>cocoapods</code>的公有管理库，也就是<code>https://github.com/CocoaPods/Specs.git</code>上，才可以通过<code>pod search</code>命令查找到库，并且只要在项目的<code>podfile</code>文件中添加<code>pod  库名</code>就可以安装。</p>
-<h3 id="3-1-注册session"><a href="#3-1-注册session" class="headerlink" title="3.1 注册session"></a>3.1 注册<code>session</code></h3><p>如果是第一次发布<code>podspec</code>文件，会提示<code>[!] You need to run </code>pod trunk register<code> to register a session first.</code>，表示要先注册<code>session</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk register chenhuiyiyoung@163.com &#x27;code009&#x27; --description=&#x27;A description&#x27;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>chenhuiyiyoung@163.com</code>是真正的邮箱，用于注册验证</li>
-<li><code>code009</code>为用户名</li>
-<li><code>A description</code>描述文本</li>
-</ul>
-<p>执行完注册命令，会收到一封验证的邮件，复制邮件中的链接打开验证。通过一下命令查看自己的注册信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure>
-
-<p>给<code>pod</code>库添加拥有者：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk add-owner [POD REP NAME] [NEW EMAIL]</span><br></pre></td></tr></table></figure>
-
-<p>从<code>pod</code>库拥有者列表中移除用户：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk remove-owner [POD REP NAME] [OLD EMAIL]</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="3-2-发布podspec"><a href="#3-2-发布podspec" class="headerlink" title="3.2 发布podspec"></a>3.2 发布<code>podspec</code></h3><p>发布<code>podspec</code>文件（如果关联有其他库，需要带<code>--use-libraries</code>参数）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk push HYTestPods.podspec --allow-warnings</span><br></pre></td></tr></table></figure>
-
-<p>有如下提示，表示发布成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Updating spec repo `trunk`</span><br><span class="line"></span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line"> 🎉  Congrats</span><br><span class="line"></span><br><span class="line"> 🚀  HYTestPods (1.0.0) successfully published</span><br><span class="line"> 📅  May 13th, 19:57</span><br><span class="line"> 🌎  https://cocoapods.org/pods/HYTestPods</span><br><span class="line"> 👍  Tell your friends!</span><br><span class="line">--------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
-
-<p>现在就可以在项目的<code>podfile</code>文件中添加<code>pod HYTestPods</code>，然后执行<code>pod install</code>添加库到项目中了。如果<code>pod install</code>提示找不到库，执行<code>pod install --repo-update</code>命令。</p>
-<hr>
-<h2 id="4-pod库版本更新"><a href="#4-pod库版本更新" class="headerlink" title="4. pod库版本更新"></a>4. <code>pod</code>库版本更新</h2><ul>
-<li><p>更新新版本源码</p>
-</li>
-<li><p>更改<code>.podspec</code>文件中<code>s.version</code>字段为最新版本号，如<code>2.0.0</code></p>
-</li>
-<li><p>提交代码到<code>github</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &#x27;new version&#x27;</span><br><span class="line">git tag 2.0.0</span><br><span class="line">git push orign master</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>发布新版<code>.podspec</code>文件到<code>pod</code>公有库中（如果关联有其他库，需要带<code>--use-libraries</code>参数）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk push HYTestPods.podspec --allow-warnings</span><br></pre></td></tr></table></figure>
-
-<p>如果<code>pod search</code>搜索不到新版本，先执行<code>pod repo update</code>命令，然后在搜索。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>iOS</category>
-        <category>CocoaPods</category>
-      </categories>
-      <tags>
-        <tag>iOS</tag>
-      </tags>
   </entry>
   <entry>
     <title>第一篇博客</title>
