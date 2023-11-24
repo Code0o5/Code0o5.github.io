@@ -5,28 +5,28 @@
     <url>/2021/05/06/Cocoapods%E5%A4%9A%E7%89%88%E6%9C%AC%E5%85%B1%E5%AD%98/</url>
     <content><![CDATA[<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1. 前言"></a>1. 前言</h2><p><code>Cocoapods</code>在<code>1.8</code>版本以后加入了<code>CDN</code>，加快了下载第三方库文件的速度。所以有的时候可能会同时需要<code>1.8</code>前和<code>1.8</code>后版本的<code>Cocoapods</code>。</p>
 <hr>
-<h2 id="2-查看Cocoapods版本"><a href="#2-查看Cocoapods版本" class="headerlink" title="2. 查看Cocoapods版本"></a>2. 查看<code>Cocoapods</code>版本</h2><h3 id="2-1-查看本地所有版本的Cocoapods"><a href="#2-1-查看本地所有版本的Cocoapods" class="headerlink" title="2.1 查看本地所有版本的Cocoapods"></a>2.1 查看本地所有版本的<code>Cocoapods</code></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gem list cocoapods</span><br></pre></td></tr></table></figure>
+<h2 id="2-查看Cocoapods版本"><a href="#2-查看Cocoapods版本" class="headerlink" title="2. 查看Cocoapods版本"></a>2. 查看<code>Cocoapods</code>版本</h2><h3 id="2-1-查看本地所有版本的Cocoapods"><a href="#2-1-查看本地所有版本的Cocoapods" class="headerlink" title="2.1 查看本地所有版本的Cocoapods"></a>2.1 查看本地所有版本的<code>Cocoapods</code></h3><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">gem list cocoapods</span></span><br></pre></td></tr></table></figure>
 
 <p>结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">*** LOCAL GEMS ***</span><br><span class="line"></span><br><span class="line">cocoapods (1.10.1)</span><br><span class="line">cocoapods-core (1.10.1)</span><br><span class="line">cocoapods-deintegrate (1.0.4)</span><br><span class="line">cocoapods-downloader (1.4.0)</span><br><span class="line">cocoapods-plugins (1.0.0)</span><br><span class="line">cocoapods-search (1.0.0)</span><br><span class="line">cocoapods-trunk (1.5.0)</span><br><span class="line">cocoapods-try (1.2.0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">*** LOCAL GEMS ***</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">cocoapods</span> <span class="params">(<span class="number">1.10</span>.<span class="number">1</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">core</span> <span class="params">(<span class="number">1.10</span>.<span class="number">1</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">deintegrate</span> <span class="params">(<span class="number">1.0</span>.<span class="number">4</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">downloader</span> <span class="params">(<span class="number">1.4</span>.<span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">plugins</span> <span class="params">(<span class="number">1.0</span>.<span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">search</span> <span class="params">(<span class="number">1.0</span>.<span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">trunk</span> <span class="params">(<span class="number">1.5</span>.<span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">try</span> <span class="params">(<span class="number">1.2</span>.<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
 
 <p>本地安装了最新的<code>1.10.1</code>版本。</p>
 <h3 id="2-2-安装其他版本"><a href="#2-2-安装其他版本" class="headerlink" title="2.2 安装其他版本"></a>2.2 安装其他版本</h3><p>安装<code>1.6.2</code>版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gem install cocoapods -v 1.6.2</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo</span> gem install cocoapods -v <span class="number">1</span>.<span class="number">6</span>.<span class="number">2</span></span><br></pre></td></tr></table></figure>
 
 <p>再次查看本地安装的所有版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">*** LOCAL GEMS ***</span><br><span class="line"></span><br><span class="line">cocoapods (1.10.1, 1.6.2)</span><br><span class="line">cocoapods-core (1.10.1, 1.6.2)</span><br><span class="line">cocoapods-deintegrate (1.0.4)</span><br><span class="line">cocoapods-downloader (1.4.0)</span><br><span class="line">cocoapods-plugins (1.0.0)</span><br><span class="line">cocoapods-search (1.0.0)</span><br><span class="line">cocoapods-stats (1.1.0)</span><br><span class="line">cocoapods-trunk (1.5.0)</span><br><span class="line">cocoapods-try (1.2.0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">*** LOCAL GEMS ***</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">cocoapods</span> <span class="params">(<span class="number">1.10</span>.<span class="number">1</span>, <span class="number">1.6</span>.<span class="number">2</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">core</span> <span class="params">(<span class="number">1.10</span>.<span class="number">1</span>, <span class="number">1.6</span>.<span class="number">2</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">deintegrate</span> <span class="params">(<span class="number">1.0</span>.<span class="number">4</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">downloader</span> <span class="params">(<span class="number">1.4</span>.<span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">plugins</span> <span class="params">(<span class="number">1.0</span>.<span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">search</span> <span class="params">(<span class="number">1.0</span>.<span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">stats</span> <span class="params">(<span class="number">1.1</span>.<span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">trunk</span> <span class="params">(<span class="number">1.5</span>.<span class="number">0</span>)</span></span></span><br><span class="line"><span class="function"><span class="title">cocoapods</span>-<span class="title">try</span> <span class="params">(<span class="number">1.2</span>.<span class="number">0</span>)</span></span></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="2-3-查看当前使用的Cocoapods版本"><a href="#2-3-查看当前使用的Cocoapods版本" class="headerlink" title="2.3 查看当前使用的Cocoapods版本"></a>2.3 查看当前使用的<code>Cocoapods</code>版本</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod --version</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-查看当前使用的Cocoapods版本"><a href="#2-3-查看当前使用的Cocoapods版本" class="headerlink" title="2.3 查看当前使用的Cocoapods版本"></a>2.3 查看当前使用的<code>Cocoapods</code>版本</h3><figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">pod <span class="comment">--version</span></span><br></pre></td></tr></table></figure>
 
 <p>结果:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1.10.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">1</span>.<span class="number">10</span>.<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 <p>这是因为默认使用最新的版本。</p>
 <h3 id="2-4-使用指定版本的Cocoapods"><a href="#2-4-使用指定版本的Cocoapods" class="headerlink" title="2.4 使用指定版本的Cocoapods"></a>2.4 使用指定版本的<code>Cocoapods</code></h3><p>可以在执行<code>pod</code>命令时指定版本号，如：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod _1.6.2_ install</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">pod</span> _1.<span class="number">6</span>.<span class="number">2</span>_ install</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <categories>
@@ -48,14 +48,14 @@
 <p>注：在终端使用的gem命令，是指通过RubyGems管理Gem包。</p>
 </blockquote>
 <h3 id="1-2-gem安装"><a href="#1-2-gem安装" class="headerlink" title="1.2 gem安装"></a>1.2 <code>gem</code>安装</h3><p><code>Mac</code>自带<code>gem</code>。</p>
-<h3 id="1-3-ruby和gem常用命令"><a href="#1-3-ruby和gem常用命令" class="headerlink" title="1.3 ruby和gem常用命令"></a>1.3 <code>ruby</code>和<code>gem</code>常用命令</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ruby -v #查看ruby版本</span><br><span class="line">gem -v  #查看gem版本</span><br><span class="line">gem update --system #更新RubyGems软件自身</span><br><span class="line">gem update #更新gem安装的所有程序包</span><br><span class="line">gem up date xxx #更新某个程序包</span><br><span class="line"></span><br><span class="line">gem sources -l #列出安装源</span><br><span class="line">gem sources -a XXX #添加安装源</span><br><span class="line">gem sources -r XXX #删除安装源</span><br><span class="line">gem sources -u #更新安装源</span><br><span class="line"></span><br><span class="line">gem install xxx #安装xxx,从本地或远程服务器</span><br><span class="line">gem install xxx --remote #安装xxx,从远程服务器</span><br><span class="line">gem install xxx -v(或者--version) 1.6.2  #指定安装版本的</span><br><span class="line">gem uninstall xxx #卸载xxx包,删除所有版本</span><br><span class="line">gem uninstall xxx -v 1.6.2 #卸载1.6.2版本的xxx包</span><br><span class="line"></span><br><span class="line">gem list #列出本地gem安装的所有程序包</span><br><span class="line">gem list d #列出本地以d开头的程序包</span><br><span class="line">gem list | grep cocoapods   #查看已安装cocoapods版本</span><br><span class="line"></span><br><span class="line">gem search log --both #从本地和远程服务器上查找含有log字符串的包</span><br><span class="line">gem search log --remoter #只从远程服务器上查找含有log字符串的包</span><br><span class="line">gem search -r log #只从远程服务器上查找含有log字符串的包</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-ruby和gem常用命令"><a href="#1-3-ruby和gem常用命令" class="headerlink" title="1.3 ruby和gem常用命令"></a>1.3 <code>ruby</code>和<code>gem</code>常用命令</h3><figure class="highlight dsconfig"><table><tr><td class="code"><pre><span class="line"><span class="string">ruby</span> -<span class="string">v</span> <span class="comment">#查看ruby版本</span></span><br><span class="line"><span class="string">gem</span> -<span class="string">v</span>  <span class="comment">#查看gem版本</span></span><br><span class="line"><span class="string">gem</span> <span class="string">update</span> <span class="built_in">--system</span> <span class="comment">#更新RubyGems软件自身</span></span><br><span class="line"><span class="string">gem</span> <span class="string">update</span> <span class="comment">#更新gem安装的所有程序包</span></span><br><span class="line"><span class="string">gem</span> <span class="string">up</span> <span class="string">date</span> <span class="string">xxx</span> <span class="comment">#更新某个程序包</span></span><br><span class="line"></span><br><span class="line"><span class="string">gem</span> <span class="string">sources</span> -<span class="string">l</span> <span class="comment">#列出安装源</span></span><br><span class="line"><span class="string">gem</span> <span class="string">sources</span> -<span class="string">a</span> <span class="string">XXX</span> <span class="comment">#添加安装源</span></span><br><span class="line"><span class="string">gem</span> <span class="string">sources</span> -<span class="string">r</span> <span class="string">XXX</span> <span class="comment">#删除安装源</span></span><br><span class="line"><span class="string">gem</span> <span class="string">sources</span> -<span class="string">u</span> <span class="comment">#更新安装源</span></span><br><span class="line"></span><br><span class="line"><span class="string">gem</span> <span class="string">install</span> <span class="string">xxx</span> <span class="comment">#安装xxx,从本地或远程服务器</span></span><br><span class="line"><span class="string">gem</span> <span class="string">install</span> <span class="string">xxx</span> <span class="built_in">--remote</span> <span class="comment">#安装xxx,从远程服务器</span></span><br><span class="line"><span class="string">gem</span> <span class="string">install</span> <span class="string">xxx</span> -<span class="string">v</span>(或者<span class="built_in">--version)</span> <span class="string">1</span>.<span class="string">6</span>.<span class="string">2</span>  <span class="comment">#指定安装版本的</span></span><br><span class="line"><span class="string">gem</span> <span class="string">uninstall</span> <span class="string">xxx</span> <span class="comment">#卸载xxx包,删除所有版本</span></span><br><span class="line"><span class="string">gem</span> <span class="string">uninstall</span> <span class="string">xxx</span> -<span class="string">v</span> <span class="string">1</span>.<span class="string">6</span>.<span class="string">2</span> <span class="comment">#卸载1.6.2版本的xxx包</span></span><br><span class="line"></span><br><span class="line"><span class="string">gem</span> <span class="string">list</span> <span class="comment">#列出本地gem安装的所有程序包</span></span><br><span class="line"><span class="string">gem</span> <span class="string">list</span> <span class="string">d</span> <span class="comment">#列出本地以d开头的程序包</span></span><br><span class="line"><span class="string">gem</span> <span class="string">list</span> | <span class="string">grep</span> <span class="string">cocoapods</span>   <span class="comment">#查看已安装cocoapods版本</span></span><br><span class="line"></span><br><span class="line"><span class="string">gem</span> <span class="string">search</span> <span class="string">log</span> <span class="built_in">--both</span> <span class="comment">#从本地和远程服务器上查找含有log字符串的包</span></span><br><span class="line"><span class="string">gem</span> <span class="string">search</span> <span class="string">log</span> <span class="built_in">--remoter</span> <span class="comment">#只从远程服务器上查找含有log字符串的包</span></span><br><span class="line"><span class="string">gem</span> <span class="string">search</span> -<span class="string">r</span> <span class="string">log</span> <span class="comment">#只从远程服务器上查找含有log字符串的包</span></span><br></pre></td></tr></table></figure>
 
 
 
 <hr>
 <h2 id="2-安装ruby"><a href="#2-安装ruby" class="headerlink" title="2. 安装ruby"></a>2. 安装<code>ruby</code></h2><ul>
 <li><p>查看<code>ruby</code>版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ruby -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">ruby -v</span></span><br></pre></td></tr></table></figure>
 
 <p>如果提示不识别的命令，标识没有安装<code>ruby</code>，需要执行以下步骤安装。</p>
 </li>
@@ -63,35 +63,35 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -L get.rvm.io | bash -s stable </span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看<code>rvm</code>版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rvm -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">rvm -v</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看可安装的<code>ruby</code>版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rvm list known</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">rvm list known</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装指定版本的<code>ruby</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rvm install 2.7.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">rvm</span> install <span class="number">2</span>.<span class="number">7</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
 
 <p>如果没有安装<code>Xcode</code>和<code>Command Line Tools for Xcode</code>以及<code>Homebrew</code>会自动下载安装，建议提前安装好。</p>
 </li>
 <li><p>设置默认<code>ruby</code>版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rvm use 2.7.0 --default</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">rvm</span> use <span class="number">2</span>.<span class="number">7</span>.<span class="number">0</span> --default</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看当前<code>ruby</code>源</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gem sources -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">gem sources -l</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>更换<code>ruby</code>源，<code>ruby</code>默认的源地址<code>https://rubygems.org/</code>在国外，安装<code>cocoapods</code>可能会报错，最好切换到国内镜像源<code>https://gems.ruby-china.com/</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gem sources --remove https://rubygems.org/  #移除默认源</span><br><span class="line">gem sources --add https://gems.ruby-china.com/ #添加新的源</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">gem sources <span class="params">--remove</span> https:<span class="string">//rubygems.org/</span>  <span class="comment">#移除默认源</span></span><br><span class="line">gem sources <span class="params">--add</span> https:<span class="string">//gems.ruby-china.com/</span> <span class="comment">#添加新的源</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
 <h2 id="3-安装CocoaPods"><a href="#3-安装CocoaPods" class="headerlink" title="3. 安装CocoaPods"></a>3. 安装<code>CocoaPods</code></h2><ul>
 <li><p>如果安装多个<code>Xcode</code>，需要选择版本，一般需要选择最近的Xcode版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer</span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line">sudo xcode-select -<span class="keyword">switch</span> <span class="regexp">/Applications/</span>Xcode.app<span class="regexp">/Contents/</span>Developer</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装<code>CocoaPods</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gem install cocoapods  #安装最新版cocoapods</span><br><span class="line">sudo gem install cocoapods -v 1.8.4  #安装指定版本的cocoapods</span><br><span class="line">sudo gem install -n /usr/local/bin  cocoapods -v 1.8.4  #安装指定版本的cocoapods</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo</span> gem install cocoapods  #安装最新版cocoapods</span><br><span class="line"><span class="attribute">sudo</span> gem install cocoapods -v <span class="number">1</span>.<span class="number">8</span>.<span class="number">4</span>  #安装指定版本的cocoapods</span><br><span class="line"><span class="attribute">sudo</span> gem install -n /usr/local/bin  cocoapods -v <span class="number">1</span>.<span class="number">8</span>.<span class="number">4</span>  #安装指定版本的cocoapods</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>下载文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod setup</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">pod setup</span><br></pre></td></tr></table></figure>
 
 <p><code>cocoapods</code>在1.8版本以后加入了<code>CDN</code>,不需要下载<code>master</code>分支到<code>~/.cocoapods/repos</code>，执行该命令会直接提示Setup completed。如果是1.8之前的版本，则需要等待下载。参考<a href="https://blog.cocoapods.org/CocoaPods-1.8.0-beta/">https://blog.cocoapods.org/CocoaPods-1.8.0-beta/</a></p>
 </li>
@@ -99,18 +99,18 @@
 <hr>
 <h2 id="4-cocoapods使用"><a href="#4-cocoapods使用" class="headerlink" title="4. cocoapods使用"></a>4. <code>cocoapods</code>使用</h2><ul>
 <li><p>在项目根目录下执行命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod init</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line">pod <span class="keyword">init</span></span><br></pre></td></tr></table></figure>
 
 <p>执行完成会自动在目录下生成<code>Podfile</code>文件</p>
 </li>
 <li><p>编辑<code>Podfile</code>文件，添加第三方库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod &#x27;AFNetworking&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">pod</span> <span class="string">&#x27;AFNetworking&#x27;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装第三方</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">pod <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>升级<code>pod</code>库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod update [pod库名称] </span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">pod update <span class="selector-attr">[pod库名称]</span> </span><br></pre></td></tr></table></figure>
 
 <p>不指定<code>pod</code>库名称，默认更新<code>podfile</code>里全部库。</p>
 <p><code>pod install命令按照podfile.lock文件中的版本安装库，不检查更新库；pod update拉取最新的库版本，并更新符合podfile文件中指定的版本条件的库。建议多使用pod install,pod update命令使用之前先使用pod outdated命令查看有哪些库有新版本，再针对指定pod库更新版本。 </code></p>
@@ -118,24 +118,24 @@
 </ul>
 <hr>
 <h2 id="5-Podfile文件解析"><a href="#5-Podfile文件解析" class="headerlink" title="5. Podfile文件解析"></a>5. <code>Podfile</code>文件解析</h2><p><code>Podfile</code>是项目指定<code>target</code>的依赖规范。配置如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 支持的iOS系统的最低版本</span><br><span class="line">platform:ios,&#x27;8.0&#x27;</span><br><span class="line"></span><br><span class="line"># 指定开源库的下载源（组件化开发时会用到）</span><br><span class="line">#source &#x27;https://github.com/CocoaPods/Specs.git&#x27;</span><br><span class="line">#source &#x27;https://code.houbank.net/xxx/xxxSpecs.git&#x27;</span><br><span class="line"></span><br><span class="line"># ignore all warnings from all pods</span><br><span class="line">inhibit_all_warnings!</span><br><span class="line"></span><br><span class="line"># 使用framework（包含swift库就必须使用此设置，纯OC库可以不设置）</span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line"># 项目中如果有多个工程文件所以必须显式告知Cocopods，Pod的库属于哪个工程的依赖程的依赖</span><br><span class="line">#project &#x27;ProjectName.xcodeproj&#x27;</span><br><span class="line"></span><br><span class="line">target &#x27;ProjectName&#x27; do</span><br><span class="line">    pod &#x27;AFNetworking&#x27;,               # 网络基础库    </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight autoit"><table><tr><td class="code"><pre><span class="line"><span class="meta"># 支持的iOS系统的最低版本</span></span><br><span class="line">platform:ios,<span class="string">&#x27;8.0&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 指定开源库的下载源（组件化开发时会用到）</span></span><br><span class="line"><span class="meta">#source <span class="string">&#x27;https://github.com/CocoaPods/Specs.git&#x27;</span></span></span><br><span class="line"><span class="meta">#source <span class="string">&#x27;https://code.houbank.net/xxx/xxxSpecs.git&#x27;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta"># ignore all warnings from all pods</span></span><br><span class="line">inhibit_all_warnings!</span><br><span class="line"></span><br><span class="line"><span class="meta"># 使用framework（包含swift库就必须使用此设置，纯OC库可以不设置）</span></span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line"><span class="meta"># 项目中如果有多个工程文件所以必须显式告知Cocopods，Pod的库属于哪个工程的依赖程的依赖</span></span><br><span class="line"><span class="meta">#project <span class="string">&#x27;ProjectName.xcodeproj&#x27;</span></span></span><br><span class="line"></span><br><span class="line">target <span class="string">&#x27;ProjectName&#x27;</span> <span class="keyword">do</span></span><br><span class="line">    pod <span class="string">&#x27;AFNetworking&#x27;</span>,               <span class="meta"># 网络基础库    </span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="5-1-项目配置"><a href="#5-1-项目配置" class="headerlink" title="5.1 项目配置"></a>5.1 项目配置</h3><ul>
 <li><p>指定支持的系统及版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">platform:ios,&#x27;8.0&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">platform</span>:ios,&#x27;<span class="number">8</span>.<span class="number">0</span>&#x27;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>指定下载源</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">source &#x27;https://github.com/CocoaPods/Specs.git&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> <span class="string">&#x27;https://github.com/CocoaPods/Specs.git&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>不指定默认从<code>cocoapods</code>官方公共库<code>https://github.com/CocoaPods/Specs.git</code>下载。设置镜像源，下载私有库，组件化开发等会用到该项配置。</p>
 </li>
 <li><p>忽略第三方框架的警告</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">inhibit_all_warnings!</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">inhibit_all_warnings!</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>是否使用动态库（iOS8.0以上支持）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">use_frameworks!</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang-repl"><table><tr><td class="code"><pre><span class="line">use_frameworks!</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>不使用，会生成第三方框架对应的<code>.a</code>文件（静态链接库），位置：<code>Build Phases --&gt; Link Binary With Libraries --&gt; libPods-**.a</code></li>
@@ -146,31 +146,31 @@
 </ul>
 </li>
 <li><p>指定是哪个工程的依赖，项目中有多个工程必须指定，单个工程一般忽略</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">project &#x27;ProjectName.xcodeproj&#x27;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight gradle"><table><tr><td class="code"><pre><span class="line"><span class="keyword">project</span> <span class="string">&#x27;ProjectName.xcodeproj&#x27;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="5-2-第三方框架版本控制"><a href="#5-2-第三方框架版本控制" class="headerlink" title="5.2 第三方框架版本控制"></a>5.2 第三方框架版本控制</h3><ul>
 <li><p>版本号说明</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">版本号格式：x.y.z</span><br><span class="line">x表示重大更新的迭代版本号</span><br><span class="line">y表示项目添加了一些新功能</span><br><span class="line">z表示修复版本号，一般是修复项目的bug</span><br></pre></td></tr></table></figure>
+<figure class="highlight llvm"><table><tr><td class="code"><pre><span class="line">版本号格式：<span class="keyword">x</span>.y.z</span><br><span class="line"><span class="keyword">x</span>表示重大更新的迭代版本号</span><br><span class="line">y表示项目添加了一些新功能</span><br><span class="line">z表示修复版本号，一般是修复项目的bug</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>只指定三方库名称，默认使用最新版本的</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod &#x27;AFNetworking&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">pod</span> <span class="string">&#x27;AFNetworking&#x27;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用指定版本号的库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod &#x27;AFNetworking&#x27;, &#x27;3.1.0&#x27;   #使用3.1.0版本</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">pod</span> &#x27;AFNetworking&#x27;, &#x27;<span class="number">3</span>.<span class="number">1</span>.<span class="number">0</span>&#x27;   #使用<span class="number">3</span>.<span class="number">1</span>.<span class="number">0</span>版本</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用<code>逻辑运算符</code>指定版本号</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">‘&gt; 0.1’ 高于0.1的任何版本</span><br><span class="line">‘&gt;= 0.1’ 版本0.1或更高版本</span><br><span class="line">‘&lt; 0.1’ 小于0.1的任何版本</span><br><span class="line">‘&lt;= 0.1’ 版本0.1和任何较低版本</span><br></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="code"><pre><span class="line">‘&gt; <span class="number">0.1</span>’ 高于<span class="number">0.1</span>的任何版本</span><br><span class="line">‘&gt;<span class="operator">=</span> <span class="number">0.1</span>’ 版本<span class="number">0.1</span>或更高版本</span><br><span class="line">‘&lt; <span class="number">0.1</span>’ 小于<span class="number">0.1</span>的任何版本</span><br><span class="line">‘&lt;<span class="operator">=</span> <span class="number">0.1</span>’ 版本<span class="number">0.1</span>和任何较低版本</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用<code>乐观运算符</code>指定版本号</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">‘~&gt; 0.1.2’ 版本0.1.2到版本0.2，不含0.2及以上</span><br><span class="line">‘~&gt; 0.1’ 版本0.1到版本1.0，不包括1.0及以上版本</span><br><span class="line">‘~&gt; 0’版本0及以上，这基本上和不指定版本号是相同的</span><br></pre></td></tr></table></figure>
+<figure class="highlight livescript"><table><tr><td class="code"><pre><span class="line">‘<span class="function">~&gt;</span> <span class="number">0.1</span>.<span class="number">2</span>’ 版本<span class="number">0.1</span>.<span class="number">2</span>到版本<span class="number">0.2</span>，不含<span class="number">0.2</span>及以上</span><br><span class="line">‘<span class="function">~&gt;</span> <span class="number">0.1</span>’ 版本<span class="number">0.1</span>到版本<span class="number">1.0</span>，不包括<span class="number">1.0</span>及以上版本</span><br><span class="line">‘<span class="function">~&gt;</span> <span class="number">0</span>’版本<span class="number">0</span>及以上，这基本上和不指定版本号是相同的</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>指定远程第三方框架位置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod &#x27;Alamofire&#x27;, :git =&gt; &#x27;https://github.com/Alamofire/Alamofire.git&#x27;  #使用主分支</span><br><span class="line">pod &#x27;Alamofire&#x27;, :git =&gt; &#x27;https://github.com/Alamofire/Alamofire.git&#x27;, :branch =&gt; &#x27;dev&#x27;  #使用不同分支</span><br><span class="line">pod &#x27;Alamofire&#x27;, :git =&gt; &#x27;https://github.com/Alamofire/Alamofire.git&#x27;, :tag =&gt; &#x27;3.1.1&#x27; #使用仓库的某一个tag</span><br><span class="line">pod &#x27;Alamofire&#x27;, :git =&gt; &#x27;https://github.com/Alamofire/Alamofire.git&#x27;, :commit =&gt; &#x27;0f506b1c45&#x27; #使用一个指定的提交commit</span><br></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line">pod <span class="string">&#x27;Alamofire&#x27;</span>, <span class="symbol">:git</span> =&gt; <span class="string">&#x27;https://github.com/Alamofire/Alamofire.git&#x27;</span>  <span class="comment">#使用主分支</span></span><br><span class="line">pod <span class="string">&#x27;Alamofire&#x27;</span>, <span class="symbol">:git</span> =&gt; <span class="string">&#x27;https://github.com/Alamofire/Alamofire.git&#x27;</span>, <span class="symbol">:branch</span> =&gt; <span class="string">&#x27;dev&#x27;</span>  <span class="comment">#使用不同分支</span></span><br><span class="line">pod <span class="string">&#x27;Alamofire&#x27;</span>, <span class="symbol">:git</span> =&gt; <span class="string">&#x27;https://github.com/Alamofire/Alamofire.git&#x27;</span>, <span class="symbol">:tag</span> =&gt; <span class="string">&#x27;3.1.1&#x27;</span> <span class="comment">#使用仓库的某一个tag</span></span><br><span class="line">pod <span class="string">&#x27;Alamofire&#x27;</span>, <span class="symbol">:git</span> =&gt; <span class="string">&#x27;https://github.com/Alamofire/Alamofire.git&#x27;</span>, <span class="symbol">:commit</span> =&gt; <span class="string">&#x27;0f506b1c45&#x27;</span> <span class="comment">#使用一个指定的提交commit</span></span><br></pre></td></tr></table></figure>
 
 <p>从指定的远程地址下载第三方框架源码。</p>
 </li>
 <li><p>指定本地第三方路径</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod &#x27;Alamofire&#x27;, :path =&gt; &#x27;~/Documents/Alamofire&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">pod <span class="string">&#x27;Alamofire&#x27;</span>, :<span class="function"><span class="params">path</span> =&gt;</span> <span class="string">&#x27;~/Documents/Alamofire&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>指定的文件夹将成为<code>Pod</code>的根文件夹，并从该文件夹链接源码文件到项目中，制作<code>Pod</code>库时的示例项目就是很好的例子。需要注意的是指定的目录中必须包含<code>podspec</code>文件。</p>
 </li>
@@ -178,50 +178,50 @@
 <h3 id="5-3-cocoapods更换源"><a href="#5-3-cocoapods更换源" class="headerlink" title="5.3 cocoapods更换源"></a>5.3 <code>cocoapods</code>更换源</h3><p><code>cocoapods</code>默认使用<code>github</code>源 ，在国内下载第三方库很慢，通过修改源来解决该问题。</p>
 <ul>
 <li><p>查看当前源</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod repo list</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">pod repo list</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>移除官方源</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod repo remove master</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">pod repo <span class="built_in">remove</span> master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>低版本添加新的源</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod repo add master https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">pod repo add <span class="keyword">master</span> <span class="title">https</span>://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git</span><br></pre></td></tr></table></figure>
 
 <p>如果报错<code>[!] To setup the master specs repo, please run </code>pod setup<code>.</code>说明版本太高，不允许用该方式添加源，使用克隆方式添加源:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git ~/.cocoapods/repos/master</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">git clone https:<span class="regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="regexp">/git/</span>CocoaPods<span class="regexp">/Specs.git ~/</span>.cocoapods<span class="regexp">/repos/m</span>aster</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>更新</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod setup</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">pod setup</span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
 <h2 id="6-卸载cocoapods"><a href="#6-卸载cocoapods" class="headerlink" title="6. 卸载cocoapods"></a>6. 卸载<code>cocoapods</code></h2><h3 id="6-1-查看本地cocoapods版本"><a href="#6-1-查看本地cocoapods版本" class="headerlink" title="6.1 查看本地cocoapods版本"></a>6.1 查看本地<code>cocoapods</code>版本</h3><p>查看本地所有版本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gem list | grep cocoapods</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="code"><pre><span class="line">gem list <span class="string">| grep cocoapods</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="6-2-卸载所有版本"><a href="#6-2-卸载所有版本" class="headerlink" title="6.2 卸载所有版本"></a>6.2 卸载所有版本</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gem uninstall cocoapods</span><br></pre></td></tr></table></figure>
+<h3 id="6-2-卸载所有版本"><a href="#6-2-卸载所有版本" class="headerlink" title="6.2 卸载所有版本"></a>6.2 卸载所有版本</h3><figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo gem uninstall cocoapods</span></span><br></pre></td></tr></table></figure>
 
 <p>如果安装多个版本，会提示选择要卸载的版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Select gem to uninstall:</span><br><span class="line"> 1. cocoapods-1.6.2</span><br><span class="line"> 2. cocoapods-1.10.1</span><br><span class="line"> 3. All versions</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">Select gem to uninstall:</span><br><span class="line"><span class="bullet"> 1.</span> cocoapods-1.6.2</span><br><span class="line"><span class="bullet"> 2.</span> cocoapods-1.10.1</span><br><span class="line"><span class="bullet"> 3.</span> All versions</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="6-3-卸载指定版本"><a href="#6-3-卸载指定版本" class="headerlink" title="6.3 卸载指定版本"></a>6.3 卸载指定版本</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gem uninstall cocoapods -v 1.6.2</span><br></pre></td></tr></table></figure>
+<h3 id="6-3-卸载指定版本"><a href="#6-3-卸载指定版本" class="headerlink" title="6.3 卸载指定版本"></a>6.3 卸载指定版本</h3><figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">sudo</span> gem uninstall cocoapods -v <span class="number">1</span>.<span class="number">6</span>.<span class="number">2</span></span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="6-4-卸载cocoapods相关的组件"><a href="#6-4-卸载cocoapods相关的组件" class="headerlink" title="6.4 卸载cocoapods相关的组件"></a>6.4 卸载<code>cocoapods</code>相关的组件</h3><p>查看本地所有<code>cocoapods</code>相关组件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gem list --local | grep cocoapods</span><br></pre></td></tr></table></figure>
+<figure class="highlight perl"><table><tr><td class="code"><pre><span class="line">gem list --<span class="keyword">local</span> | <span class="keyword">grep</span> cocoapods</span><br></pre></td></tr></table></figure>
 
 <p>结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cocoapods-core (1.10.1, 1.6.2)</span><br><span class="line">cocoapods-deintegrate (1.0.4)</span><br><span class="line">cocoapods-downloader (1.4.0)</span><br><span class="line">cocoapods-plugins (1.0.0)</span><br><span class="line">cocoapods-search (1.0.0)</span><br><span class="line">cocoapods-stats (1.1.0)</span><br><span class="line">cocoapods-trunk (1.5.0)</span><br><span class="line">cocoapods-try (1.2.0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">cocoapods</span>-core (<span class="number">1</span>.<span class="number">10</span>.<span class="number">1</span>, <span class="number">1</span>.<span class="number">6</span>.<span class="number">2</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-deintegrate (<span class="number">1</span>.<span class="number">0</span>.<span class="number">4</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-downloader (<span class="number">1</span>.<span class="number">4</span>.<span class="number">0</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-plugins (<span class="number">1</span>.<span class="number">0</span>.<span class="number">0</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-search (<span class="number">1</span>.<span class="number">0</span>.<span class="number">0</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-stats (<span class="number">1</span>.<span class="number">1</span>.<span class="number">0</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-trunk (<span class="number">1</span>.<span class="number">5</span>.<span class="number">0</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-try (<span class="number">1</span>.<span class="number">2</span>.<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
 <p>逐个卸载：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo gem uninstall cocoapods-core</span><br><span class="line">sudo gem uninstall cocoapods-deintegrate</span><br><span class="line">sudo gem uninstall cocoapods-downloader</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight node-repl"><table><tr><td class="code"><pre><span class="line">sudo gem uninstall cocoapods-core</span><br><span class="line">sudo gem uninstall cocoapods-deintegrate</span><br><span class="line">sudo gem uninstall cocoapods-downloader</span><br><span class="line"><span class="meta prompt_">...</span></span><br></pre></td></tr></table></figure>
 
 
 
 <hr>
-<h2 id="7-CocoaPods常用命令"><a href="#7-CocoaPods常用命令" class="headerlink" title="7. CocoaPods常用命令"></a>7. <code>CocoaPods</code>常用命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#查看当前使用的cocoapods版本</span><br><span class="line">pod --version</span><br><span class="line">#指定目录为pod目录,默认当前目录</span><br><span class="line">pod init [目录名]																	</span><br><span class="line">#安装第三方库</span><br><span class="line">pod install</span><br><span class="line">#更新第三方库，默认更新所有的库</span><br><span class="line">pod update [第三方库名]</span><br><span class="line">#查看哪些库有更新</span><br><span class="line">pod outdated</span><br><span class="line">#搜索指定的三方库</span><br><span class="line">pod search 第三方库名</span><br><span class="line">#查看pod源</span><br><span class="line">pod repo list</span><br><span class="line">#删除指定的源</span><br><span class="line">pod repo remove 源名称</span><br><span class="line">#添加源(只适用旧版本，新版本报错)</span><br><span class="line">pod repo add master 源地址</span><br></pre></td></tr></table></figure>
+<h2 id="7-CocoaPods常用命令"><a href="#7-CocoaPods常用命令" class="headerlink" title="7. CocoaPods常用命令"></a>7. <code>CocoaPods</code>常用命令</h2><figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="comment">#查看当前使用的cocoapods版本</span></span><br><span class="line">pod --version</span><br><span class="line"><span class="comment">#指定目录为pod目录,默认当前目录</span></span><br><span class="line">pod init [目录名]																	</span><br><span class="line"><span class="comment">#安装第三方库</span></span><br><span class="line">pod install</span><br><span class="line"><span class="comment">#更新第三方库，默认更新所有的库</span></span><br><span class="line">pod update [第三方库名]</span><br><span class="line"><span class="comment">#查看哪些库有更新</span></span><br><span class="line">pod outdated</span><br><span class="line"><span class="comment">#搜索指定的三方库</span></span><br><span class="line">pod search 第三方库名</span><br><span class="line"><span class="comment">#查看pod源</span></span><br><span class="line">pod repo list</span><br><span class="line"><span class="comment">#删除指定的源</span></span><br><span class="line">pod repo <span class="built_in">remove</span> 源名称</span><br><span class="line"><span class="comment">#添加源(只适用旧版本，新版本报错)</span></span><br><span class="line">pod repo <span class="built_in">add</span> master 源地址</span><br></pre></td></tr></table></figure>
 
 
 
@@ -232,6 +232,302 @@
       </categories>
       <tags>
         <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GCP实例创建使用</title>
+    <url>/2021/06/22/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h2 id="1-创建防火墙规则"><a href="#1-创建防火墙规则" class="headerlink" title="1.  创建防火墙规则"></a>1.  创建防火墙规则</h2><ul>
+<li><p>前往<a href="https://console.cloud.google.com/">谷歌云</a>，在菜单栏找到<code>VPC网络-&gt;防火墙</code></p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-105655@2x.png"></p>
+</li>
+<li><p>点击创建防火墙规则，分别创建入站和出站规则</p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-110453@2x.png"></p>
+</li>
+</ul>
+<hr>
+<h2 id="2-创建虚拟机实例"><a href="#2-创建虚拟机实例" class="headerlink" title="2. 创建虚拟机实例"></a>2. 创建虚拟机实例</h2><ul>
+<li><p>菜单栏找到<code>compute engine -&gt; 虚拟机实例</code></p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-110630@2x.png"></p>
+</li>
+<li><p>点击创建实例，填写实例名称，选择地区和区域，机器配置选择最低配置的N1型，内存选614MB</p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-111350@2x.png"></p>
+</li>
+<li><p>启动磁盘处选择系统类型，防火墙勾选允许http流量和https流量，添加入站和出站规则</p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-111720@2x.png"></p>
+</li>
+<li><p>点击创建，完成实例创建</p>
+</li>
+</ul>
+<hr>
+<h2 id="3-实例配置"><a href="#3-实例配置" class="headerlink" title="3. 实例配置"></a>3. 实例配置</h2><p>完成实例创建，还需要对虚拟机实例设置允许root登录，设置root密码才能在其他的终端通过ssh远程链接。</p>
+<h3 id="3-1-设置静态IP"><a href="#3-1-设置静态IP" class="headerlink" title="3.1 设置静态IP"></a>3.1 设置静态IP</h3><p>谷歌云实例默认是临时IP，实例重启以后IP可能会变，需要设置成静态IP。</p>
+<ul>
+<li><p>菜单栏找到<code>VPC网络-&gt;外部IP地址</code></p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-112432@2x.png"></p>
+</li>
+<li><p>找到对应实例，设置IP为静态</p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-112552@2x.png"></p>
+</li>
+<li><p>设置静态IP完成</p>
+</li>
+</ul>
+<h3 id="3-2-允许root登录配置"><a href="#3-2-允许root登录配置" class="headerlink" title="3.2  允许root登录配置"></a>3.2  允许root登录配置</h3><ul>
+<li><p>点击实例后的<code>SSH</code>链接，在弹出的窗口中允许权限</p>
+</li>
+<li><p>连接上以后，获取管理员权限</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">sudo -<span class="selector-tag">i</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改<code>/etc/ssh/sshd_config</code>文件</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">vi <span class="regexp">/etc/</span>ssh/sshd_config</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改以下项为<code>yes</code></p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-113702@2x.png"></p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-113726@2x.png"></p>
+</li>
+<li><p>修改完成，保存退出</p>
+</li>
+<li><p>设置root密码</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">passwd root</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>两次输入密码，完成root密码设置</p>
+</li>
+<li><p>在谷歌云虚拟机实例列表，重启实例。然后就可以在其他终端通过root账号和密码远程登录虚拟机实例。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>VPS</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>VPS</tag>
+        <tag>GCP</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Swift基础面试题</title>
+    <url>/2021/06/30/Swift%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="1-iOS-类（class）和结构体（struct）有什么区别？"><a href="#1-iOS-类（class）和结构体（struct）有什么区别？" class="headerlink" title="1. iOS 类（class）和结构体（struct）有什么区别？"></a>1. iOS 类（class）和结构体（struct）有什么区别？</h2><ul>
+<li><p>答案</p>
+<blockquote>
+<p>Swift 中，类是引用类型，结构体是值类型。值类型在传递和赋值时将进行复制，而引用类型则只会使用引用对象的一个”指向”。所以他们两者之间的区别就是两个类型的区别。</p>
+</blockquote>
+</li>
+<li><p>示例1，类引用和传值</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Temperature</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> value: <span class="type">Float</span> <span class="operator">=</span> <span class="number">37.0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> temp: <span class="type">Temperature</span>?</span><br><span class="line"></span><br><span class="line">  <span class="keyword">func</span> <span class="title function_">sick</span>() &#123;</span><br><span class="line">    temp<span class="operator">?</span>.value <span class="operator">=</span> <span class="number">41.0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="type">A</span> <span class="operator">=</span> <span class="type">Person</span>()</span><br><span class="line"><span class="keyword">let</span> <span class="type">B</span> <span class="operator">=</span> <span class="type">Person</span>()</span><br><span class="line"><span class="keyword">let</span> temp <span class="operator">=</span> <span class="type">Temperature</span>()</span><br><span class="line"></span><br><span class="line"><span class="type">A</span>.temp <span class="operator">=</span> temp</span><br><span class="line"><span class="type">B</span>.temp <span class="operator">=</span> temp</span><br><span class="line"><span class="type">A</span>.sick()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;<span class="subst">\(String(describing: A.temp<span class="operator">?</span>.value))</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;<span class="subst">\(String(describing: B.temp<span class="operator">?</span>.value))</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<blockquote>
+<p><strong>Optional(41.0)</strong></p>
+<p><strong>Optional(41.0)</strong></p>
+</blockquote>
+</li>
+<li><p>示例2，结构体引用和传值</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">Temperature</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> value: <span class="type">Float</span> <span class="operator">=</span> <span class="number">37.0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> temp: <span class="type">Temperature</span>?</span><br><span class="line"></span><br><span class="line">  <span class="keyword">func</span> <span class="title function_">sick</span>() &#123;</span><br><span class="line">    temp<span class="operator">?</span>.value <span class="operator">=</span> <span class="number">41.0</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="type">A</span> <span class="operator">=</span> <span class="type">Person</span>()</span><br><span class="line"><span class="keyword">let</span> <span class="type">B</span> <span class="operator">=</span> <span class="type">Person</span>()</span><br><span class="line"><span class="keyword">let</span> temp <span class="operator">=</span> <span class="type">Temperature</span>()</span><br><span class="line"></span><br><span class="line"><span class="type">A</span>.temp <span class="operator">=</span> temp</span><br><span class="line"><span class="type">B</span>.temp <span class="operator">=</span> temp</span><br><span class="line"><span class="type">A</span>.sick()</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;<span class="subst">\(String(describing: A.temp<span class="operator">?</span>.value))</span>&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;<span class="subst">\(String(describing: B.temp<span class="operator">?</span>.value))</span>&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<blockquote>
+<p><strong>Optional(41.0)</strong></p>
+<p><strong>Optional(37.0)</strong></p>
+</blockquote>
+</li>
+<li><p>说明</p>
+<blockquote>
+<p>内存中，引用类型诸如类是在堆（heap）上，而值类型诸如结构体实在栈（stack）上进行存储和操作。相比于栈上的操作，堆上的操作更加复杂耗时，所以苹果官方推荐使用结构体，这样可以提高 App 运行的效率。</p>
+</blockquote>
+<blockquote>
+<p><strong>class有这几个功能struct没有的：</strong></p>
+<p>class可以继承，这样子类可以使用父类的特性和方法 类型转换可以在runtime的时候检查和解释一个实例的类型 可以用deinit来释放资源，一个类可以被多次引用</p>
+</blockquote>
+<blockquote>
+<p><strong>struct也有这样几个优势：</strong></p>
+<p>结构较小，适用于复制操作，相比于一个class的实例被多次引用更加安全。 无须担心内存memory leak或者多线程冲突问题</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>iOS</category>
+        <category>Swift</category>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>swift</tag>
+        <tag>面试题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cocoapods公有库制作</title>
+    <url>/2021/04/19/cocoapods%E5%85%AC%E6%9C%89%E5%BA%93%E5%88%B6%E4%BD%9C/</url>
+    <content><![CDATA[<h2 id="1-Pod库源码制作"><a href="#1-Pod库源码制作" class="headerlink" title="1. Pod库源码制作"></a>1. <code>Pod</code>库源码制作</h2><h3 id="1-1-下载Cocoapods模板"><a href="#1-1-下载Cocoapods模板" class="headerlink" title="1.1 下载Cocoapods模板"></a>1.1 下载<code>Cocoapods</code>模板</h3><p>执行如下命令，创建一个<code>Pod</code>库项目：</p>
+<figure class="highlight gauss"><table><tr><td class="code"><pre><span class="line">pod <span class="keyword">lib</span> <span class="keyword">create</span> pod库名</span><br></pre></td></tr></table></figure>
+
+<p>根据提示填写库的信息：</p>
+<figure class="highlight n1ql"><table><tr><td class="code"><pre><span class="line">➜  测试demo  pod lib <span class="keyword">create</span> HYTestPods</span><br><span class="line">Cloning <span class="symbol">`https://github.com/CocoaPods/pod-template.git`</span> <span class="keyword">into</span> <span class="symbol">`HYTestPods`</span>.</span><br><span class="line">Configuring HYTestPods template.</span><br><span class="line"></span><br><span class="line">------------------------------</span><br><span class="line"></span><br><span class="line"><span class="keyword">To</span> get you started we need <span class="keyword">to</span> ask a few questions, this should only take a minute.</span><br><span class="line"></span><br><span class="line"><span class="keyword">If</span> this <span class="keyword">is</span> your <span class="keyword">first</span> time we recommend running through <span class="keyword">with</span> the guide:</span><br><span class="line"> - https://guides.cocoapods.org/making/<span class="keyword">using</span>-pod-lib-<span class="keyword">create</span>.html</span><br><span class="line"> ( hold cmd <span class="keyword">and</span> click links <span class="keyword">to</span> open <span class="keyword">in</span> a browser. )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">What platform <span class="keyword">do</span> you want <span class="keyword">to</span> <span class="keyword">use</span>?? [ iOS / macOS ]</span><br><span class="line"> &gt; iOS</span><br><span class="line"></span><br><span class="line">What language <span class="keyword">do</span> you want <span class="keyword">to</span> <span class="keyword">use</span>?? [ Swift / ObjC ]</span><br><span class="line"> &gt; ObjC</span><br><span class="line"></span><br><span class="line">Would you <span class="keyword">like</span> <span class="keyword">to</span> <span class="keyword">include</span> a demo application <span class="keyword">with</span> your library? [ Yes / No ]</span><br><span class="line"> &gt; Yes</span><br><span class="line"></span><br><span class="line">Which testing frameworks will you <span class="keyword">use</span>? [ Specta / Kiwi / None ]</span><br><span class="line"> &gt;</span><br><span class="line">specta</span><br><span class="line">Would you <span class="keyword">like</span> <span class="keyword">to</span> <span class="keyword">do</span> <span class="keyword">view</span> based testing? [ Yes / No ]</span><br><span class="line"> &gt; No</span><br><span class="line"></span><br><span class="line">What <span class="keyword">is</span> your class prefix?</span><br><span class="line"> &gt; HY</span><br><span class="line">hint: <span class="keyword">Using</span> <span class="string">&#x27;master&#x27;</span> <span class="keyword">as</span> the name <span class="keyword">for</span> the initial branch. This default branch name</span><br><span class="line">hint: <span class="keyword">is</span> subject <span class="keyword">to</span> change. <span class="keyword">To</span> configure the initial branch name <span class="keyword">to</span> <span class="keyword">use</span> <span class="keyword">in</span> <span class="keyword">all</span></span><br><span class="line">hint: of your new repositories, which will suppress this warning, <span class="keyword">call</span>:</span><br><span class="line">hint:</span><br><span class="line">hint: 	git config --global init.defaultBranch &lt;name&gt;</span><br><span class="line">hint:</span><br><span class="line">hint: Names commonly chosen instead of <span class="string">&#x27;master&#x27;</span> are <span class="string">&#x27;main&#x27;</span>, <span class="string">&#x27;trunk&#x27;</span> <span class="keyword">and</span></span><br><span class="line">hint: <span class="string">&#x27;development&#x27;</span>. The just-created branch can be renamed <span class="keyword">via</span> this command:</span><br><span class="line">hint:</span><br><span class="line">hint: 	git branch -m &lt;name&gt;</span><br><span class="line"></span><br><span class="line">Running pod install <span class="keyword">on</span> your new library.</span><br><span class="line"></span><br><span class="line">Analyzing dependencies</span><br><span class="line">Downloading dependencies</span><br><span class="line">Installing Expecta (<span class="number">1.0</span><span class="number">.6</span>)</span><br><span class="line">Installing HYTestPods (<span class="number">0.1</span><span class="number">.0</span>)</span><br><span class="line">Installing Specta (<span class="number">1.0</span><span class="number">.7</span>)</span><br><span class="line">Generating Pods project</span><br><span class="line">Integrating client project</span><br><span class="line"></span><br><span class="line">[!] Please close <span class="keyword">any</span> current Xcode sessions <span class="keyword">and</span> <span class="keyword">use</span> <span class="symbol">`HYTestPods.xcworkspace`</span> <span class="keyword">for</span> this project <span class="keyword">from</span> now <span class="keyword">on</span>.</span><br><span class="line">Pod installation complete! There are <span class="number">3</span> dependencies <span class="keyword">from</span> the Podfile <span class="keyword">and</span> <span class="number">3</span> total pods installed.</span><br><span class="line"></span><br><span class="line"> Ace! you<span class="string">&#x27;re ready to go!</span></span><br><span class="line"><span class="string"> We will start you off by opening your project in Xcode</span></span><br><span class="line"><span class="string">  open &#x27;</span>HYTestPods/Example/HYTestPods.xcworkspace<span class="string">&#x27;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">To learn more about the template see `https://github.com/CocoaPods/pod-template.git`.</span></span><br><span class="line"><span class="string">To learn more about creating a new pod, see `https://guides.cocoapods.org/making/making-a-cocoapod`.</span></span><br></pre></td></tr></table></figure>
+
+<p>执行完成会自动创建指定名称的<code>Pod</code>库目录，并自动打开示例项目。<code>Pod</code>库目录结构如下：</p>
+<img src="http://res.yycode.top:8001/backup/blogImages/iOS制作私有Pod库/QQ20210419-223908@2x.png" style="zoom:50%;" />
+
+<ol>
+<li><code>Example</code>：示例代码</li>
+<li><code>HYTestPod</code>：<code>Classess</code>源代码，<code>Assets</code>资源文件</li>
+<li><code>HYTestPod.podspec</code>：记录库的信息</li>
+</ol>
+<h3 id="1-2-完善Pod配置文件"><a href="#1-2-完善Pod配置文件" class="headerlink" title="1.2 完善Pod配置文件"></a>1.2 完善<code>Pod</code>配置文件</h3><p>在<code>GitHud</code>创建私有库，修改<code>Pod</code>库配置文件<code>[YourPodName].podspec</code>：</p>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line"><span class="title class_">Pod::Spec</span>.new <span class="keyword">do</span> |<span class="params">s</span>|</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 库名称</span></span><br><span class="line">  s.name             = <span class="string">&#x27;HYFramework&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 指定支持的平台和版本，不写则默认支持所有的平台，如果支持多个平台，则使用下面的deployment_target定义</span></span><br><span class="line">  <span class="comment">#spec.platform      = :ios</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 版本号</span></span><br><span class="line">  s.version          = <span class="string">&#x27;1.0.0&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 库简短介</span></span><br><span class="line">  s.summary          = <span class="string">&#x27;自定义OC开发工具集&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This description is used to generate tags and improve search results.</span></span><br><span class="line"><span class="comment">#   * Think: What does it do? Why did you write it? What is the focus?</span></span><br><span class="line"><span class="comment">#   * Try to keep it short, snappy and to the point.</span></span><br><span class="line"><span class="comment">#   * Write the description between the DESC delimiters below.</span></span><br><span class="line"><span class="comment">#   * Finally, don&#x27;t worry about the indent, CocoaPods strips it!</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 开源库描述</span></span><br><span class="line">  s.description      = <span class="string">&lt;&lt;-DESC</span></span><br><span class="line"><span class="string">一套自定义的OC开发工具集</span></span><br><span class="line"><span class="string">                       DESC</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 开源库地址，或者是博客、社交地址等</span></span><br><span class="line">  s.homepage         = <span class="string">&#x27;https://github.com/MrChenYoung&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># s.screenshots     = &#x27;www.example.com/screenshots_1&#x27;, &#x27;www.example.com/screenshots_2&#x27;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 开源协议</span></span><br><span class="line">  s.license          = &#123; <span class="symbol">:type</span> =&gt; <span class="string">&#x27;MIT&#x27;</span>, <span class="symbol">:file</span> =&gt; <span class="string">&#x27;LICENSE&#x27;</span> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 开源库作者</span></span><br><span class="line">  s.author           = &#123; <span class="string">&#x27;mrchenyoung&#x27;</span> =&gt; <span class="string">&#x27;chenhuiyiyoung@163.com&#x27;</span> &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 开源库GitHub的路径与tag值，GitHub路径后必须有.git,tag实际就是上面的版本</span></span><br><span class="line">  s.source           = &#123; <span class="symbol">:git</span> =&gt; <span class="string">&#x27;https://github.com/mrchenyoung/HYFramework.git&#x27;</span>, <span class="symbol">:tag</span> =&gt; s.version.to_s &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 社交网址</span></span><br><span class="line">  <span class="comment"># s.social_media_url = &#x27;https://twitter.com/&lt;TWITTER_USERNAME&gt;&#x27;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 开源库最低支持</span></span><br><span class="line">  s.ios.deployment_target = <span class="string">&#x27;9.0&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 源库资源文件</span></span><br><span class="line">  s.source_files = <span class="string">&#x27;HYFramework/Classes/**/*&#x27;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 是否支持arc</span></span><br><span class="line">  s.requires_arc = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># s.resource_bundles = &#123;</span></span><br><span class="line">  <span class="comment">#   &#x27;HYFramework&#x27; =&gt; [&#x27;HYFramework/Assets/*.png&#x27;]</span></span><br><span class="line">  <span class="comment"># &#125;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># s.public_header_files = &#x27;Pod/Classes/**/*.h&#x27;</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># 依赖系统库</span></span><br><span class="line">  <span class="comment"># s.frameworks = &#x27;UIKit&#x27;, &#x27;MapKit&#x27;</span></span><br><span class="line">  </span><br><span class="line">  <span class="comment"># 开源库依赖库</span></span><br><span class="line">  s.dependency <span class="string">&#x27;AFNetworking&#x27;</span>, <span class="string">&#x27;3.2.1&#x27;</span></span><br><span class="line">  s.dependency <span class="string">&#x27;Masonry&#x27;</span></span><br><span class="line">  s.dependency <span class="string">&#x27;MBProgressHUD&#x27;</span></span><br><span class="line">  s.dependency <span class="string">&#x27;MJRefresh&#x27;</span></span><br><span class="line">  s.dependency <span class="string">&#x27;YYModel&#x27;</span></span><br><span class="line">  s.dependency <span class="string">&#x27;ZLPhotoBrowser&#x27;</span></span><br><span class="line">  </span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-源码编写"><a href="#1-3-源码编写" class="headerlink" title="1.3 源码编写"></a>1.3 源码编写</h3><p>所有的<code>pod</code>源码都存放在<code>HYTestPod</code>目录下的<code>Classes</code>目录下。示例代码中<code>Pod</code>下有一个<code>Development Pods</code>文件夹，该目录下的<code>HYTestPod</code>目录和<code>pod</code>库根文件夹下的同名目录是相关联的，保证了在示例项目中修改的源码和<code>pod</code>库根目录下同名文件夹下的源码保持一致。</p>
+<img src="http://res.yycode.top:8001/backup/blogImages/iOS制作私有Pod库/QQ20210419-224440@2x.png" style="zoom:50%;" />
+
+
+
+
+
+<h3 id="1-4-Pod配置文件验证"><a href="#1-4-Pod配置文件验证" class="headerlink" title="1.4 Pod配置文件验证"></a>1.4 <code>Pod</code>配置文件验证</h3><p>本地<code>pod</code>库配置文件验证，适用于还没有把源码提交到<code>github</code>前，本地配置的验证（如果关联有其他库，需要带<code>--use-libraries</code>参数）：</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">pod lib lint <span class="comment">--allow-warnings</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>远端<code>pod</code>库配置文件的验证，验证<code>github</code>上库的配置文件：</p>
+<figure class="highlight ada"><table><tr><td class="code"><pre><span class="line">pod spec lint <span class="comment">--allow-warnings</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果有如下提示，添加<code>--allow-warnings</code>参数忽略警告：</p>
+<p><img src="http://res.yycode.top:8001/backup/blogImages/iOS%E5%88%B6%E4%BD%9C%E7%A7%81%E6%9C%89Pod%E5%BA%93/QQ20210419-225830@2x.png"></p>
+<p>提示<code>HYTestPod passed validation.</code>表示验证通过。</p>
+<hr>
+<h2 id="2-提交代码到GitHub"><a href="#2-提交代码到GitHub" class="headerlink" title="2. 提交代码到GitHub"></a>2. 提交代码到<code>GitHub</code></h2><p>在<code>github</code>创建放<code>pod</code>库源码的代码库，注意<code>pod</code>库配置文件的<code>s.source</code>内的地址要和该库的地址保持一致。然后在<code>pod</code>库的根目录下执行如下命令，提交源码到<code>github</code>：</p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="comment">#添加远端地址</span></span><br><span class="line"><span class="attribute">git</span> remote add origin https://github.com/MrChenYoung/HYTestPod.git  </span><br><span class="line"><span class="comment">#提交所有内容</span></span><br><span class="line"><span class="attribute">git</span> add .  &amp;&amp; git commit -m &#x27;v1.<span class="number">0</span>.<span class="number">0</span>&#x27;</span><br><span class="line"><span class="comment">#推送代码到Github</span></span><br><span class="line"><span class="attribute">git</span> push origin master  </span><br><span class="line"><span class="comment"># 添加 1.0.0 tag</span></span><br><span class="line"><span class="attribute">git</span> tag <span class="number">1</span>.<span class="number">0</span>.<span class="number">0</span>  </span><br><span class="line"><span class="comment">#提交tag</span></span><br><span class="line"><span class="attribute">git</span> push origin <span class="number">1</span>.<span class="number">0</span>.<span class="number">0</span> </span><br></pre></td></tr></table></figure>
+
+<p>现在就可以是在项目<code>podfile</code>文件中添加库信息，执行<code>pod install</code>就可以使用了：</p>
+<figure class="highlight arcade"><table><tr><td class="code"><pre><span class="line">pod <span class="string">&#x27;HYTestPod&#x27;</span>, :<span class="function"><span class="params">git</span> =&gt;</span> <span class="string">&#x27;https://github.com/MrChenYoung/HYTestPods.git&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>但是还不能够通过<code>pod search</code>命令搜索到库，而且只有知道<code>pod</code>库的<code>git</code>地址才能够使用。</p>
+<hr>
+<h2 id="3-发布podspec配置文件到公有pod库"><a href="#3-发布podspec配置文件到公有pod库" class="headerlink" title="3. 发布podspec配置文件到公有pod库"></a>3. 发布<code>podspec</code>配置文件到公有<code>pod</code>库</h2><p>需要把<code>pod</code>库的配置文件(.podspec文件)提交到<code>cocoapods</code>的公有管理库，也就是<code>https://github.com/CocoaPods/Specs.git</code>上，才可以通过<code>pod search</code>命令查找到库，并且只要在项目的<code>podfile</code>文件中添加<code>pod  库名</code>就可以安装。</p>
+<h3 id="3-1-注册session"><a href="#3-1-注册session" class="headerlink" title="3.1 注册session"></a>3.1 注册<code>session</code></h3><p>如果是第一次发布<code>podspec</code>文件，会提示<code>[!] You need to run </code>pod trunk register<code> to register a session first.</code>，表示要先注册<code>session</code>:</p>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">pod trunk register chenhuiyiyoung@<span class="number">163</span><span class="selector-class">.com</span> <span class="string">&#x27;code009&#x27;</span> <span class="attr">--description</span>=<span class="string">&#x27;A description&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>chenhuiyiyoung@163.com</code>是真正的邮箱，用于注册验证</li>
+<li><code>code009</code>为用户名</li>
+<li><code>A description</code>描述文本</li>
+</ul>
+<p>执行完注册命令，会收到一封验证的邮件，复制邮件中的链接打开验证。通过一下命令查看自己的注册信息：</p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">pod trunk <span class="keyword">me</span></span><br></pre></td></tr></table></figure>
+
+<p>给<code>pod</code>库添加拥有者：</p>
+<figure class="highlight smali"><table><tr><td class="code"><pre><span class="line">pod trunk<span class="built_in"> add-owner </span>[POD REP NAME] [NEW EMAIL]</span><br></pre></td></tr></table></figure>
+
+<p>从<code>pod</code>库拥有者列表中移除用户：</p>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">pod trunk remove-<span class="keyword">owner</span> [POD REP <span class="type">NAME</span>] [<span class="built_in">OLD</span> EMAIL]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="3-2-发布podspec"><a href="#3-2-发布podspec" class="headerlink" title="3.2 发布podspec"></a>3.2 发布<code>podspec</code></h3><p>发布<code>podspec</code>文件（如果关联有其他库，需要带<code>--use-libraries</code>参数）：</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">pod trunk <span class="built_in">push</span> HYTestPods.podspec --allow-<span class="built_in">warnings</span></span><br></pre></td></tr></table></figure>
+
+<p>有如下提示，表示发布成功：</p>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line">Updating spec repo <span class="code">`trunk`</span></span><br><span class="line"></span><br><span class="line"><span class="code">--------------------------------------------------------------------------------</span></span><br><span class="line"><span class="code"> 🎉  Congrats</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code"> 🚀  HYTestPods (1.0.0) successfully published</span></span><br><span class="line"><span class="code"> 📅  May 13th, 19:57</span></span><br><span class="line"><span class="code"> 🌎  https://cocoapods.org/pods/HYTestPods</span></span><br><span class="line"><span class="code"> 👍  Tell your friends!</span></span><br><span class="line"><span class="code">--------------------------------------------------------------------------------</span></span><br></pre></td></tr></table></figure>
+
+<p>现在就可以在项目的<code>podfile</code>文件中添加<code>pod HYTestPods</code>，然后执行<code>pod install</code>添加库到项目中了。如果<code>pod install</code>提示找不到库，执行<code>pod install --repo-update</code>命令。</p>
+<hr>
+<h2 id="4-pod库版本更新"><a href="#4-pod库版本更新" class="headerlink" title="4. pod库版本更新"></a>4. <code>pod</code>库版本更新</h2><ul>
+<li><p>更新新版本源码</p>
+</li>
+<li><p>更改<code>.podspec</code>文件中<code>s.version</code>字段为最新版本号，如<code>2.0.0</code></p>
+</li>
+<li><p>提交代码到<code>github</code></p>
+<figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &#x27;new <span class="keyword">version</span>&#x27;</span><br><span class="line">git <span class="keyword">tag</span> <span class="title">2</span>.<span class="number">0.0</span></span><br><span class="line">git push orign <span class="keyword">master</span></span><br><span class="line"><span class="title">git</span> push --tags</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>发布新版<code>.podspec</code>文件到<code>pod</code>公有库中（如果关联有其他库，需要带<code>--use-libraries</code>参数）</p>
+<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line">pod trunk <span class="built_in">push</span> HYTestPods.podspec --allow-<span class="built_in">warnings</span></span><br></pre></td></tr></table></figure>
+
+<p>如果<code>pod search</code>搜索不到新版本，先执行<code>pod repo update</code>命令，然后在搜索。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>iOS</category>
+        <category>CocoaPods</category>
+      </categories>
+      <tags>
+        <tag>iOS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Trojan服务端搭建教程</title>
+    <url>/2021/06/22/Trojan%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="1-检查SELinux状态"><a href="#1-检查SELinux状态" class="headerlink" title="1. 检查SELinux状态"></a>1. 检查<code>SELinux</code>状态</h2><p><code>SELinux</code>开启时容易导致证书申请失败，所以要保证为关闭状态。</p>
+<ul>
+<li><p>查看<code>SELinux</code>状态</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="regexp">/usr/</span>sbin/sestatus -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果返回<code>enabled</code>表示开启，修改<code>/etc/selinux/config</code>文件，将<code>SELINUX=enforcing</code>改为<code>SELINUX=disabled</code></p>
+</li>
+<li><p>重启VPS</p>
+</li>
+</ul>
+<hr>
+<h2 id="2-安装依赖环境"><a href="#2-安装依赖环境" class="headerlink" title="2. 安装依赖环境"></a>2. 安装依赖环境</h2><p><code>CentOS</code>系统：</p>
+<figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line">yum -y <span class="keyword">install</span> wget</span><br></pre></td></tr></table></figure>
+
+
+
+<p><code>Debian</code>系统：</p>
+<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line">apt-<span class="built_in">get</span> install wget</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<hr>
+<h2 id="3-安装trojan"><a href="#3-安装trojan" class="headerlink" title="3. 安装trojan"></a>3. 安装<code>trojan</code></h2><ul>
+<li><p>第一步，安装相关服务，绑定域名</p>
+<figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">wget -N --no-<span class="keyword">check</span>-certificate <span class="string">&quot;https://raw.githubusercontent.com/V2RaySSR/Trojansh/master/trojan1.sh&quot;</span> <span class="variable">&amp;&amp;</span> chmod +<span class="keyword">x</span> trojan1.sh <span class="variable">&amp;&amp;</span> ./trojan1.sh</span><br></pre></td></tr></table></figure>
+
+<p>中途提示处输入绑定VPS的域名，自动安装Ngix并下载伪站点。</p>
+</li>
+<li><p>第二步，自动申请<code>SSL</code>证书，如果证书申请失败，请按照提示手动申请证书</p>
+<figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">wget -N --no-<span class="keyword">check</span>-certificate <span class="string">&quot;https://raw.githubusercontent.com/V2RaySSR/Trojansh/master/trojan2.sh&quot;</span> <span class="variable">&amp;&amp;</span> chmod +<span class="keyword">x</span> trojan2.sh <span class="variable">&amp;&amp;</span> ./trojan2.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>第三步</p>
+<figure class="highlight sas"><table><tr><td class="code"><pre><span class="line">wget -N --no-<span class="keyword">check</span>-certificate <span class="string">&quot;https://raw.githubusercontent.com/V2RaySSR/Trojansh/master/trojan3.sh&quot;</span> <span class="variable">&amp;&amp;</span> chmod +<span class="keyword">x</span> trojan3.sh <span class="variable">&amp;&amp;</span> ./trojan3.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>trojan配置文件位置：<code>/usr/local/etc/trojan/config.json</code></p>
+</li>
+<li><p>重启trojan</p>
+<figure class="highlight ebnf"><table><tr><td class="code"><pre><span class="line"><span class="attribute">systemctl restart trojan</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="4-安装BBR加速"><a href="#4-安装BBR加速" class="headerlink" title="4. 安装BBR加速"></a>4. 安装BBR加速</h2><ul>
+<li><p>下载脚本</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">wget</span> -N --<span class="literal">no</span>-check-certificate <span class="string">&quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加可执行权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> +x tcp.sh</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装BBR魔改版</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;1&quot;</span> | ./tcp.sh</span><br></pre></td></tr></table></figure>
+
+<p>安装完成提示重启VPS</p>
+</li>
+<li><p>开启BBR魔改版加速</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;5&quot;</span> | ./tcp.sh</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>经验分享</category>
+        <category>科学上网</category>
+      </categories>
+      <tags>
+        <tag>科学上网</tag>
       </tags>
   </entry>
   <entry>
@@ -249,15 +545,15 @@
 <h2 id="2-基本使用"><a href="#2-基本使用" class="headerlink" title="2. 基本使用"></a>2. 基本使用</h2><h3 id="2-1-performSelector"><a href="#2-1-performSelector" class="headerlink" title="2.1 performSelector"></a>2.1 <code>performSelector</code></h3><p>根据参数个数使用指定以<code>performSelector</code>开头的方法，返回值均可以可无，如果有返回值<code>performSelector</code>方法将其返回。</p>
 <ul>
 <li><p>调用没有参数，没有返回值的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector;</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="code"><pre><span class="line">- <span class="params">(id)</span>performSelector:<span class="params">(SEL)</span>aSelector;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>调用有一个参数的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector withObject:(id)object;</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="code"><pre><span class="line">- <span class="params">(id)</span>performSelector:<span class="params">(SEL)</span>aSelector withObject:<span class="params">(id)</span>object;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>调用有两个参数的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight erlang"><table><tr><td class="code"><pre><span class="line">- <span class="params">(id)</span>performSelector:<span class="params">(SEL)</span>aSelector withObject:<span class="params">(id)</span>object1 withObject:<span class="params">(id)</span>object2;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="2-2-NSInvocation"><a href="#2-2-NSInvocation" class="headerlink" title="2.2 NSInvocation"></a>2.2 <code>NSInvocation</code></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 方法签名(方法的描述)</span><br><span class="line">NSMethodSignature *signature = [[Weakself class] instanceMethodSignatureForSelector:@selector(test3:par2:par3:)];</span><br><span class="line">if (signature == nil) &#123;</span><br><span class="line">      // 方法不存在，提示或抛出异常</span><br><span class="line">      NSLog(@&quot;%@方法不存在&quot;,NSStringFromSelector(@selector(test3:par2:par3:)));</span><br><span class="line">      return;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // NSInvocation : 利用一个NSInvocation对象包装一次方法调用（方法调用者、方法名、方法参数、方法返回值）</span><br><span class="line">  NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];</span><br><span class="line">  // 设置方法调用者</span><br><span class="line">  invocation.target = Weakself;</span><br><span class="line">  // 方法名，一定要和方法签名类中的一致</span><br><span class="line">  invocation.selector = @selector(test3:par2:par3:);</span><br><span class="line"></span><br><span class="line">  // 设置参数,默认已经有self和_cmd两个参数了</span><br><span class="line">  NSString *par1 = @&quot;参数1&quot;;</span><br><span class="line">  NSString *par2 = @&quot;参数2&quot;;</span><br><span class="line">  NSString *par3 = @&quot;参数3&quot;;</span><br><span class="line">  [invocation setArgument:&amp;par1 atIndex:2];</span><br><span class="line">  [invocation setArgument:&amp;par2 atIndex:3];</span><br><span class="line">  [invocation setArgument:&amp;par3 atIndex:4];</span><br><span class="line"></span><br><span class="line">  // 调用方法</span><br><span class="line">  [invocation invoke];</span><br><span class="line"></span><br><span class="line">  // 获取返回值</span><br><span class="line"> id returnValue = nil;</span><br><span class="line">  // 有返回值类型，才去获得返回值</span><br><span class="line"> if (signature.methodReturnLength) &#123;</span><br><span class="line">     [invocation getReturnValue:&amp;returnValue];</span><br><span class="line">     NSLog(@&quot;返回值:%@&quot;,returnValue);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-NSInvocation"><a href="#2-2-NSInvocation" class="headerlink" title="2.2 NSInvocation"></a>2.2 <code>NSInvocation</code></h3><figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 方法签名(方法的描述)</span></span><br><span class="line"><span class="built_in">NSMethodSignature</span> *signature = [[Weakself <span class="keyword">class</span>] instanceMethodSignatureForSelector:<span class="keyword">@selector</span>(test3:par2:par3:)];</span><br><span class="line"><span class="keyword">if</span> (signature == <span class="literal">nil</span>) &#123;</span><br><span class="line">      <span class="comment">// 方法不存在，提示或抛出异常</span></span><br><span class="line">      <span class="built_in">NSLog</span>(<span class="string">@&quot;%@方法不存在&quot;</span>,<span class="built_in">NSStringFromSelector</span>(<span class="keyword">@selector</span>(test3:par2:par3:)));</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// NSInvocation : 利用一个NSInvocation对象包装一次方法调用（方法调用者、方法名、方法参数、方法返回值）</span></span><br><span class="line">  <span class="built_in">NSInvocation</span> *invocation = [<span class="built_in">NSInvocation</span> invocationWithMethodSignature:signature];</span><br><span class="line">  <span class="comment">// 设置方法调用者</span></span><br><span class="line">  invocation.target = Weakself;</span><br><span class="line">  <span class="comment">// 方法名，一定要和方法签名类中的一致</span></span><br><span class="line">  invocation.selector = <span class="keyword">@selector</span>(test3:par2:par3:);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置参数,默认已经有self和_cmd两个参数了</span></span><br><span class="line">  <span class="built_in">NSString</span> *par1 = <span class="string">@&quot;参数1&quot;</span>;</span><br><span class="line">  <span class="built_in">NSString</span> *par2 = <span class="string">@&quot;参数2&quot;</span>;</span><br><span class="line">  <span class="built_in">NSString</span> *par3 = <span class="string">@&quot;参数3&quot;</span>;</span><br><span class="line">  [invocation setArgument:&amp;par1 atIndex:<span class="number">2</span>];</span><br><span class="line">  [invocation setArgument:&amp;par2 atIndex:<span class="number">3</span>];</span><br><span class="line">  [invocation setArgument:&amp;par3 atIndex:<span class="number">4</span>];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 调用方法</span></span><br><span class="line">  [invocation invoke];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取返回值</span></span><br><span class="line"> <span class="type">id</span> returnValue = <span class="literal">nil</span>;</span><br><span class="line">  <span class="comment">// 有返回值类型，才去获得返回值</span></span><br><span class="line"> <span class="keyword">if</span> (signature.methodReturnLength) &#123;</span><br><span class="line">     [invocation getReturnValue:&amp;returnValue];</span><br><span class="line">     <span class="built_in">NSLog</span>(<span class="string">@&quot;返回值:%@&quot;</span>,returnValue);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -271,75 +567,6 @@
       <tags>
         <tag>OC</tag>
         <tag>NSInvocation</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Trojan服务端搭建教程</title>
-    <url>/2021/06/22/Trojan%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="1-检查SELinux状态"><a href="#1-检查SELinux状态" class="headerlink" title="1. 检查SELinux状态"></a>1. 检查<code>SELinux</code>状态</h2><p><code>SELinux</code>开启时容易导致证书申请失败，所以要保证为关闭状态。</p>
-<ul>
-<li><p>查看<code>SELinux</code>状态</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/usr/sbin/sestatus -v</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果返回<code>enabled</code>表示开启，修改<code>/etc/selinux/config</code>文件，将<code>SELINUX=enforcing</code>改为<code>SELINUX=disabled</code></p>
-</li>
-<li><p>重启VPS</p>
-</li>
-</ul>
-<hr>
-<h2 id="2-安装依赖环境"><a href="#2-安装依赖环境" class="headerlink" title="2. 安装依赖环境"></a>2. 安装依赖环境</h2><p><code>CentOS</code>系统：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum -y install wget</span><br></pre></td></tr></table></figure>
-
-
-
-<p><code>Debian</code>系统：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get install wget</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<hr>
-<h2 id="3-安装trojan"><a href="#3-安装trojan" class="headerlink" title="3. 安装trojan"></a>3. 安装<code>trojan</code></h2><ul>
-<li><p>第一步，安装相关服务，绑定域名</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -N --no-check-certificate &quot;https://raw.githubusercontent.com/V2RaySSR/Trojansh/master/trojan1.sh&quot; &amp;&amp; chmod +x trojan1.sh &amp;&amp; ./trojan1.sh</span><br></pre></td></tr></table></figure>
-
-<p>中途提示处输入绑定VPS的域名，自动安装Ngix并下载伪站点。</p>
-</li>
-<li><p>第二步，自动申请<code>SSL</code>证书，如果证书申请失败，请按照提示手动申请证书</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -N --no-check-certificate &quot;https://raw.githubusercontent.com/V2RaySSR/Trojansh/master/trojan2.sh&quot; &amp;&amp; chmod +x trojan2.sh &amp;&amp; ./trojan2.sh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>第三步</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -N --no-check-certificate &quot;https://raw.githubusercontent.com/V2RaySSR/Trojansh/master/trojan3.sh&quot; &amp;&amp; chmod +x trojan3.sh &amp;&amp; ./trojan3.sh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>trojan配置文件位置：<code>/usr/local/etc/trojan/config.json</code></p>
-</li>
-<li><p>重启trojan</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl restart trojan</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<h2 id="4-安装BBR加速"><a href="#4-安装BBR加速" class="headerlink" title="4. 安装BBR加速"></a>4. 安装BBR加速</h2><ul>
-<li><p>下载脚本</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -N --no-check-certificate &quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&quot;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>添加可执行权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod +x tcp.sh</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装BBR魔改版</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo -e &quot;1&quot; | ./tcp.sh</span><br></pre></td></tr></table></figure>
-
-<p>安装完成提示重启VPS</p>
-</li>
-<li><p>开启BBR魔改版加速</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">echo -e &quot;5&quot; | ./tcp.sh</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>经验分享</category>
-        <category>科学上网</category>
-      </categories>
-      <tags>
-        <tag>科学上网</tag>
       </tags>
   </entry>
   <entry>
@@ -477,8 +704,8 @@
         <category>面试题</category>
       </categories>
       <tags>
-        <tag>OC</tag>
         <tag>面试题</tag>
+        <tag>OC</tag>
       </tags>
   </entry>
   <entry>
@@ -493,7 +720,7 @@
 </blockquote>
 </li>
 <li><p>简单使用，异步执行任务</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 创建一个队列</span><br><span class="line">    dispatch_queue_t myQueue =  dispatch_queue_create(&quot;com.iphonedevblog.post&quot;,  NULL);</span><br><span class="line">    // 异步执行任务</span><br><span class="line">    dispatch_async(myQueue, ^&#123;</span><br><span class="line">        NSLog(@&quot;线程:%@&quot;,[NSThread currentThread]);</span><br><span class="line">        </span><br><span class="line">        // 回到主队列更新界面</span><br><span class="line">        dispatch_async(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            self.view.backgroundColor = [UIColor redColor];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建一个队列</span></span><br><span class="line">    <span class="built_in">dispatch_queue_t</span> myQueue =  dispatch_queue_create(<span class="string">&quot;com.iphonedevblog.post&quot;</span>,  <span class="literal">NULL</span>);</span><br><span class="line">    <span class="comment">// 异步执行任务</span></span><br><span class="line">    <span class="built_in">dispatch_async</span>(myQueue, ^&#123;</span><br><span class="line">        <span class="built_in">NSLog</span>(<span class="string">@&quot;线程:%@&quot;</span>,[<span class="built_in">NSThread</span> currentThread]);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 回到主队列更新界面</span></span><br><span class="line">        <span class="built_in">dispatch_async</span>(dispatch_get_main_queue(), ^&#123;</span><br><span class="line">            <span class="keyword">self</span>.view.backgroundColor = [<span class="built_in">UIColor</span> redColor];</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
 
 <p>结果：</p>
 <blockquote>
@@ -501,7 +728,7 @@
 </blockquote>
 </li>
 <li><p>线程的暂停和恢复（只能在子线程，主线程不起作用）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_suspend(&lt;#dispatch_object_t  _Nonnull object#&gt;) // 暂停线程</span><br><span class="line">dispatch_resume(&lt;#dispatch_object_t  _Nonnull object#&gt;)  // 恢复线程</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">dispatch_suspend</span><span class="params">(&lt;#dispatch_object_t  _Nonnull object#&gt;)</span></span> <span class="comment">// 暂停线程</span></span><br><span class="line"><span class="function"><span class="title">dispatch_resume</span><span class="params">(&lt;#dispatch_object_t  _Nonnull object#&gt;)</span></span>  <span class="comment">// 恢复线程</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <categories>
@@ -510,131 +737,8 @@
         <category>面试题</category>
       </categories>
       <tags>
+        <tag>面试题</tag>
         <tag>OC</tag>
-        <tag>面试题</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>GCP实例创建使用</title>
-    <url>/2021/06/22/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/</url>
-    <content><![CDATA[<h2 id="1-创建防火墙规则"><a href="#1-创建防火墙规则" class="headerlink" title="1.  创建防火墙规则"></a>1.  创建防火墙规则</h2><ul>
-<li><p>前往<a href="https://console.cloud.google.com/">谷歌云</a>，在菜单栏找到<code>VPC网络-&gt;防火墙</code></p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-105655@2x.png"></p>
-</li>
-<li><p>点击创建防火墙规则，分别创建入站和出站规则</p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-110453@2x.png"></p>
-</li>
-</ul>
-<hr>
-<h2 id="2-创建虚拟机实例"><a href="#2-创建虚拟机实例" class="headerlink" title="2. 创建虚拟机实例"></a>2. 创建虚拟机实例</h2><ul>
-<li><p>菜单栏找到<code>compute engine -&gt; 虚拟机实例</code></p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-110630@2x.png"></p>
-</li>
-<li><p>点击创建实例，填写实例名称，选择地区和区域，机器配置选择最低配置的N1型，内存选614MB</p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-111350@2x.png"></p>
-</li>
-<li><p>启动磁盘处选择系统类型，防火墙勾选允许http流量和https流量，添加入站和出站规则</p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-111720@2x.png"></p>
-</li>
-<li><p>点击创建，完成实例创建</p>
-</li>
-</ul>
-<hr>
-<h2 id="3-实例配置"><a href="#3-实例配置" class="headerlink" title="3. 实例配置"></a>3. 实例配置</h2><p>完成实例创建，还需要对虚拟机实例设置允许root登录，设置root密码才能在其他的终端通过ssh远程链接。</p>
-<h3 id="3-1-设置静态IP"><a href="#3-1-设置静态IP" class="headerlink" title="3.1 设置静态IP"></a>3.1 设置静态IP</h3><p>谷歌云实例默认是临时IP，实例重启以后IP可能会变，需要设置成静态IP。</p>
-<ul>
-<li><p>菜单栏找到<code>VPC网络-&gt;外部IP地址</code></p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-112432@2x.png"></p>
-</li>
-<li><p>找到对应实例，设置IP为静态</p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-112552@2x.png"></p>
-</li>
-<li><p>设置静态IP完成</p>
-</li>
-</ul>
-<h3 id="3-2-允许root登录配置"><a href="#3-2-允许root登录配置" class="headerlink" title="3.2  允许root登录配置"></a>3.2  允许root登录配置</h3><ul>
-<li><p>点击实例后的<code>SSH</code>链接，在弹出的窗口中允许权限</p>
-</li>
-<li><p>连接上以后，获取管理员权限</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo -i</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改<code>/etc/ssh/sshd_config</code>文件</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vi /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改以下项为<code>yes</code></p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-113702@2x.png"></p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/GCP%E5%AE%9E%E4%BE%8B%E5%88%9B%E5%BB%BA%E4%BD%BF%E7%94%A8/QQ20210622-113726@2x.png"></p>
-</li>
-<li><p>修改完成，保存退出</p>
-</li>
-<li><p>设置root密码</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">passwd root</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>两次输入密码，完成root密码设置</p>
-</li>
-<li><p>在谷歌云虚拟机实例列表，重启实例。然后就可以在其他终端通过root账号和密码远程登录虚拟机实例。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>VPS</category>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>VPS</tag>
-        <tag>GCP</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Swift基础面试题</title>
-    <url>/2021/06/30/Swift%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="1-iOS-类（class）和结构体（struct）有什么区别？"><a href="#1-iOS-类（class）和结构体（struct）有什么区别？" class="headerlink" title="1. iOS 类（class）和结构体（struct）有什么区别？"></a>1. iOS 类（class）和结构体（struct）有什么区别？</h2><ul>
-<li><p>答案</p>
-<blockquote>
-<p>Swift 中，类是引用类型，结构体是值类型。值类型在传递和赋值时将进行复制，而引用类型则只会使用引用对象的一个”指向”。所以他们两者之间的区别就是两个类型的区别。</p>
-</blockquote>
-</li>
-<li><p>示例1，类引用和传值</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Temperature &#123;</span><br><span class="line">  var value: Float = 37.0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">  var temp: Temperature?</span><br><span class="line"></span><br><span class="line">  func sick() &#123;</span><br><span class="line">    temp?.value = 41.0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let A = Person()</span><br><span class="line">let B = Person()</span><br><span class="line">let temp = Temperature()</span><br><span class="line"></span><br><span class="line">A.temp = temp</span><br><span class="line">B.temp = temp</span><br><span class="line">A.sick()</span><br><span class="line">print(&quot;\(String(describing: A.temp?.value))&quot;)</span><br><span class="line">print(&quot;\(String(describing: B.temp?.value))&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<blockquote>
-<p><strong>Optional(41.0)</strong></p>
-<p><strong>Optional(41.0)</strong></p>
-</blockquote>
-</li>
-<li><p>示例2，结构体引用和传值</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">struct Temperature &#123;</span><br><span class="line">  var value: Float = 37.0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Person &#123;</span><br><span class="line">  var temp: Temperature?</span><br><span class="line"></span><br><span class="line">  func sick() &#123;</span><br><span class="line">    temp?.value = 41.0</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let A = Person()</span><br><span class="line">let B = Person()</span><br><span class="line">let temp = Temperature()</span><br><span class="line"></span><br><span class="line">A.temp = temp</span><br><span class="line">B.temp = temp</span><br><span class="line">A.sick()</span><br><span class="line">print(&quot;\(String(describing: A.temp?.value))&quot;)</span><br><span class="line">print(&quot;\(String(describing: B.temp?.value))&quot;)</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<blockquote>
-<p><strong>Optional(41.0)</strong></p>
-<p><strong>Optional(37.0)</strong></p>
-</blockquote>
-</li>
-<li><p>说明</p>
-<blockquote>
-<p>内存中，引用类型诸如类是在堆（heap）上，而值类型诸如结构体实在栈（stack）上进行存储和操作。相比于栈上的操作，堆上的操作更加复杂耗时，所以苹果官方推荐使用结构体，这样可以提高 App 运行的效率。</p>
-</blockquote>
-<blockquote>
-<p><strong>class有这几个功能struct没有的：</strong></p>
-<p>class可以继承，这样子类可以使用父类的特性和方法 类型转换可以在runtime的时候检查和解释一个实例的类型 可以用deinit来释放资源，一个类可以被多次引用</p>
-</blockquote>
-<blockquote>
-<p><strong>struct也有这样几个优势：</strong></p>
-<p>结构较小，适用于复制操作，相比于一个class的实例被多次引用更加安全。 无须担心内存memory leak或者多线程冲突问题</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>iOS</category>
-        <category>Swift</category>
-        <category>面试题</category>
-      </categories>
-      <tags>
-        <tag>面试题</tag>
-        <tag>swift</tag>
       </tags>
   </entry>
   <entry>
@@ -649,25 +753,25 @@
 <p>其中<code>NSTimer</code>和<code>CADisplayLink</code>是基于<code>NSRunLoop</code>实现的，而<code>RunLoop</code>会在跑完一圈再去检查定时器是否满足规定的时间间隔，如果未达到，<code>RunLoop</code>会进入下一轮任务处理，这就可能导致定时器存在计数误差，<code>dispatch_source_t</code>是<code>GCD</code>内封装的定时器，只依赖于系统内核，所以较准时。</p>
 <h2 id="1-NSTimer用法"><a href="#1-NSTimer用法" class="headerlink" title="1. NSTimer用法"></a>1. <code>NSTimer</code>用法</h2><h3 id="1-1-创建NSTimer"><a href="#1-1-创建NSTimer" class="headerlink" title="1.1 创建NSTimer"></a>1.1 创建<code>NSTimer</code></h3><ul>
 <li><p>通过<code>scheduledTimer</code>开头的类方法创建</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[NSTimer scheduledTimerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) &#123;</span><br><span class="line">     NSLog(@&quot;111&quot;);</span><br><span class="line">&#125;];</span><br><span class="line">或</span><br><span class="line">[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line">[<span class="built_in">NSTimer</span> scheduledTimerWithTimeInterval:<span class="number">1.0</span> repeats:<span class="literal">YES</span> block:^(<span class="built_in">NSTimer</span> * _Nonnull timer) &#123;</span><br><span class="line">     <span class="built_in">NSLog</span>(<span class="string">@&quot;111&quot;</span>);</span><br><span class="line">&#125;];</span><br><span class="line">或</span><br><span class="line">[<span class="built_in">NSTimer</span> scheduledTimerWithTimeInterval:<span class="number">1.0</span> target:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(timerAction) userInfo:<span class="literal">nil</span> repeats:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure>
 
 <p><code>timeInterval</code>执行之前等待的时间。该方法会自动创建<code>NSTimer</code>对象，并加入主线程的<code>RunLoop</code>的<code>default mode</code>上，然后自动启动，执行指定的代码。</p>
 </li>
 <li><p>通过<code>timerWithTimeInterval</code>开头的类方法创建</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 repeats:YES block:^(NSTimer * _Nonnull timer) &#123;</span><br><span class="line">     NSLog(@&quot;111&quot;);</span><br><span class="line">&#125;];</span><br><span class="line">[[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];</span><br><span class="line">或者</span><br><span class="line">NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(timerAction) userInfo:nil repeats:YES];</span><br><span class="line">[[NSRunLoop mainRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="built_in">NSTimer</span> *timer = [<span class="built_in">NSTimer</span> timerWithTimeInterval:<span class="number">1.0</span> repeats:<span class="literal">YES</span> block:^(<span class="built_in">NSTimer</span> * _Nonnull timer) &#123;</span><br><span class="line">     <span class="built_in">NSLog</span>(<span class="string">@&quot;111&quot;</span>);</span><br><span class="line">&#125;];</span><br><span class="line">[[<span class="built_in">NSRunLoop</span> mainRunLoop] addTimer:timer forMode:<span class="built_in">NSDefaultRunLoopMode</span>];</span><br><span class="line">或者</span><br><span class="line"><span class="built_in">NSTimer</span> *timer = [<span class="built_in">NSTimer</span> timerWithTimeInterval:<span class="number">1.0</span> target:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(timerAction) userInfo:<span class="literal">nil</span> repeats:<span class="literal">YES</span>];</span><br><span class="line">[[<span class="built_in">NSRunLoop</span> mainRunLoop] addTimer:timer forMode:<span class="built_in">NSDefaultRunLoopMode</span>];</span><br></pre></td></tr></table></figure>
 
 <p>该方法只创建并返回一个定时器，不会把定时器加入<code>RunLoop</code>，需要手动添加到<code>RunLoop</code>，然后自动启动，执行指定的代码。</p>
 </li>
 </ul>
 <h3 id="1-2-NSTimer启动和停止"><a href="#1-2-NSTimer启动和停止" class="headerlink" title="1.2 NSTimer启动和停止"></a>1.2 <code>NSTimer</code>启动和停止</h3><ul>
 <li><p>启动</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.timer fire]; // 测试发现没什么用</span><br><span class="line">self.timer.fireDate = [NSDate distantPast]; // 和self.timer.fireDate = [NSDate distantFuture];对应</span><br></pre></td></tr></table></figure>
+<figure class="highlight ruby"><table><tr><td class="code"><pre><span class="line">[<span class="variable language_">self</span>.timer fire]; <span class="regexp">//</span> 测试发现没什么用</span><br><span class="line"><span class="variable language_">self</span>.timer.fireDate = [<span class="title class_">NSDate</span> distantPast]; <span class="regexp">//</span> 和<span class="variable language_">self</span>.timer.fireDate = [<span class="title class_">NSDate</span> distantFuture];对应</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>停止</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.timer.fireDate = [NSDate distantFuture];</span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="attr">self.timer.fireDate</span> = [NSDate distantFuture]<span class="comment">;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>设置计时器无效</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[self.timer invalidate]; </span><br></pre></td></tr></table></figure>
+<figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[self.timer invalidate]</span><span class="comment">; </span></span><br></pre></td></tr></table></figure>
 
 <p>只有设置定时器无效，定时器对当前控制器的持有才会释放，才不会出现循环引用的情况，就算设置定时器为<code>nil</code>，也不行；所以通常在<code>viewWillDisappear</code>方法中设置定时器无效。</p>
 </li>
@@ -691,22 +795,22 @@
 <ul>
 <li><p>新建<code>WeakContainer</code>类，内部弱持有<code>target</code>，并转发消息</p>
 <p><code>WeakContainer.h</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_BEGIN</span><br><span class="line"></span><br><span class="line">@interface WeakContainer : NSObject</span><br><span class="line"></span><br><span class="line">@property (nonatomic, weak) id target;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="meta">#import <span class="string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">NS_ASSUME_NONNULL_BEGIN</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WeakContainer</span> : <span class="title">NSObject</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="type">id</span> target;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithTarget:(<span class="type">id</span>)target;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">NS_ASSUME_NONNULL_END</span></span><br></pre></td></tr></table></figure>
 
 <p><code>WeakContainer.m</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &quot;WeakContainer.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation WeakContainer</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target</span><br><span class="line">&#123;</span><br><span class="line">    self = [super init];</span><br><span class="line">    if (self) &#123;</span><br><span class="line">        self.target = target;</span><br><span class="line">    &#125;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 消息转发</span><br><span class="line">- (id)forwardingTargetForSelector:(SEL)aSelector</span><br><span class="line">&#123;</span><br><span class="line">    if ([self.target respondsToSelector:aSelector]) &#123;</span><br><span class="line">        return self.target;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return [super forwardingTargetForSelector:aSelector];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="meta">#import <span class="string">&quot;WeakContainer.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WeakContainer</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithTarget:(<span class="type">id</span>)target</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span> = [<span class="variable language_">super</span> init];</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">self</span>) &#123;</span><br><span class="line">        <span class="keyword">self</span>.target = target;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 消息转发</span></span><br><span class="line">- (<span class="type">id</span>)forwardingTargetForSelector:(SEL)aSelector</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">if</span> ([<span class="keyword">self</span>.target respondsToSelector:aSelector]) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>.target;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> [<span class="variable language_">super</span> forwardingTargetForSelector:aSelector];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>设置定时器<code>target</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:[[WeakContainer alloc]initWithTarget:self] selector:@selector(timerAction) userInfo:nil repeats:YES];</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="keyword">self</span>.timer = [<span class="built_in">NSTimer</span> scheduledTimerWithTimeInterval:<span class="number">1.0</span> target:[[WeakContainer alloc]initWithTarget:<span class="keyword">self</span>] selector:<span class="keyword">@selector</span>(timerAction) userInfo:<span class="literal">nil</span> repeats:<span class="literal">YES</span>];</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在控制器的<code>dealloc</code>方法中停止定时器，否则控制器释放，定时器还在运行，导致程序崩溃</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    self.timer.fireDate = [NSDate distantFuture];</span><br><span class="line">    NSLog(@&quot;释放了%s&quot;,__FUNCTION__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line">- (<span class="type">void</span>)dealloc</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span>.timer.fireDate = [<span class="built_in">NSDate</span> distantFuture];</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;释放了%s&quot;</span>,__FUNCTION__);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>使用<code>NSProxy</code>抽象类</p>
 <blockquote>
 <p>NSProxy是除了NSObject之外的另一个基类，是一个抽象类，只能继承它，重写其消息转发的方法，将消息转发给另一个对象。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">- (void)forwardInvocation:(NSInvocation *)invocation;</span><br><span class="line">- (nullable NSMethodSignature *)methodSignatureForSelector:(SEL)sel NS_SWIFT_UNAVAILABLE(&quot;NSInvocation and related APIs not available&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="code"><pre><span class="line">- <span class="params">(void)</span>forwardInvocation:<span class="params">(NSInvocation *)</span>invocation;</span><br><span class="line">- <span class="params">(nullable NSMethodSignature *)</span>methodSignatureForSelector:<span class="params">(SEL)</span>sel NS_SWIFT_UNAVAILABLE<span class="params">(<span class="string">&quot;NSInvocation and related APIs not available&quot;</span>)</span>;</span><br></pre></td></tr></table></figure>
 
 <p>除了重载消息转发机制的两个方法之外，NSProxy也没有其他功能了。即，使用NSProxy注定是用来转发消息的。</p>
 <ul>
@@ -718,10 +822,10 @@
 <ul>
 <li><p>创建<code>WeakProxy</code>类</p>
 <p><code>WeakProxy.h</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_BEGIN</span><br><span class="line"></span><br><span class="line">@interface WeakProxy : NSProxy</span><br><span class="line"></span><br><span class="line">@property (nonatomic, weak) id target;</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">NS_ASSUME_NONNULL_END</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="meta">#import <span class="string">&lt;Foundation/Foundation.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">NS_ASSUME_NONNULL_BEGIN</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@interface</span> <span class="title">WeakProxy</span> : <span class="title">NSProxy</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">weak</span>) <span class="type">id</span> target;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithTarget:(<span class="type">id</span>)target;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">NS_ASSUME_NONNULL_END</span></span><br></pre></td></tr></table></figure>
 
 <p><code>WeakProxy.m</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#import &quot;WeakProxy.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation WeakProxy</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithTarget:(id)target</span><br><span class="line">&#123;</span><br><span class="line">    self = [WeakProxy alloc];</span><br><span class="line">    self.target = target;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (NSMethodSignature *)methodSignatureForSelector:(SEL)sel &#123;</span><br><span class="line">    return [self.target methodSignatureForSelector:sel];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)forwardInvocation:(NSInvocation *)invocation &#123;</span><br><span class="line">    [invocation invokeWithTarget:self.target];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="meta">#import <span class="string">&quot;WeakProxy.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">@implementation</span> <span class="title">WeakProxy</span></span></span><br><span class="line"></span><br><span class="line">- (<span class="keyword">instancetype</span>)initWithTarget:(<span class="type">id</span>)target</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">self</span> = [WeakProxy alloc];</span><br><span class="line">    <span class="keyword">self</span>.target = target;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">self</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="built_in">NSMethodSignature</span> *)methodSignatureForSelector:(SEL)sel &#123;</span><br><span class="line">    <span class="keyword">return</span> [<span class="keyword">self</span>.target methodSignatureForSelector:sel];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="type">void</span>)forwardInvocation:(<span class="built_in">NSInvocation</span> *)invocation &#123;</span><br><span class="line">    [invocation invokeWithTarget:<span class="keyword">self</span>.target];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">@end</span></span><br></pre></td></tr></table></figure>
 
 
 </li>
@@ -734,7 +838,7 @@
 <h2 id="2-CADisplayLink用法"><a href="#2-CADisplayLink用法" class="headerlink" title="2. CADisplayLink用法"></a>2. <code>CADisplayLink</code>用法</h2><h3 id="2-1-概述"><a href="#2-1-概述" class="headerlink" title="2.1 概述"></a>2.1 概述</h3><p><code>CADisplayLink</code>是和屏幕刷新率同步的频率调用<code>target</code>的，按照iOS设备屏幕的刷新率60次&#x2F;秒，就是一秒调用60次<code>target</code>。<code>CADisplayLink</code>以特定模式注册到<code>Runloop</code>后，每当屏幕显示内容刷新结束的时候，<code>Runloop</code>就会向<code>CADisplayLink</code>指定的<code>target</code>发送一次指定的<code>selector</code>消息， <code>CADisplayLink</code>类对应的<code>selector</code>就会被调用一次。</p>
 <p>延迟iOS设备的屏幕刷新频率是固定的，CADisplayLink在正常情况下会在每次刷新结束都被调用，精确度相当高。但如果调用的方法比较耗时，超过了屏幕刷新周期，就会导致跳过若干次回调调用机会。如果CPU过于繁忙，无法保证屏幕60次&#x2F;秒的刷新率，就会导致跳过若干次调用回调方法的机会，跳过次数取决CPU的忙碌程度。</p>
 <h3 id="2-2-使用场景"><a href="#2-2-使用场景" class="headerlink" title="2.2 使用场景"></a>2.2 使用场景</h3><p>从原理上可以看出，CADisplayLink适合做界面的不停重绘，比如视频播放的时候需要不停地获取下一帧用于界面渲染。</p>
-<h3 id="2-3-基本使用"><a href="#2-3-基本使用" class="headerlink" title="2.3 基本使用"></a>2.3 基本使用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">self.displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(timerAction)];</span><br><span class="line">[self.displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];</span><br></pre></td></tr></table></figure>
+<h3 id="2-3-基本使用"><a href="#2-3-基本使用" class="headerlink" title="2.3 基本使用"></a>2.3 基本使用</h3><figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="keyword">self</span>.displayLink = [<span class="built_in">CADisplayLink</span> displayLinkWithTarget:<span class="keyword">self</span> selector:<span class="keyword">@selector</span>(timerAction)];</span><br><span class="line">[<span class="keyword">self</span>.displayLink addToRunLoop:[<span class="built_in">NSRunLoop</span> mainRunLoop] forMode:<span class="built_in">NSDefaultRunLoopMode</span>];</span><br></pre></td></tr></table></figure>
 
 <p>添加到<code>RunLoop</code>以后，定时器就开始调用<code>target</code>。</p>
 <h3 id="2-4-主要属性和方法"><a href="#2-4-主要属性和方法" class="headerlink" title="2.4 主要属性和方法"></a>2.4 主要属性和方法</h3><ul>
@@ -744,13 +848,13 @@
 </ul>
 <h3 id="2-5-注意事项"><a href="#2-5-注意事项" class="headerlink" title="2.5 注意事项"></a>2.5 注意事项</h3><p>和<code>NSTimer</code>一样，都有可能出现循环引用，切记在控制器消失时调用<code>invalidate</code>方法。</p>
 <hr>
-<h2 id="3-dispatch-source-t用法"><a href="#3-dispatch-source-t用法" class="headerlink" title="3. dispatch_source_t用法"></a>3. <code>dispatch_source_t</code>用法</h2><h3 id="3-1-基本使用"><a href="#3-1-基本使用" class="headerlink" title="3.1 基本使用"></a>3.1 基本使用</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//创建全局队列</span><br><span class="line">dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);</span><br><span class="line"></span><br><span class="line">//使用全局队列创建计时器</span><br><span class="line">_sourceTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);</span><br><span class="line"></span><br><span class="line">//定时器延迟时间</span><br><span class="line">NSTimeInterval delayTime = 1.0f;</span><br><span class="line"></span><br><span class="line">//定时器间隔时间</span><br><span class="line">NSTimeInterval timeInterval = 1.0f;</span><br><span class="line"></span><br><span class="line">//设置开始时间</span><br><span class="line">dispatch_time_t startDelayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * NSEC_PER_SEC));</span><br><span class="line"></span><br><span class="line">//设置计时器</span><br><span class="line">dispatch_source_set_timer(_sourceTimer,startDelayTime,timeInterval*NSEC_PER_SEC,0.1*NSEC_PER_SEC);</span><br><span class="line"></span><br><span class="line">//执行事件</span><br><span class="line">dispatch_source_set_event_handler(_sourceTimer,^&#123;</span><br><span class="line">    NSLog(@&quot;111&quot;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">//启动计时器</span><br><span class="line">dispatch_resume(_sourceTimer);</span><br></pre></td></tr></table></figure>
+<h2 id="3-dispatch-source-t用法"><a href="#3-dispatch-source-t用法" class="headerlink" title="3. dispatch_source_t用法"></a>3. <code>dispatch_source_t</code>用法</h2><h3 id="3-1-基本使用"><a href="#3-1-基本使用" class="headerlink" title="3.1 基本使用"></a>3.1 基本使用</h3><figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="comment">//创建全局队列</span></span><br><span class="line"><span class="built_in">dispatch_queue_t</span> queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用全局队列创建计时器</span></span><br><span class="line">_sourceTimer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, <span class="number">0</span>, <span class="number">0</span>, queue);</span><br><span class="line"></span><br><span class="line"><span class="comment">//定时器延迟时间</span></span><br><span class="line"><span class="built_in">NSTimeInterval</span> delayTime = <span class="number">1.0</span>f;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定时器间隔时间</span></span><br><span class="line"><span class="built_in">NSTimeInterval</span> timeInterval = <span class="number">1.0</span>f;</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置开始时间</span></span><br><span class="line">dispatch_time_t startDelayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayTime * <span class="built_in">NSEC_PER_SEC</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">//设置计时器</span></span><br><span class="line">dispatch_source_set_timer(_sourceTimer,startDelayTime,timeInterval*<span class="built_in">NSEC_PER_SEC</span>,<span class="number">0.1</span>*<span class="built_in">NSEC_PER_SEC</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//执行事件</span></span><br><span class="line">dispatch_source_set_event_handler(_sourceTimer,^&#123;</span><br><span class="line">    <span class="built_in">NSLog</span>(<span class="string">@&quot;111&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//启动计时器</span></span><br><span class="line">dispatch_resume(_sourceTimer);</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="3-2-关键函数"><a href="#3-2-关键函数" class="headerlink" title="3.2 关键函数"></a>3.2 关键函数</h3><ul>
 <li><p>设置定时器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_source_set_timer(dispatch_source_t source, </span><br><span class="line">                          dispatch_time_t start,</span><br><span class="line">                          uint64_t interval, </span><br><span class="line">                          uint64_t leeway);</span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dispatch_source_set_timer</span>(<span class="type">dispatch_source_t</span> source, </span><br><span class="line">                          <span class="type">dispatch_time_t</span> start,</span><br><span class="line">                          <span class="type">uint64_t</span> interval, </span><br><span class="line">                          <span class="type">uint64_t</span> leeway);</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li><code>start</code>：计时器起始时间，可以通过<code>dispatch_time</code>创建，如果使用<code>DISPATCH_TIME_NOW</code>，则创建后立即执行</li>
@@ -759,20 +863,20 @@
 </ul>
 </li>
 <li><p>暂停定时器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_suspend(dispatch_object_t object);</span><br></pre></td></tr></table></figure>
+<figure class="highlight ceylon"><table><tr><td class="code"><pre><span class="line">dispatch<span class="number">_</span>suspend(dispatch<span class="number">_</span><span class="keyword">object</span><span class="number">_</span>t <span class="keyword">object</span>);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>销毁（停止）计时器</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//销毁定时器</span><br><span class="line">dispatch_source_cancel(_sourceTimer);</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="code"><pre><span class="line"><span class="comment">//销毁定时器</span></span><br><span class="line"><span class="built_in">dispatch_source_cancel</span>(_sourceTimer);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>销毁定时器时调用函数</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">dispatch_source_set_cancel_handler(dispatch_source_t source,</span><br><span class="line">	dispatch_block_t _Nullable handler);</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">dispatch_source_set_cancel_handler</span>(<span class="type">dispatch_source_t</span> source,</span><br><span class="line">	<span class="type">dispatch_block_t</span> _Nullable handler);</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="3-3-相比前两个定时器优点"><a href="#3-3-相比前两个定时器优点" class="headerlink" title="3.3 相比前两个定时器优点"></a>3.3 相比前两个定时器优点</h3><ul>
 <li>时间准确，误差小</li>
 <li>可以使用子线程，解决定时器跑在主线程上卡UI问题</li>
 </ul>
 <h3 id="3-4-注意事项"><a href="#3-4-注意事项" class="headerlink" title="3.4 注意事项"></a>3.4 注意事项</h3><p>需要将定时器设置为成员变量，且用<code>strong</code>修饰，不然会立即释放，如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">@property (nonatomic, strong) dispatch_source_t sourceTimer;</span><br></pre></td></tr></table></figure>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@property</span> (<span class="keyword">nonatomic</span>, <span class="keyword">strong</span>) dispatch_source_t sourceTimer;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -792,131 +896,12 @@
       </tags>
   </entry>
   <entry>
-    <title>cocoapods公有库制作</title>
-    <url>/2021/04/19/cocoapods%E5%85%AC%E6%9C%89%E5%BA%93%E5%88%B6%E4%BD%9C/</url>
-    <content><![CDATA[<h2 id="1-Pod库源码制作"><a href="#1-Pod库源码制作" class="headerlink" title="1. Pod库源码制作"></a>1. <code>Pod</code>库源码制作</h2><h3 id="1-1-下载Cocoapods模板"><a href="#1-1-下载Cocoapods模板" class="headerlink" title="1.1 下载Cocoapods模板"></a>1.1 下载<code>Cocoapods</code>模板</h3><p>执行如下命令，创建一个<code>Pod</code>库项目：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod lib create pod库名</span><br></pre></td></tr></table></figure>
-
-<p>根据提示填写库的信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜  测试demo  pod lib create HYTestPods</span><br><span class="line">Cloning `https://github.com/CocoaPods/pod-template.git` into `HYTestPods`.</span><br><span class="line">Configuring HYTestPods template.</span><br><span class="line"></span><br><span class="line">------------------------------</span><br><span class="line"></span><br><span class="line">To get you started we need to ask a few questions, this should only take a minute.</span><br><span class="line"></span><br><span class="line">If this is your first time we recommend running through with the guide:</span><br><span class="line"> - https://guides.cocoapods.org/making/using-pod-lib-create.html</span><br><span class="line"> ( hold cmd and click links to open in a browser. )</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">What platform do you want to use?? [ iOS / macOS ]</span><br><span class="line"> &gt; iOS</span><br><span class="line"></span><br><span class="line">What language do you want to use?? [ Swift / ObjC ]</span><br><span class="line"> &gt; ObjC</span><br><span class="line"></span><br><span class="line">Would you like to include a demo application with your library? [ Yes / No ]</span><br><span class="line"> &gt; Yes</span><br><span class="line"></span><br><span class="line">Which testing frameworks will you use? [ Specta / Kiwi / None ]</span><br><span class="line"> &gt;</span><br><span class="line">specta</span><br><span class="line">Would you like to do view based testing? [ Yes / No ]</span><br><span class="line"> &gt; No</span><br><span class="line"></span><br><span class="line">What is your class prefix?</span><br><span class="line"> &gt; HY</span><br><span class="line">hint: Using &#x27;master&#x27; as the name for the initial branch. This default branch name</span><br><span class="line">hint: is subject to change. To configure the initial branch name to use in all</span><br><span class="line">hint: of your new repositories, which will suppress this warning, call:</span><br><span class="line">hint:</span><br><span class="line">hint: 	git config --global init.defaultBranch &lt;name&gt;</span><br><span class="line">hint:</span><br><span class="line">hint: Names commonly chosen instead of &#x27;master&#x27; are &#x27;main&#x27;, &#x27;trunk&#x27; and</span><br><span class="line">hint: &#x27;development&#x27;. The just-created branch can be renamed via this command:</span><br><span class="line">hint:</span><br><span class="line">hint: 	git branch -m &lt;name&gt;</span><br><span class="line"></span><br><span class="line">Running pod install on your new library.</span><br><span class="line"></span><br><span class="line">Analyzing dependencies</span><br><span class="line">Downloading dependencies</span><br><span class="line">Installing Expecta (1.0.6)</span><br><span class="line">Installing HYTestPods (0.1.0)</span><br><span class="line">Installing Specta (1.0.7)</span><br><span class="line">Generating Pods project</span><br><span class="line">Integrating client project</span><br><span class="line"></span><br><span class="line">[!] Please close any current Xcode sessions and use `HYTestPods.xcworkspace` for this project from now on.</span><br><span class="line">Pod installation complete! There are 3 dependencies from the Podfile and 3 total pods installed.</span><br><span class="line"></span><br><span class="line"> Ace! you&#x27;re ready to go!</span><br><span class="line"> We will start you off by opening your project in Xcode</span><br><span class="line">  open &#x27;HYTestPods/Example/HYTestPods.xcworkspace&#x27;</span><br><span class="line"></span><br><span class="line">To learn more about the template see `https://github.com/CocoaPods/pod-template.git`.</span><br><span class="line">To learn more about creating a new pod, see `https://guides.cocoapods.org/making/making-a-cocoapod`.</span><br></pre></td></tr></table></figure>
-
-<p>执行完成会自动创建指定名称的<code>Pod</code>库目录，并自动打开示例项目。<code>Pod</code>库目录结构如下：</p>
-<img src="http://res.yycode.top:8001/backup/blogImages/iOS制作私有Pod库/QQ20210419-223908@2x.png" style="zoom:50%;" />
-
-<ol>
-<li><code>Example</code>：示例代码</li>
-<li><code>HYTestPod</code>：<code>Classess</code>源代码，<code>Assets</code>资源文件</li>
-<li><code>HYTestPod.podspec</code>：记录库的信息</li>
-</ol>
-<h3 id="1-2-完善Pod配置文件"><a href="#1-2-完善Pod配置文件" class="headerlink" title="1.2 完善Pod配置文件"></a>1.2 完善<code>Pod</code>配置文件</h3><p>在<code>GitHud</code>创建私有库，修改<code>Pod</code>库配置文件<code>[YourPodName].podspec</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Pod::Spec.new do |s|</span><br><span class="line"></span><br><span class="line">  # 库名称</span><br><span class="line">  s.name             = &#x27;HYFramework&#x27;</span><br><span class="line"></span><br><span class="line">  # 指定支持的平台和版本，不写则默认支持所有的平台，如果支持多个平台，则使用下面的deployment_target定义</span><br><span class="line">  #spec.platform      = :ios</span><br><span class="line"></span><br><span class="line">  # 版本号</span><br><span class="line">  s.version          = &#x27;1.0.0&#x27;</span><br><span class="line"></span><br><span class="line">  # 库简短介</span><br><span class="line">  s.summary          = &#x27;自定义OC开发工具集&#x27;</span><br><span class="line"></span><br><span class="line"># This description is used to generate tags and improve search results.</span><br><span class="line">#   * Think: What does it do? Why did you write it? What is the focus?</span><br><span class="line">#   * Try to keep it short, snappy and to the point.</span><br><span class="line">#   * Write the description between the DESC delimiters below.</span><br><span class="line">#   * Finally, don&#x27;t worry about the indent, CocoaPods strips it!</span><br><span class="line"></span><br><span class="line">  # 开源库描述</span><br><span class="line">  s.description      = &lt;&lt;-DESC</span><br><span class="line">一套自定义的OC开发工具集</span><br><span class="line">                       DESC</span><br><span class="line"></span><br><span class="line">  # 开源库地址，或者是博客、社交地址等</span><br><span class="line">  s.homepage         = &#x27;https://github.com/MrChenYoung&#x27;</span><br><span class="line"></span><br><span class="line">  # s.screenshots     = &#x27;www.example.com/screenshots_1&#x27;, &#x27;www.example.com/screenshots_2&#x27;</span><br><span class="line">  </span><br><span class="line">  # 开源协议</span><br><span class="line">  s.license          = &#123; :type =&gt; &#x27;MIT&#x27;, :file =&gt; &#x27;LICENSE&#x27; &#125;</span><br><span class="line"></span><br><span class="line">  # 开源库作者</span><br><span class="line">  s.author           = &#123; &#x27;mrchenyoung&#x27; =&gt; &#x27;chenhuiyiyoung@163.com&#x27; &#125;</span><br><span class="line"></span><br><span class="line">  # 开源库GitHub的路径与tag值，GitHub路径后必须有.git,tag实际就是上面的版本</span><br><span class="line">  s.source           = &#123; :git =&gt; &#x27;https://github.com/mrchenyoung/HYFramework.git&#x27;, :tag =&gt; s.version.to_s &#125;</span><br><span class="line"></span><br><span class="line">  # 社交网址</span><br><span class="line">  # s.social_media_url = &#x27;https://twitter.com/&lt;TWITTER_USERNAME&gt;&#x27;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  # 开源库最低支持</span><br><span class="line">  s.ios.deployment_target = &#x27;9.0&#x27;</span><br><span class="line"></span><br><span class="line">  # 源库资源文件</span><br><span class="line">  s.source_files = &#x27;HYFramework/Classes/**/*&#x27;</span><br><span class="line">  </span><br><span class="line">  # 是否支持arc</span><br><span class="line">  s.requires_arc = true</span><br><span class="line"></span><br><span class="line">  # s.resource_bundles = &#123;</span><br><span class="line">  #   &#x27;HYFramework&#x27; =&gt; [&#x27;HYFramework/Assets/*.png&#x27;]</span><br><span class="line">  # &#125;</span><br><span class="line"></span><br><span class="line">  # s.public_header_files = &#x27;Pod/Classes/**/*.h&#x27;</span><br><span class="line"></span><br><span class="line">  # 依赖系统库</span><br><span class="line">  # s.frameworks = &#x27;UIKit&#x27;, &#x27;MapKit&#x27;</span><br><span class="line">  </span><br><span class="line">  # 开源库依赖库</span><br><span class="line">  s.dependency &#x27;AFNetworking&#x27;, &#x27;3.2.1&#x27;</span><br><span class="line">  s.dependency &#x27;Masonry&#x27;</span><br><span class="line">  s.dependency &#x27;MBProgressHUD&#x27;</span><br><span class="line">  s.dependency &#x27;MJRefresh&#x27;</span><br><span class="line">  s.dependency &#x27;YYModel&#x27;</span><br><span class="line">  s.dependency &#x27;ZLPhotoBrowser&#x27;</span><br><span class="line">  </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="1-3-源码编写"><a href="#1-3-源码编写" class="headerlink" title="1.3 源码编写"></a>1.3 源码编写</h3><p>所有的<code>pod</code>源码都存放在<code>HYTestPod</code>目录下的<code>Classes</code>目录下。示例代码中<code>Pod</code>下有一个<code>Development Pods</code>文件夹，该目录下的<code>HYTestPod</code>目录和<code>pod</code>库根文件夹下的同名目录是相关联的，保证了在示例项目中修改的源码和<code>pod</code>库根目录下同名文件夹下的源码保持一致。</p>
-<img src="http://res.yycode.top:8001/backup/blogImages/iOS制作私有Pod库/QQ20210419-224440@2x.png" style="zoom:50%;" />
-
-
-
-
-
-<h3 id="1-4-Pod配置文件验证"><a href="#1-4-Pod配置文件验证" class="headerlink" title="1.4 Pod配置文件验证"></a>1.4 <code>Pod</code>配置文件验证</h3><p>本地<code>pod</code>库配置文件验证，适用于还没有把源码提交到<code>github</code>前，本地配置的验证（如果关联有其他库，需要带<code>--use-libraries</code>参数）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod lib lint --allow-warnings</span><br></pre></td></tr></table></figure>
-
-
-
-<p>远端<code>pod</code>库配置文件的验证，验证<code>github</code>上库的配置文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod spec lint --allow-warnings</span><br></pre></td></tr></table></figure>
-
-
-
-<p>如果有如下提示，添加<code>--allow-warnings</code>参数忽略警告：</p>
-<p><img src="http://res.yycode.top:8001/backup/blogImages/iOS%E5%88%B6%E4%BD%9C%E7%A7%81%E6%9C%89Pod%E5%BA%93/QQ20210419-225830@2x.png"></p>
-<p>提示<code>HYTestPod passed validation.</code>表示验证通过。</p>
-<hr>
-<h2 id="2-提交代码到GitHub"><a href="#2-提交代码到GitHub" class="headerlink" title="2. 提交代码到GitHub"></a>2. 提交代码到<code>GitHub</code></h2><p>在<code>github</code>创建放<code>pod</code>库源码的代码库，注意<code>pod</code>库配置文件的<code>s.source</code>内的地址要和该库的地址保持一致。然后在<code>pod</code>库的根目录下执行如下命令，提交源码到<code>github</code>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#添加远端地址</span><br><span class="line">git remote add origin https://github.com/MrChenYoung/HYTestPod.git  </span><br><span class="line">#提交所有内容</span><br><span class="line">git add .  &amp;&amp; git commit -m &#x27;v1.0.0&#x27;</span><br><span class="line">#推送代码到Github</span><br><span class="line">git push origin master  </span><br><span class="line"># 添加 1.0.0 tag</span><br><span class="line">git tag 1.0.0  </span><br><span class="line">#提交tag</span><br><span class="line">git push origin 1.0.0 </span><br></pre></td></tr></table></figure>
-
-<p>现在就可以是在项目<code>podfile</code>文件中添加库信息，执行<code>pod install</code>就可以使用了：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod &#x27;HYTestPod&#x27;, :git =&gt; &#x27;https://github.com/MrChenYoung/HYTestPods.git&#x27;</span><br></pre></td></tr></table></figure>
-
-<p>但是还不能够通过<code>pod search</code>命令搜索到库，而且只有知道<code>pod</code>库的<code>git</code>地址才能够使用。</p>
-<hr>
-<h2 id="3-发布podspec配置文件到公有pod库"><a href="#3-发布podspec配置文件到公有pod库" class="headerlink" title="3. 发布podspec配置文件到公有pod库"></a>3. 发布<code>podspec</code>配置文件到公有<code>pod</code>库</h2><p>需要把<code>pod</code>库的配置文件(.podspec文件)提交到<code>cocoapods</code>的公有管理库，也就是<code>https://github.com/CocoaPods/Specs.git</code>上，才可以通过<code>pod search</code>命令查找到库，并且只要在项目的<code>podfile</code>文件中添加<code>pod  库名</code>就可以安装。</p>
-<h3 id="3-1-注册session"><a href="#3-1-注册session" class="headerlink" title="3.1 注册session"></a>3.1 注册<code>session</code></h3><p>如果是第一次发布<code>podspec</code>文件，会提示<code>[!] You need to run </code>pod trunk register<code> to register a session first.</code>，表示要先注册<code>session</code>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk register chenhuiyiyoung@163.com &#x27;code009&#x27; --description=&#x27;A description&#x27;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>chenhuiyiyoung@163.com</code>是真正的邮箱，用于注册验证</li>
-<li><code>code009</code>为用户名</li>
-<li><code>A description</code>描述文本</li>
-</ul>
-<p>执行完注册命令，会收到一封验证的邮件，复制邮件中的链接打开验证。通过一下命令查看自己的注册信息：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure>
-
-<p>给<code>pod</code>库添加拥有者：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk add-owner [POD REP NAME] [NEW EMAIL]</span><br></pre></td></tr></table></figure>
-
-<p>从<code>pod</code>库拥有者列表中移除用户：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk remove-owner [POD REP NAME] [OLD EMAIL]</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<h3 id="3-2-发布podspec"><a href="#3-2-发布podspec" class="headerlink" title="3.2 发布podspec"></a>3.2 发布<code>podspec</code></h3><p>发布<code>podspec</code>文件（如果关联有其他库，需要带<code>--use-libraries</code>参数）：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk push HYTestPods.podspec --allow-warnings</span><br></pre></td></tr></table></figure>
-
-<p>有如下提示，表示发布成功：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Updating spec repo `trunk`</span><br><span class="line"></span><br><span class="line">--------------------------------------------------------------------------------</span><br><span class="line"> 🎉  Congrats</span><br><span class="line"></span><br><span class="line"> 🚀  HYTestPods (1.0.0) successfully published</span><br><span class="line"> 📅  May 13th, 19:57</span><br><span class="line"> 🌎  https://cocoapods.org/pods/HYTestPods</span><br><span class="line"> 👍  Tell your friends!</span><br><span class="line">--------------------------------------------------------------------------------</span><br></pre></td></tr></table></figure>
-
-<p>现在就可以在项目的<code>podfile</code>文件中添加<code>pod HYTestPods</code>，然后执行<code>pod install</code>添加库到项目中了。如果<code>pod install</code>提示找不到库，执行<code>pod install --repo-update</code>命令。</p>
-<hr>
-<h2 id="4-pod库版本更新"><a href="#4-pod库版本更新" class="headerlink" title="4. pod库版本更新"></a>4. <code>pod</code>库版本更新</h2><ul>
-<li><p>更新新版本源码</p>
-</li>
-<li><p>更改<code>.podspec</code>文件中<code>s.version</code>字段为最新版本号，如<code>2.0.0</code></p>
-</li>
-<li><p>提交代码到<code>github</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &#x27;new version&#x27;</span><br><span class="line">git tag 2.0.0</span><br><span class="line">git push orign master</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>发布新版<code>.podspec</code>文件到<code>pod</code>公有库中（如果关联有其他库，需要带<code>--use-libraries</code>参数）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pod trunk push HYTestPods.podspec --allow-warnings</span><br></pre></td></tr></table></figure>
-
-<p>如果<code>pod search</code>搜索不到新版本，先执行<code>pod repo update</code>命令，然后在搜索。</p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>iOS</category>
-        <category>CocoaPods</category>
-      </categories>
-      <tags>
-        <tag>iOS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>内存面试题</title>
-    <url>/2021/06/28/%E5%86%85%E5%AD%98%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
-    <content><![CDATA[<p>123456</p>
-]]></content>
-      <categories>
-        <category>iOS</category>
-        <category>OC</category>
-        <category>面试题</category>
-      </categories>
-      <tags>
-        <tag>OC</tag>
-        <tag>面试题</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>个人简历2021</title>
     <url>/2021/06/08/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%862021/</url>
     <content><![CDATA[<h1 style="text-align:center">简  历</h1>
 
 
-<h2 id="陈会毅"><a href="#陈会毅" class="headerlink" title="陈会毅"></a>陈会毅</h2><p><i class="fa fa-phone-square" style="font-size: 18px;"></i> 13761943167&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope"></i> <a href="mailto:&#x63;&#104;&#101;&#x6e;&#x68;&#117;&#105;&#x79;&#105;&#121;&#x6f;&#117;&#x6e;&#x67;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#104;&#101;&#x6e;&#x68;&#117;&#105;&#x79;&#105;&#121;&#x6f;&#117;&#x6e;&#x67;&#64;&#x67;&#x6d;&#x61;&#x69;&#108;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<h2 id="陈会毅"><a href="#陈会毅" class="headerlink" title="陈会毅"></a>陈会毅</h2><p><i class="fa fa-phone-square" style="font-size: 18px;"></i> 13761943167&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope"></i> <a href="mailto:&#99;&#x68;&#x65;&#110;&#104;&#117;&#105;&#121;&#105;&#121;&#111;&#x75;&#110;&#103;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;">&#99;&#x68;&#x65;&#110;&#104;&#117;&#105;&#121;&#105;&#121;&#111;&#x75;&#110;&#103;&#64;&#x67;&#109;&#97;&#105;&#x6c;&#46;&#x63;&#x6f;&#109;</a></p>
 <hr>
 <h5 id="个人信息"><a href="#个人信息" class="headerlink" title=" 个人信息"></a><i class="fa fa-user"></i> 个人信息</h5><ul>
 <li>本科&#x2F;软件工程</li>
@@ -1193,6 +1178,21 @@
       </tags>
   </entry>
   <entry>
+    <title>内存面试题</title>
+    <url>/2021/06/28/%E5%86%85%E5%AD%98%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<p>123456</p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+        <category>OC</category>
+        <category>面试题</category>
+      </categories>
+      <tags>
+        <tag>面试题</tag>
+        <tag>OC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>手动申请SSL证书</title>
     <url>/2021/06/22/%E6%89%8B%E5%8A%A8%E7%94%B3%E8%AF%B7SSL%E8%AF%81%E4%B9%A6/</url>
     <content><![CDATA[<h2 id="1-下载KeyManager"><a href="#1-下载KeyManager" class="headerlink" title="1. 下载KeyManager"></a>1. 下载<code>KeyManager</code></h2><ul>
@@ -1233,6 +1233,35 @@
       </tags>
   </entry>
   <entry>
+    <title>测试</title>
+    <url>/2023/11/20/%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>报价</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>实现在设置中搜索不到<code>信息</code>应用</td>
+<td>800</td>
+</tr>
+<tr>
+<td><code>iMessage</code>信息存储到手机硬盘</td>
+<td>700</td>
+</tr>
+<tr>
+<td>长按列表头像弹出菜单</td>
+<td>500</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>2000</td>
+</tr>
+</tbody></table>
+]]></content>
+  </entry>
+  <entry>
     <title>备忘录</title>
     <url>/2021/07/01/%E5%A4%87%E5%BF%98%E5%BD%95/</url>
     <content><![CDATA[<h2 id="1-网站自动化部署"><a href="#1-网站自动化部署" class="headerlink" title="1. 网站自动化部署"></a>1. 网站自动化部署</h2><h3 id="1-拷贝部署程序"><a href="#1-拷贝部署程序" class="headerlink" title="1.拷贝部署程序"></a>1.拷贝部署程序</h3><p>git clone <a href="https://github.com/MrChenYoung/AutoDeployShell.git">https://github.com/MrChenYoung/AutoDeployShell.git</a> &amp;&amp; chmod -R 700 AutoDeployShell &amp;&amp; cd AutoDeployShell</p>
@@ -1268,10 +1297,10 @@
 <p>progress</p>
 <p>watch progress -q</p>
 <p>progress -w</p>
-<h3 id="3-远程拷贝"><a href="#3-远程拷贝" class="headerlink" title="3. 远程拷贝"></a>3. 远程拷贝</h3><p>scp -r -P 9156 <a href="mailto:&#x72;&#x6f;&#x6f;&#116;&#64;&#100;&#100;&#x6e;&#115;&#x2e;&#x79;&#121;&#99;&#x6f;&#100;&#x65;&#46;&#x74;&#x6f;&#112;">&#x72;&#x6f;&#x6f;&#116;&#64;&#100;&#100;&#x6e;&#115;&#x2e;&#x79;&#121;&#99;&#x6f;&#100;&#x65;&#46;&#x74;&#x6f;&#112;</a>:&#x2F;www&#x2F;wwwroot&#x2F;res.yycode.ml&#x2F;NextCloud&#x2F;disk4T&#x2F;电影&#x2F;拆弹专家2 (2020) &#x2F;www&#x2F;wwwroot&#x2F;</p>
+<h3 id="3-远程拷贝"><a href="#3-远程拷贝" class="headerlink" title="3. 远程拷贝"></a>3. 远程拷贝</h3><p>scp -r -P 9156 <a href="mailto:&#114;&#x6f;&#x6f;&#x74;&#64;&#100;&#100;&#110;&#115;&#x2e;&#121;&#x79;&#x63;&#x6f;&#x64;&#x65;&#46;&#116;&#111;&#x70;">&#114;&#x6f;&#x6f;&#x74;&#64;&#100;&#100;&#110;&#115;&#x2e;&#121;&#x79;&#x63;&#x6f;&#x64;&#x65;&#46;&#116;&#111;&#x70;</a>:&#x2F;www&#x2F;wwwroot&#x2F;res.yycode.ml&#x2F;NextCloud&#x2F;disk4T&#x2F;电影&#x2F;拆弹专家2 (2020) &#x2F;www&#x2F;wwwroot&#x2F;</p>
 <h3 id="4-yum删除指定服务"><a href="#4-yum删除指定服务" class="headerlink" title="4. yum删除指定服务"></a>4. yum删除指定服务</h3><p>yum list installed</p>
 <p>yum remove jellyfin.x86_64</p>
-<h3 id="5-免密登录设置，拷贝本地rsa公钥到远端"><a href="#5-免密登录设置，拷贝本地rsa公钥到远端" class="headerlink" title="5. 免密登录设置，拷贝本地rsa公钥到远端"></a>5. 免密登录设置，拷贝本地rsa公钥到远端</h3><p>ssh-copy-id -i ~&#x2F;.ssh&#x2F;id_rsa.pub <a href="mailto:&#97;&#100;&#x6d;&#105;&#110;&#x40;&#119;&#119;&#x77;&#x2e;&#x79;&#x79;&#99;&#111;&#100;&#x65;&#46;&#x74;&#111;&#112;">&#97;&#100;&#x6d;&#105;&#110;&#x40;&#119;&#119;&#x77;&#x2e;&#x79;&#x79;&#99;&#111;&#100;&#x65;&#46;&#x74;&#111;&#112;</a> -p 9156</p>
+<h3 id="5-免密登录设置，拷贝本地rsa公钥到远端"><a href="#5-免密登录设置，拷贝本地rsa公钥到远端" class="headerlink" title="5. 免密登录设置，拷贝本地rsa公钥到远端"></a>5. 免密登录设置，拷贝本地rsa公钥到远端</h3><p>ssh-copy-id -i ~&#x2F;.ssh&#x2F;id_rsa.pub <a href="mailto:&#97;&#100;&#109;&#105;&#x6e;&#x40;&#119;&#119;&#x77;&#x2e;&#x79;&#121;&#x63;&#111;&#100;&#x65;&#x2e;&#116;&#111;&#x70;">&#97;&#100;&#109;&#105;&#x6e;&#x40;&#119;&#119;&#x77;&#x2e;&#x79;&#121;&#x63;&#111;&#100;&#x65;&#x2e;&#116;&#111;&#x70;</a> -p 9156</p>
 <hr>
 <h2 id="4-rclone相关"><a href="#4-rclone相关" class="headerlink" title="4. rclone相关"></a>4. rclone相关</h2><h3 id="1-rclone挂载谷歌云盘"><a href="#1-rclone挂载谷歌云盘" class="headerlink" title="1. rclone挂载谷歌云盘"></a>1. rclone挂载谷歌云盘</h3><p>#设置rclone代理</p>
 <p>export HTTP_PROXY&#x3D;<a href="http://127.0.0.1:9002/">http://127.0.0.1:9002</a>;</p>
@@ -1451,7 +1480,7 @@
 
 
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Copyright (c) 2019-2029 TSBasicsKit Software Foundation (https://github.com/xxx/TSBasicsKit/)</span><br><span class="line"></span><br><span class="line">Permission is hereby granted, free of charge, to any person obtaining a copy</span><br><span class="line">of this software and associated documentation files (the &quot;Software&quot;), to deal</span><br><span class="line">in the Software without restriction, including without limitation the rights</span><br><span class="line">to use, copy, modify, merge, publish, distribute, sublicense, and/or sell</span><br><span class="line">copies of the Software, and to permit persons to whom the Software is</span><br><span class="line">furnished to do so, subject to the following conditions:</span><br><span class="line"></span><br><span class="line">The above copyright notice and this permission notice shall be included in</span><br><span class="line">all copies or substantial portions of the Software.</span><br><span class="line"></span><br><span class="line">THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span><br><span class="line">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span><br><span class="line">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span><br><span class="line">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span><br><span class="line">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span><br><span class="line">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span><br><span class="line">THE SOFTWARE.</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">Copyright (c) <span class="number">2019</span><span class="number">-2029</span> TSBasicsKit Software Foundation (<span class="keyword">https</span>://github.com/xxx/TSBasicsKit/)</span><br><span class="line"></span><br><span class="line">Permission is hereby granted, free <span class="keyword">of</span> charge, <span class="built_in">to</span> <span class="keyword">any</span> person obtaining <span class="keyword">a</span> copy</span><br><span class="line"><span class="keyword">of</span> this software <span class="keyword">and</span> associated documentation <span class="built_in">files</span> (<span class="keyword">the</span> <span class="string">&quot;Software&quot;</span>), <span class="built_in">to</span> deal</span><br><span class="line"><span class="keyword">in</span> <span class="keyword">the</span> Software <span class="keyword">without</span> restriction, including <span class="keyword">without</span> limitation <span class="keyword">the</span> rights</span><br><span class="line"><span class="built_in">to</span> use, copy, modify, <span class="built_in">merge</span>, publish, distribute, sublicense, <span class="keyword">and</span>/<span class="keyword">or</span> sell</span><br><span class="line">copies <span class="keyword">of</span> <span class="keyword">the</span> Software, <span class="keyword">and</span> <span class="built_in">to</span> permit persons <span class="built_in">to</span> whom <span class="keyword">the</span> Software is</span><br><span class="line">furnished <span class="built_in">to</span> <span class="built_in">do</span> so, subject <span class="built_in">to</span> <span class="keyword">the</span> following conditions:</span><br><span class="line"></span><br><span class="line">The above copyright notice <span class="keyword">and</span> this permission notice shall be included <span class="keyword">in</span></span><br><span class="line">all copies <span class="keyword">or</span> substantial portions <span class="keyword">of</span> <span class="keyword">the</span> Software.</span><br><span class="line"></span><br><span class="line">THE SOFTWARE IS PROVIDED <span class="string">&quot;AS IS&quot;</span>, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR</span><br><span class="line">IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,</span><br><span class="line">FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE</span><br><span class="line">AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER</span><br><span class="line">LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,</span><br><span class="line">OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN</span><br><span class="line">THE SOFTWARE.</span><br></pre></td></tr></table></figure>
 
 
 
@@ -1509,11 +1538,11 @@
 
 
 <p>Vultr </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">fengzyuer@gmail.com</span><br><span class="line">Chy199156*</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="code"><pre><span class="line"><span class="symbol">fengzyuer@</span>gmail.com</span><br><span class="line">Chy199156*</span><br></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">gclone copy QYD:&#123;0APlzVXJfiuDEUk9PVA&#125;  ZC:&#123;1OvRSBi3o0ZMONkR_KXzWVpFMiTKXnn4n&#125;  --drive-server-side-across-configs -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">gclone copy QYD:&#123;<span class="number">0</span>APlzVXJfiuDEUk9PVA&#125;  ZC:&#123;<span class="number">1</span>OvRSBi3o0ZMONkR_KXzWVpFMiTKXnn4n&#125;  <span class="attr">--drive-server-side-across-configs</span> -v</span><br></pre></td></tr></table></figure>
 
 
 
@@ -1527,47 +1556,25 @@
       </tags>
   </entry>
   <entry>
-    <title>测试文章</title>
-    <url>/2023/11/23/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[]]></content>
+    <title>第一篇博客</title>
+    <url>/2023/11/16/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h2 id="1-标题一"><a href="#1-标题一" class="headerlink" title="1. 标题一"></a>1. 标题一</h2><h2 id="2-标题二"><a href="#2-标题二" class="headerlink" title="2. 标题二"></a>2. 标题二</h2><h2 id="3-标题三"><a href="#3-标题三" class="headerlink" title="3. 标题三"></a>3. 标题三</h2>]]></content>
   </entry>
   <entry>
-    <title>测试</title>
-    <url>/2023/11/20/%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<table>
-<thead>
-<tr>
-<th>功能</th>
-<th>报价</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>实现在设置中搜索不到<code>信息</code>应用</td>
-<td>800</td>
-</tr>
-<tr>
-<td><code>iMessage</code>信息存储到手机硬盘</td>
-<td>700</td>
-</tr>
-<tr>
-<td>长按列表头像弹出菜单</td>
-<td>500</td>
-</tr>
-<tr>
-<td>总计</td>
-<td>2000</td>
-</tr>
-</tbody></table>
+    <title>测试文章</title>
+    <url>/2023/11/23/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="type">void</span> OnFloorIndexPanelStateConfig(<span class="type">bool</span> <span class="keyword">show</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (buildingObj &amp;&amp; floorIndexPanelObj) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; buildingObj.<span class="keyword">transform</span>.childCount; i++) &#123;</span><br><span class="line">                <span class="keyword">Transform</span> child = buildingObj.<span class="keyword">transform</span>.GetChild(i);</span><br><span class="line">                BuildingFloorSplitFloorInfo floorInfo = child.GetComponent&lt;BuildingFloorSplitFloorInfo&gt;();</span><br><span class="line">                <span class="keyword">if</span> (floorInfo &amp;&amp; floorInfo.floorIndexPanelObj) &#123;</span><br><span class="line">                    Vector3 offsetPos = i * <span class="built_in">new</span> Vector3(<span class="number">0</span>, <span class="number">10</span>f, <span class="number">0</span>);</span><br><span class="line">                    <span class="keyword">if</span> (<span class="keyword">show</span>)</span><br><span class="line">                    &#123;</span><br><span class="line">                        floorInfo.floorIndexPanelObj.<span class="keyword">transform</span>.position = floorInfo.floorIndexPanelOriginPosition + offsetPos;</span><br><span class="line">                        floorIndexPanelObj.SetActive(<span class="keyword">show</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span></span><br><span class="line">                    &#123;</span><br><span class="line">                        floorIndexPanelObj.SetActive(<span class="keyword">show</span>);</span><br><span class="line">                        floorInfo.floorIndexPanelObj.<span class="keyword">transform</span>.position = floorInfo.floorIndexPanelOriginPosition - offsetPos;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
+      <categories>
+        <category>iOS</category>
+        <category>OC</category>
+        <category>基础知识</category>
+      </categories>
   </entry>
   <entry>
     <title>第二篇博客</title>
     <url>/2023/11/16/%E7%AC%AC%E4%BA%8C%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h1 id="1-标题一"><a href="#1-标题一" class="headerlink" title="1. 标题一"></a>1. 标题一</h1><h1 id="2-标题二"><a href="#2-标题二" class="headerlink" title="2. 标题二"></a>2. 标题二</h1><h1 id="3-标题三"><a href="#3-标题三" class="headerlink" title="3. 标题三"></a>3. 标题三</h1>]]></content>
-  </entry>
-  <entry>
-    <title>第一篇博客</title>
-    <url>/2023/11/16/%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h2 id="1-标题一"><a href="#1-标题一" class="headerlink" title="1. 标题一"></a>1. 标题一</h2><h2 id="2-标题二"><a href="#2-标题二" class="headerlink" title="2. 标题二"></a>2. 标题二</h2><h2 id="3-标题三"><a href="#3-标题三" class="headerlink" title="3. 标题三"></a>3. 标题三</h2>]]></content>
   </entry>
 </search>

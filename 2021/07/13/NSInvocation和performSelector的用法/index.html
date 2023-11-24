@@ -22,8 +22,8 @@
 </style><meta name="generator" content="Hexo 7.0.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.jpg">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
@@ -33,7 +33,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="article">
 <meta property="og:title" content="NSInvocation和performSelector的用法">
@@ -104,7 +104,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-top"><a href="/top/" rel="section"><i class="fa fa-signal fa-fw"></i>排行榜</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-top"><a href="/top/" rel="section"><i class="fa fa-signal fa-fw"></i>排行榜</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -569,15 +569,15 @@ if(canvas.getContext){
 <h2 id="2-基本使用"><a href="#2-基本使用" class="headerlink" title="2. 基本使用"></a>2. 基本使用</h2><h3 id="2-1-performSelector"><a href="#2-1-performSelector" class="headerlink" title="2.1 performSelector"></a>2.1 <code>performSelector</code></h3><p>根据参数个数使用指定以<code>performSelector</code>开头的方法，返回值均可以可无，如果有返回值<code>performSelector</code>方法将其返回。</p>
 <ul>
 <li><p>调用没有参数，没有返回值的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector;</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- <span class="params">(id)</span>performSelector:<span class="params">(SEL)</span>aSelector;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>调用有一个参数的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector withObject:(id)object;</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- <span class="params">(id)</span>performSelector:<span class="params">(SEL)</span>aSelector withObject:<span class="params">(id)</span>object;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>调用有两个参数的方法</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- (id)performSelector:(SEL)aSelector withObject:(id)object1 withObject:(id)object2;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">- <span class="params">(id)</span>performSelector:<span class="params">(SEL)</span>aSelector withObject:<span class="params">(id)</span>object1 withObject:<span class="params">(id)</span>object2;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="2-2-NSInvocation"><a href="#2-2-NSInvocation" class="headerlink" title="2.2 NSInvocation"></a>2.2 <code>NSInvocation</code></h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// 方法签名(方法的描述)</span><br><span class="line">NSMethodSignature *signature = [[Weakself class] instanceMethodSignatureForSelector:@selector(test3:par2:par3:)];</span><br><span class="line">if (signature == nil) &#123;</span><br><span class="line">      // 方法不存在，提示或抛出异常</span><br><span class="line">      NSLog(@&quot;%@方法不存在&quot;,NSStringFromSelector(@selector(test3:par2:par3:)));</span><br><span class="line">      return;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  // NSInvocation : 利用一个NSInvocation对象包装一次方法调用（方法调用者、方法名、方法参数、方法返回值）</span><br><span class="line">  NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];</span><br><span class="line">  // 设置方法调用者</span><br><span class="line">  invocation.target = Weakself;</span><br><span class="line">  // 方法名，一定要和方法签名类中的一致</span><br><span class="line">  invocation.selector = @selector(test3:par2:par3:);</span><br><span class="line"></span><br><span class="line">  // 设置参数,默认已经有self和_cmd两个参数了</span><br><span class="line">  NSString *par1 = @&quot;参数1&quot;;</span><br><span class="line">  NSString *par2 = @&quot;参数2&quot;;</span><br><span class="line">  NSString *par3 = @&quot;参数3&quot;;</span><br><span class="line">  [invocation setArgument:&amp;par1 atIndex:2];</span><br><span class="line">  [invocation setArgument:&amp;par2 atIndex:3];</span><br><span class="line">  [invocation setArgument:&amp;par3 atIndex:4];</span><br><span class="line"></span><br><span class="line">  // 调用方法</span><br><span class="line">  [invocation invoke];</span><br><span class="line"></span><br><span class="line">  // 获取返回值</span><br><span class="line"> id returnValue = nil;</span><br><span class="line">  // 有返回值类型，才去获得返回值</span><br><span class="line"> if (signature.methodReturnLength) &#123;</span><br><span class="line">     [invocation getReturnValue:&amp;returnValue];</span><br><span class="line">     NSLog(@&quot;返回值:%@&quot;,returnValue);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-NSInvocation"><a href="#2-2-NSInvocation" class="headerlink" title="2.2 NSInvocation"></a>2.2 <code>NSInvocation</code></h3><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方法签名(方法的描述)</span></span><br><span class="line"><span class="built_in">NSMethodSignature</span> *signature = [[Weakself <span class="keyword">class</span>] instanceMethodSignatureForSelector:<span class="keyword">@selector</span>(test3:par2:par3:)];</span><br><span class="line"><span class="keyword">if</span> (signature == <span class="literal">nil</span>) &#123;</span><br><span class="line">      <span class="comment">// 方法不存在，提示或抛出异常</span></span><br><span class="line">      <span class="built_in">NSLog</span>(<span class="string">@&quot;%@方法不存在&quot;</span>,<span class="built_in">NSStringFromSelector</span>(<span class="keyword">@selector</span>(test3:par2:par3:)));</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// NSInvocation : 利用一个NSInvocation对象包装一次方法调用（方法调用者、方法名、方法参数、方法返回值）</span></span><br><span class="line">  <span class="built_in">NSInvocation</span> *invocation = [<span class="built_in">NSInvocation</span> invocationWithMethodSignature:signature];</span><br><span class="line">  <span class="comment">// 设置方法调用者</span></span><br><span class="line">  invocation.target = Weakself;</span><br><span class="line">  <span class="comment">// 方法名，一定要和方法签名类中的一致</span></span><br><span class="line">  invocation.selector = <span class="keyword">@selector</span>(test3:par2:par3:);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置参数,默认已经有self和_cmd两个参数了</span></span><br><span class="line">  <span class="built_in">NSString</span> *par1 = <span class="string">@&quot;参数1&quot;</span>;</span><br><span class="line">  <span class="built_in">NSString</span> *par2 = <span class="string">@&quot;参数2&quot;</span>;</span><br><span class="line">  <span class="built_in">NSString</span> *par3 = <span class="string">@&quot;参数3&quot;</span>;</span><br><span class="line">  [invocation setArgument:&amp;par1 atIndex:<span class="number">2</span>];</span><br><span class="line">  [invocation setArgument:&amp;par2 atIndex:<span class="number">3</span>];</span><br><span class="line">  [invocation setArgument:&amp;par3 atIndex:<span class="number">4</span>];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 调用方法</span></span><br><span class="line">  [invocation invoke];</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取返回值</span></span><br><span class="line"> <span class="type">id</span> returnValue = <span class="literal">nil</span>;</span><br><span class="line">  <span class="comment">// 有返回值类型，才去获得返回值</span></span><br><span class="line"> <span class="keyword">if</span> (signature.methodReturnLength) &#123;</span><br><span class="line">     [invocation getReturnValue:&amp;returnValue];</span><br><span class="line">     <span class="built_in">NSLog</span>(<span class="string">@&quot;返回值:%@&quot;</span>,returnValue);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -589,10 +589,31 @@ if(canvas.getContext){
     
     
 
-    <footer class="post-footer">
+    <footer class="post-footer"><div>
+  <div class="end-slogan" style="text-align:center;font-size:22px;letter-spacing:10px;user-seclect:none;color:#bbb">----------- 本文结束啦<i class="fa fa-star"></i>感谢您阅读-----------</div>		
+</div>
+
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="code009 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="code009 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
           <div class="post-tags">
-              <a href="/tags/OC/" rel="tag"># OC</a>
-              <a href="/tags/NSInvocation/" rel="tag"># NSInvocation</a>
+              <a href="/tags/OC/" rel="tag"><i class="fa fa-tag"></i> OC</a>
+              <a href="/tags/NSInvocation/" rel="tag"><i class="fa fa-tag"></i> NSInvocation</a>
           </div>
 
         
@@ -645,27 +666,68 @@ if(canvas.getContext){
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:03</span>
+    <span title="站点阅读时长">1:04</span>
   </span>
 </div>
 <div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
 </div>
+
+
+  <div>
+   <span id="sitetime"></span>
+   <span id="year" style="display:none">2023</span> 
+   <span id="month" style="display:none">11</span>   
+   <span id="day" style="display:none">1</span>   
+   <span id="hour" style="display:none">0</span>   
+   <span id="minute" style="display:none">0</span>   
+   <span id="second" style="display:none">0</span>   
+	<script language=javascript>
+	function siteTime(){        
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数 */        
+		var year = document.getElementById("year").innerHTML;
+		var month = document.getElementById("month").innerHTML;
+		var day = document.getElementById("day").innerHTML;
+		var hour = document.getElementById("hour").innerHTML;
+		var minute = document.getElementById("minute").innerHTML;
+		var second = document.getElementById("second").innerHTML;//北京时间2018-2-13 00:00:00
+		var t1 = Date.UTC(year,month,day,hour,minute,second); 
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		if(diffYears==0){
+		document.getElementById("sitetime").innerHTML=" 本站已安全运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+		} else{
+		document.getElementById("sitetime").innerHTML=" 本站已安全运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+		}
+	}
+	//siteTime(document.getElementById("year").innerHTML,document.getElementById("year").innerHTML,document.getElementById("year").innerHTML,document.getElementById("year").innerHTML,document.getElementById("year").innerHTML,0);
+	siteTime();
+	</script>
+</div>  
 
     </div>
   </footer>

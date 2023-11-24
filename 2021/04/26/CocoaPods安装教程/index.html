@@ -22,8 +22,8 @@
 </style><meta name="generator" content="Hexo 7.0.0">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/avatar.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/avatar.jpg">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
 <link rel="stylesheet" href="/css/main.css">
@@ -33,7 +33,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha256-CTSx/A06dm1B063156EVh15m6Y67pAjZZaQc89LLSrU=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.18.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="CocoaPods简介CocoaPods是用Ruby写的，用于iOS开发中第三方开源库的管理。安装CocoaPods要用到gem。  1. gem使用1.1 gem简介 RubyGems是Ruby的一个包管理器，提供了分发Ruby程序和库的标准格式“gem”，旨在方便地管理gem安装的工具，以及用于分发gem的服务器。 –维基百科 Gem是封装起来的Ruby应用程序或代码库。 注：在终端使用的ge">
 <meta property="og:type" content="article">
@@ -105,7 +105,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-top"><a href="/top/" rel="section"><i class="fa fa-signal fa-fw"></i>排行榜</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-top"><a href="/top/" rel="section"><i class="fa fa-signal fa-fw"></i>排行榜</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -561,14 +561,14 @@ if(canvas.getContext){
 <p>注：在终端使用的gem命令，是指通过RubyGems管理Gem包。</p>
 </blockquote>
 <h3 id="1-2-gem安装"><a href="#1-2-gem安装" class="headerlink" title="1.2 gem安装"></a>1.2 <code>gem</code>安装</h3><p><code>Mac</code>自带<code>gem</code>。</p>
-<h3 id="1-3-ruby和gem常用命令"><a href="#1-3-ruby和gem常用命令" class="headerlink" title="1.3 ruby和gem常用命令"></a>1.3 <code>ruby</code>和<code>gem</code>常用命令</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">ruby -v #查看ruby版本</span><br><span class="line">gem -v  #查看gem版本</span><br><span class="line">gem update --system #更新RubyGems软件自身</span><br><span class="line">gem update #更新gem安装的所有程序包</span><br><span class="line">gem up date xxx #更新某个程序包</span><br><span class="line"></span><br><span class="line">gem sources -l #列出安装源</span><br><span class="line">gem sources -a XXX #添加安装源</span><br><span class="line">gem sources -r XXX #删除安装源</span><br><span class="line">gem sources -u #更新安装源</span><br><span class="line"></span><br><span class="line">gem install xxx #安装xxx,从本地或远程服务器</span><br><span class="line">gem install xxx --remote #安装xxx,从远程服务器</span><br><span class="line">gem install xxx -v(或者--version) 1.6.2  #指定安装版本的</span><br><span class="line">gem uninstall xxx #卸载xxx包,删除所有版本</span><br><span class="line">gem uninstall xxx -v 1.6.2 #卸载1.6.2版本的xxx包</span><br><span class="line"></span><br><span class="line">gem list #列出本地gem安装的所有程序包</span><br><span class="line">gem list d #列出本地以d开头的程序包</span><br><span class="line">gem list | grep cocoapods   #查看已安装cocoapods版本</span><br><span class="line"></span><br><span class="line">gem search log --both #从本地和远程服务器上查找含有log字符串的包</span><br><span class="line">gem search log --remoter #只从远程服务器上查找含有log字符串的包</span><br><span class="line">gem search -r log #只从远程服务器上查找含有log字符串的包</span><br></pre></td></tr></table></figure>
+<h3 id="1-3-ruby和gem常用命令"><a href="#1-3-ruby和gem常用命令" class="headerlink" title="1.3 ruby和gem常用命令"></a>1.3 <code>ruby</code>和<code>gem</code>常用命令</h3><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">ruby</span> -<span class="string">v</span> <span class="comment">#查看ruby版本</span></span><br><span class="line"><span class="string">gem</span> -<span class="string">v</span>  <span class="comment">#查看gem版本</span></span><br><span class="line"><span class="string">gem</span> <span class="string">update</span> <span class="built_in">--system</span> <span class="comment">#更新RubyGems软件自身</span></span><br><span class="line"><span class="string">gem</span> <span class="string">update</span> <span class="comment">#更新gem安装的所有程序包</span></span><br><span class="line"><span class="string">gem</span> <span class="string">up</span> <span class="string">date</span> <span class="string">xxx</span> <span class="comment">#更新某个程序包</span></span><br><span class="line"></span><br><span class="line"><span class="string">gem</span> <span class="string">sources</span> -<span class="string">l</span> <span class="comment">#列出安装源</span></span><br><span class="line"><span class="string">gem</span> <span class="string">sources</span> -<span class="string">a</span> <span class="string">XXX</span> <span class="comment">#添加安装源</span></span><br><span class="line"><span class="string">gem</span> <span class="string">sources</span> -<span class="string">r</span> <span class="string">XXX</span> <span class="comment">#删除安装源</span></span><br><span class="line"><span class="string">gem</span> <span class="string">sources</span> -<span class="string">u</span> <span class="comment">#更新安装源</span></span><br><span class="line"></span><br><span class="line"><span class="string">gem</span> <span class="string">install</span> <span class="string">xxx</span> <span class="comment">#安装xxx,从本地或远程服务器</span></span><br><span class="line"><span class="string">gem</span> <span class="string">install</span> <span class="string">xxx</span> <span class="built_in">--remote</span> <span class="comment">#安装xxx,从远程服务器</span></span><br><span class="line"><span class="string">gem</span> <span class="string">install</span> <span class="string">xxx</span> -<span class="string">v</span>(或者<span class="built_in">--version)</span> <span class="string">1</span>.<span class="string">6</span>.<span class="string">2</span>  <span class="comment">#指定安装版本的</span></span><br><span class="line"><span class="string">gem</span> <span class="string">uninstall</span> <span class="string">xxx</span> <span class="comment">#卸载xxx包,删除所有版本</span></span><br><span class="line"><span class="string">gem</span> <span class="string">uninstall</span> <span class="string">xxx</span> -<span class="string">v</span> <span class="string">1</span>.<span class="string">6</span>.<span class="string">2</span> <span class="comment">#卸载1.6.2版本的xxx包</span></span><br><span class="line"></span><br><span class="line"><span class="string">gem</span> <span class="string">list</span> <span class="comment">#列出本地gem安装的所有程序包</span></span><br><span class="line"><span class="string">gem</span> <span class="string">list</span> <span class="string">d</span> <span class="comment">#列出本地以d开头的程序包</span></span><br><span class="line"><span class="string">gem</span> <span class="string">list</span> | <span class="string">grep</span> <span class="string">cocoapods</span>   <span class="comment">#查看已安装cocoapods版本</span></span><br><span class="line"></span><br><span class="line"><span class="string">gem</span> <span class="string">search</span> <span class="string">log</span> <span class="built_in">--both</span> <span class="comment">#从本地和远程服务器上查找含有log字符串的包</span></span><br><span class="line"><span class="string">gem</span> <span class="string">search</span> <span class="string">log</span> <span class="built_in">--remoter</span> <span class="comment">#只从远程服务器上查找含有log字符串的包</span></span><br><span class="line"><span class="string">gem</span> <span class="string">search</span> -<span class="string">r</span> <span class="string">log</span> <span class="comment">#只从远程服务器上查找含有log字符串的包</span></span><br></pre></td></tr></table></figure>
 
 
 
 <hr>
 <h2 id="2-安装ruby"><a href="#2-安装ruby" class="headerlink" title="2. 安装ruby"></a>2. 安装<code>ruby</code></h2><ul>
 <li><p>查看<code>ruby</code>版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ruby -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">ruby -v</span></span><br></pre></td></tr></table></figure>
 
 <p>如果提示不识别的命令，标识没有安装<code>ruby</code>，需要执行以下步骤安装。</p>
 </li>
@@ -576,35 +576,35 @@ if(canvas.getContext){
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -L get.rvm.io | bash -s stable </span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bash_profile</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看<code>rvm</code>版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm -v</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rvm -v</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看可安装的<code>ruby</code>版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm list known</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rvm list known</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装指定版本的<code>ruby</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm install 2.7.0</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rvm</span> install <span class="number">2</span>.<span class="number">7</span>.<span class="number">0</span></span><br></pre></td></tr></table></figure>
 
 <p>如果没有安装<code>Xcode</code>和<code>Command Line Tools for Xcode</code>以及<code>Homebrew</code>会自动下载安装，建议提前安装好。</p>
 </li>
 <li><p>设置默认<code>ruby</code>版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rvm use 2.7.0 --default</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">rvm</span> use <span class="number">2</span>.<span class="number">7</span>.<span class="number">0</span> --default</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看当前<code>ruby</code>源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem sources -l</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">gem sources -l</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>更换<code>ruby</code>源，<code>ruby</code>默认的源地址<code>https://rubygems.org/</code>在国外，安装<code>cocoapods</code>可能会报错，最好切换到国内镜像源<code>https://gems.ruby-china.com/</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gem sources --remove https://rubygems.org/  #移除默认源</span><br><span class="line">gem sources --add https://gems.ruby-china.com/ #添加新的源</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gem sources <span class="params">--remove</span> https:<span class="string">//rubygems.org/</span>  <span class="comment">#移除默认源</span></span><br><span class="line">gem sources <span class="params">--add</span> https:<span class="string">//gems.ruby-china.com/</span> <span class="comment">#添加新的源</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
 <h2 id="3-安装CocoaPods"><a href="#3-安装CocoaPods" class="headerlink" title="3. 安装CocoaPods"></a>3. 安装<code>CocoaPods</code></h2><ul>
 <li><p>如果安装多个<code>Xcode</code>，需要选择版本，一般需要选择最近的Xcode版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xcode-select -switch /Applications/Xcode.app/Contents/Developer</span><br></pre></td></tr></table></figure>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xcode-select -<span class="keyword">switch</span> <span class="regexp">/Applications/</span>Xcode.app<span class="regexp">/Contents/</span>Developer</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装<code>CocoaPods</code></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo gem install cocoapods  #安装最新版cocoapods</span><br><span class="line">sudo gem install cocoapods -v 1.8.4  #安装指定版本的cocoapods</span><br><span class="line">sudo gem install -n /usr/local/bin  cocoapods -v 1.8.4  #安装指定版本的cocoapods</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> gem install cocoapods  #安装最新版cocoapods</span><br><span class="line"><span class="attribute">sudo</span> gem install cocoapods -v <span class="number">1</span>.<span class="number">8</span>.<span class="number">4</span>  #安装指定版本的cocoapods</span><br><span class="line"><span class="attribute">sudo</span> gem install -n /usr/local/bin  cocoapods -v <span class="number">1</span>.<span class="number">8</span>.<span class="number">4</span>  #安装指定版本的cocoapods</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>下载文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod setup</span><br></pre></td></tr></table></figure>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod setup</span><br></pre></td></tr></table></figure>
 
 <p><code>cocoapods</code>在1.8版本以后加入了<code>CDN</code>,不需要下载<code>master</code>分支到<code>~/.cocoapods/repos</code>，执行该命令会直接提示Setup completed。如果是1.8之前的版本，则需要等待下载。参考<a target="_blank" rel="noopener" href="https://blog.cocoapods.org/CocoaPods-1.8.0-beta/">https://blog.cocoapods.org/CocoaPods-1.8.0-beta/</a></p>
 </li>
@@ -612,18 +612,18 @@ if(canvas.getContext){
 <hr>
 <h2 id="4-cocoapods使用"><a href="#4-cocoapods使用" class="headerlink" title="4. cocoapods使用"></a>4. <code>cocoapods</code>使用</h2><ul>
 <li><p>在项目根目录下执行命令</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod init</span><br></pre></td></tr></table></figure>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod <span class="keyword">init</span></span><br></pre></td></tr></table></figure>
 
 <p>执行完成会自动在目录下生成<code>Podfile</code>文件</p>
 </li>
 <li><p>编辑<code>Podfile</code>文件，添加第三方库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &#x27;AFNetworking&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pod</span> <span class="string">&#x27;AFNetworking&#x27;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>安装第三方</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod <span class="keyword">install</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>升级<code>pod</code>库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod update [pod库名称] </span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod update <span class="selector-attr">[pod库名称]</span> </span><br></pre></td></tr></table></figure>
 
 <p>不指定<code>pod</code>库名称，默认更新<code>podfile</code>里全部库。</p>
 <p><code>pod install命令按照podfile.lock文件中的版本安装库，不检查更新库；pod update拉取最新的库版本，并更新符合podfile文件中指定的版本条件的库。建议多使用pod install,pod update命令使用之前先使用pod outdated命令查看有哪些库有新版本，再针对指定pod库更新版本。 </code></p>
@@ -631,24 +631,24 @@ if(canvas.getContext){
 </ul>
 <hr>
 <h2 id="5-Podfile文件解析"><a href="#5-Podfile文件解析" class="headerlink" title="5. Podfile文件解析"></a>5. <code>Podfile</code>文件解析</h2><p><code>Podfile</code>是项目指定<code>target</code>的依赖规范。配置如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># 支持的iOS系统的最低版本</span><br><span class="line">platform:ios,&#x27;8.0&#x27;</span><br><span class="line"></span><br><span class="line"># 指定开源库的下载源（组件化开发时会用到）</span><br><span class="line">#source &#x27;https://github.com/CocoaPods/Specs.git&#x27;</span><br><span class="line">#source &#x27;https://code.houbank.net/xxx/xxxSpecs.git&#x27;</span><br><span class="line"></span><br><span class="line"># ignore all warnings from all pods</span><br><span class="line">inhibit_all_warnings!</span><br><span class="line"></span><br><span class="line"># 使用framework（包含swift库就必须使用此设置，纯OC库可以不设置）</span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line"># 项目中如果有多个工程文件所以必须显式告知Cocopods，Pod的库属于哪个工程的依赖程的依赖</span><br><span class="line">#project &#x27;ProjectName.xcodeproj&#x27;</span><br><span class="line"></span><br><span class="line">target &#x27;ProjectName&#x27; do</span><br><span class="line">    pod &#x27;AFNetworking&#x27;,               # 网络基础库    </span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 支持的iOS系统的最低版本</span></span><br><span class="line">platform:ios,<span class="string">&#x27;8.0&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="meta"># 指定开源库的下载源（组件化开发时会用到）</span></span><br><span class="line"><span class="meta">#source <span class="string">&#x27;https://github.com/CocoaPods/Specs.git&#x27;</span></span></span><br><span class="line"><span class="meta">#source <span class="string">&#x27;https://code.houbank.net/xxx/xxxSpecs.git&#x27;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta"># ignore all warnings from all pods</span></span><br><span class="line">inhibit_all_warnings!</span><br><span class="line"></span><br><span class="line"><span class="meta"># 使用framework（包含swift库就必须使用此设置，纯OC库可以不设置）</span></span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line"><span class="meta"># 项目中如果有多个工程文件所以必须显式告知Cocopods，Pod的库属于哪个工程的依赖程的依赖</span></span><br><span class="line"><span class="meta">#project <span class="string">&#x27;ProjectName.xcodeproj&#x27;</span></span></span><br><span class="line"></span><br><span class="line">target <span class="string">&#x27;ProjectName&#x27;</span> <span class="keyword">do</span></span><br><span class="line">    pod <span class="string">&#x27;AFNetworking&#x27;</span>,               <span class="meta"># 网络基础库    </span></span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="5-1-项目配置"><a href="#5-1-项目配置" class="headerlink" title="5.1 项目配置"></a>5.1 项目配置</h3><ul>
 <li><p>指定支持的系统及版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">platform:ios,&#x27;8.0&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">platform</span>:ios,&#x27;<span class="number">8</span>.<span class="number">0</span>&#x27;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>指定下载源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source &#x27;https://github.com/CocoaPods/Specs.git&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> <span class="string">&#x27;https://github.com/CocoaPods/Specs.git&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>不指定默认从<code>cocoapods</code>官方公共库<code>https://github.com/CocoaPods/Specs.git</code>下载。设置镜像源，下载私有库，组件化开发等会用到该项配置。</p>
 </li>
 <li><p>忽略第三方框架的警告</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inhibit_all_warnings!</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">inhibit_all_warnings!</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>是否使用动态库（iOS8.0以上支持）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use_frameworks!</span><br></pre></td></tr></table></figure>
+<figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use_frameworks!</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>不使用，会生成第三方框架对应的<code>.a</code>文件（静态链接库），位置：<code>Build Phases --&gt; Link Binary With Libraries --&gt; libPods-**.a</code></li>
@@ -659,31 +659,31 @@ if(canvas.getContext){
 </ul>
 </li>
 <li><p>指定是哪个工程的依赖，项目中有多个工程必须指定，单个工程一般忽略</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">project &#x27;ProjectName.xcodeproj&#x27;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">project</span> <span class="string">&#x27;ProjectName.xcodeproj&#x27;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="5-2-第三方框架版本控制"><a href="#5-2-第三方框架版本控制" class="headerlink" title="5.2 第三方框架版本控制"></a>5.2 第三方框架版本控制</h3><ul>
 <li><p>版本号说明</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">版本号格式：x.y.z</span><br><span class="line">x表示重大更新的迭代版本号</span><br><span class="line">y表示项目添加了一些新功能</span><br><span class="line">z表示修复版本号，一般是修复项目的bug</span><br></pre></td></tr></table></figure>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">版本号格式：<span class="keyword">x</span>.y.z</span><br><span class="line"><span class="keyword">x</span>表示重大更新的迭代版本号</span><br><span class="line">y表示项目添加了一些新功能</span><br><span class="line">z表示修复版本号，一般是修复项目的bug</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>只指定三方库名称，默认使用最新版本的</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &#x27;AFNetworking&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pod</span> <span class="string">&#x27;AFNetworking&#x27;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用指定版本号的库</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &#x27;AFNetworking&#x27;, &#x27;3.1.0&#x27;   #使用3.1.0版本</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pod</span> &#x27;AFNetworking&#x27;, &#x27;<span class="number">3</span>.<span class="number">1</span>.<span class="number">0</span>&#x27;   #使用<span class="number">3</span>.<span class="number">1</span>.<span class="number">0</span>版本</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用<code>逻辑运算符</code>指定版本号</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">‘&gt; 0.1’ 高于0.1的任何版本</span><br><span class="line">‘&gt;= 0.1’ 版本0.1或更高版本</span><br><span class="line">‘&lt; 0.1’ 小于0.1的任何版本</span><br><span class="line">‘&lt;= 0.1’ 版本0.1和任何较低版本</span><br></pre></td></tr></table></figure>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">‘&gt; <span class="number">0.1</span>’ 高于<span class="number">0.1</span>的任何版本</span><br><span class="line">‘&gt;<span class="operator">=</span> <span class="number">0.1</span>’ 版本<span class="number">0.1</span>或更高版本</span><br><span class="line">‘&lt; <span class="number">0.1</span>’ 小于<span class="number">0.1</span>的任何版本</span><br><span class="line">‘&lt;<span class="operator">=</span> <span class="number">0.1</span>’ 版本<span class="number">0.1</span>和任何较低版本</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>使用<code>乐观运算符</code>指定版本号</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">‘~&gt; 0.1.2’ 版本0.1.2到版本0.2，不含0.2及以上</span><br><span class="line">‘~&gt; 0.1’ 版本0.1到版本1.0，不包括1.0及以上版本</span><br><span class="line">‘~&gt; 0’版本0及以上，这基本上和不指定版本号是相同的</span><br></pre></td></tr></table></figure>
+<figure class="highlight livescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">‘<span class="function">~&gt;</span> <span class="number">0.1</span>.<span class="number">2</span>’ 版本<span class="number">0.1</span>.<span class="number">2</span>到版本<span class="number">0.2</span>，不含<span class="number">0.2</span>及以上</span><br><span class="line">‘<span class="function">~&gt;</span> <span class="number">0.1</span>’ 版本<span class="number">0.1</span>到版本<span class="number">1.0</span>，不包括<span class="number">1.0</span>及以上版本</span><br><span class="line">‘<span class="function">~&gt;</span> <span class="number">0</span>’版本<span class="number">0</span>及以上，这基本上和不指定版本号是相同的</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>指定远程第三方框架位置</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pod &#x27;Alamofire&#x27;, :git =&gt; &#x27;https://github.com/Alamofire/Alamofire.git&#x27;  #使用主分支</span><br><span class="line">pod &#x27;Alamofire&#x27;, :git =&gt; &#x27;https://github.com/Alamofire/Alamofire.git&#x27;, :branch =&gt; &#x27;dev&#x27;  #使用不同分支</span><br><span class="line">pod &#x27;Alamofire&#x27;, :git =&gt; &#x27;https://github.com/Alamofire/Alamofire.git&#x27;, :tag =&gt; &#x27;3.1.1&#x27; #使用仓库的某一个tag</span><br><span class="line">pod &#x27;Alamofire&#x27;, :git =&gt; &#x27;https://github.com/Alamofire/Alamofire.git&#x27;, :commit =&gt; &#x27;0f506b1c45&#x27; #使用一个指定的提交commit</span><br></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pod <span class="string">&#x27;Alamofire&#x27;</span>, <span class="symbol">:git</span> =&gt; <span class="string">&#x27;https://github.com/Alamofire/Alamofire.git&#x27;</span>  <span class="comment">#使用主分支</span></span><br><span class="line">pod <span class="string">&#x27;Alamofire&#x27;</span>, <span class="symbol">:git</span> =&gt; <span class="string">&#x27;https://github.com/Alamofire/Alamofire.git&#x27;</span>, <span class="symbol">:branch</span> =&gt; <span class="string">&#x27;dev&#x27;</span>  <span class="comment">#使用不同分支</span></span><br><span class="line">pod <span class="string">&#x27;Alamofire&#x27;</span>, <span class="symbol">:git</span> =&gt; <span class="string">&#x27;https://github.com/Alamofire/Alamofire.git&#x27;</span>, <span class="symbol">:tag</span> =&gt; <span class="string">&#x27;3.1.1&#x27;</span> <span class="comment">#使用仓库的某一个tag</span></span><br><span class="line">pod <span class="string">&#x27;Alamofire&#x27;</span>, <span class="symbol">:git</span> =&gt; <span class="string">&#x27;https://github.com/Alamofire/Alamofire.git&#x27;</span>, <span class="symbol">:commit</span> =&gt; <span class="string">&#x27;0f506b1c45&#x27;</span> <span class="comment">#使用一个指定的提交commit</span></span><br></pre></td></tr></table></figure>
 
 <p>从指定的远程地址下载第三方框架源码。</p>
 </li>
 <li><p>指定本地第三方路径</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod &#x27;Alamofire&#x27;, :path =&gt; &#x27;~/Documents/Alamofire&#x27;</span><br></pre></td></tr></table></figure>
+<figure class="highlight arcade"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod <span class="string">&#x27;Alamofire&#x27;</span>, :<span class="function"><span class="params">path</span> =&gt;</span> <span class="string">&#x27;~/Documents/Alamofire&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <p>指定的文件夹将成为<code>Pod</code>的根文件夹，并从该文件夹链接源码文件到项目中，制作<code>Pod</code>库时的示例项目就是很好的例子。需要注意的是指定的目录中必须包含<code>podspec</code>文件。</p>
 </li>
@@ -691,50 +691,50 @@ if(canvas.getContext){
 <h3 id="5-3-cocoapods更换源"><a href="#5-3-cocoapods更换源" class="headerlink" title="5.3 cocoapods更换源"></a>5.3 <code>cocoapods</code>更换源</h3><p><code>cocoapods</code>默认使用<code>github</code>源 ，在国内下载第三方库很慢，通过修改源来解决该问题。</p>
 <ul>
 <li><p>查看当前源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo list</span><br></pre></td></tr></table></figure>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pod repo list</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>移除官方源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo remove master</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo <span class="built_in">remove</span> master</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>低版本添加新的源</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo add master https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo add <span class="keyword">master</span> <span class="title">https</span>://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git</span><br></pre></td></tr></table></figure>
 
 <p>如果报错<code>[!] To setup the master specs repo, please run </code>pod setup<code>.</code>说明版本太高，不允许用该方式添加源，使用克隆方式添加源:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git ~/.cocoapods/repos/master</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="regexp">/git/</span>CocoaPods<span class="regexp">/Specs.git ~/</span>.cocoapods<span class="regexp">/repos/m</span>aster</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>更新</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod setup</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod setup</span><br></pre></td></tr></table></figure></li>
 </ul>
 <hr>
 <h2 id="6-卸载cocoapods"><a href="#6-卸载cocoapods" class="headerlink" title="6. 卸载cocoapods"></a>6. 卸载<code>cocoapods</code></h2><h3 id="6-1-查看本地cocoapods版本"><a href="#6-1-查看本地cocoapods版本" class="headerlink" title="6.1 查看本地cocoapods版本"></a>6.1 查看本地<code>cocoapods</code>版本</h3><p>查看本地所有版本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem list | grep cocoapods</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem list <span class="string">| grep cocoapods</span></span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="6-2-卸载所有版本"><a href="#6-2-卸载所有版本" class="headerlink" title="6.2 卸载所有版本"></a>6.2 卸载所有版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem uninstall cocoapods</span><br></pre></td></tr></table></figure>
+<h3 id="6-2-卸载所有版本"><a href="#6-2-卸载所有版本" class="headerlink" title="6.2 卸载所有版本"></a>6.2 卸载所有版本</h3><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo gem uninstall cocoapods</span></span><br></pre></td></tr></table></figure>
 
 <p>如果安装多个版本，会提示选择要卸载的版本：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Select gem to uninstall:</span><br><span class="line"> 1. cocoapods-1.6.2</span><br><span class="line"> 2. cocoapods-1.10.1</span><br><span class="line"> 3. All versions</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Select gem to uninstall:</span><br><span class="line"><span class="bullet"> 1.</span> cocoapods-1.6.2</span><br><span class="line"><span class="bullet"> 2.</span> cocoapods-1.10.1</span><br><span class="line"><span class="bullet"> 3.</span> All versions</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="6-3-卸载指定版本"><a href="#6-3-卸载指定版本" class="headerlink" title="6.3 卸载指定版本"></a>6.3 卸载指定版本</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gem uninstall cocoapods -v 1.6.2</span><br></pre></td></tr></table></figure>
+<h3 id="6-3-卸载指定版本"><a href="#6-3-卸载指定版本" class="headerlink" title="6.3 卸载指定版本"></a>6.3 卸载指定版本</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> gem uninstall cocoapods -v <span class="number">1</span>.<span class="number">6</span>.<span class="number">2</span></span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="6-4-卸载cocoapods相关的组件"><a href="#6-4-卸载cocoapods相关的组件" class="headerlink" title="6.4 卸载cocoapods相关的组件"></a>6.4 卸载<code>cocoapods</code>相关的组件</h3><p>查看本地所有<code>cocoapods</code>相关组件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem list --local | grep cocoapods</span><br></pre></td></tr></table></figure>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gem list --<span class="keyword">local</span> | <span class="keyword">grep</span> cocoapods</span><br></pre></td></tr></table></figure>
 
 <p>结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cocoapods-core (1.10.1, 1.6.2)</span><br><span class="line">cocoapods-deintegrate (1.0.4)</span><br><span class="line">cocoapods-downloader (1.4.0)</span><br><span class="line">cocoapods-plugins (1.0.0)</span><br><span class="line">cocoapods-search (1.0.0)</span><br><span class="line">cocoapods-stats (1.1.0)</span><br><span class="line">cocoapods-trunk (1.5.0)</span><br><span class="line">cocoapods-try (1.2.0)</span><br></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cocoapods</span>-core (<span class="number">1</span>.<span class="number">10</span>.<span class="number">1</span>, <span class="number">1</span>.<span class="number">6</span>.<span class="number">2</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-deintegrate (<span class="number">1</span>.<span class="number">0</span>.<span class="number">4</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-downloader (<span class="number">1</span>.<span class="number">4</span>.<span class="number">0</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-plugins (<span class="number">1</span>.<span class="number">0</span>.<span class="number">0</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-search (<span class="number">1</span>.<span class="number">0</span>.<span class="number">0</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-stats (<span class="number">1</span>.<span class="number">1</span>.<span class="number">0</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-trunk (<span class="number">1</span>.<span class="number">5</span>.<span class="number">0</span>)</span><br><span class="line"><span class="attribute">cocoapods</span>-try (<span class="number">1</span>.<span class="number">2</span>.<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 
 <p>逐个卸载：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo gem uninstall cocoapods-core</span><br><span class="line">sudo gem uninstall cocoapods-deintegrate</span><br><span class="line">sudo gem uninstall cocoapods-downloader</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo gem uninstall cocoapods-core</span><br><span class="line">sudo gem uninstall cocoapods-deintegrate</span><br><span class="line">sudo gem uninstall cocoapods-downloader</span><br><span class="line"><span class="meta prompt_">...</span></span><br></pre></td></tr></table></figure>
 
 
 
 <hr>
-<h2 id="7-CocoaPods常用命令"><a href="#7-CocoaPods常用命令" class="headerlink" title="7. CocoaPods常用命令"></a>7. <code>CocoaPods</code>常用命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#查看当前使用的cocoapods版本</span><br><span class="line">pod --version</span><br><span class="line">#指定目录为pod目录,默认当前目录</span><br><span class="line">pod init [目录名]																	</span><br><span class="line">#安装第三方库</span><br><span class="line">pod install</span><br><span class="line">#更新第三方库，默认更新所有的库</span><br><span class="line">pod update [第三方库名]</span><br><span class="line">#查看哪些库有更新</span><br><span class="line">pod outdated</span><br><span class="line">#搜索指定的三方库</span><br><span class="line">pod search 第三方库名</span><br><span class="line">#查看pod源</span><br><span class="line">pod repo list</span><br><span class="line">#删除指定的源</span><br><span class="line">pod repo remove 源名称</span><br><span class="line">#添加源(只适用旧版本，新版本报错)</span><br><span class="line">pod repo add master 源地址</span><br></pre></td></tr></table></figure>
+<h2 id="7-CocoaPods常用命令"><a href="#7-CocoaPods常用命令" class="headerlink" title="7. CocoaPods常用命令"></a>7. <code>CocoaPods</code>常用命令</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看当前使用的cocoapods版本</span></span><br><span class="line">pod --version</span><br><span class="line"><span class="comment">#指定目录为pod目录,默认当前目录</span></span><br><span class="line">pod init [目录名]																	</span><br><span class="line"><span class="comment">#安装第三方库</span></span><br><span class="line">pod install</span><br><span class="line"><span class="comment">#更新第三方库，默认更新所有的库</span></span><br><span class="line">pod update [第三方库名]</span><br><span class="line"><span class="comment">#查看哪些库有更新</span></span><br><span class="line">pod outdated</span><br><span class="line"><span class="comment">#搜索指定的三方库</span></span><br><span class="line">pod search 第三方库名</span><br><span class="line"><span class="comment">#查看pod源</span></span><br><span class="line">pod repo list</span><br><span class="line"><span class="comment">#删除指定的源</span></span><br><span class="line">pod repo <span class="built_in">remove</span> 源名称</span><br><span class="line"><span class="comment">#添加源(只适用旧版本，新版本报错)</span></span><br><span class="line">pod repo <span class="built_in">add</span> master 源地址</span><br></pre></td></tr></table></figure>
 
 
 
@@ -745,9 +745,30 @@ if(canvas.getContext){
     
     
 
-    <footer class="post-footer">
+    <footer class="post-footer"><div>
+  <div class="end-slogan" style="text-align:center;font-size:22px;letter-spacing:10px;user-seclect:none;color:#bbb">----------- 本文结束啦<i class="fa fa-star"></i>感谢您阅读-----------</div>		
+</div>
+
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.png" alt="code009 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="code009 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
           <div class="post-tags">
-              <a href="/tags/iOS/" rel="tag"># iOS</a>
+              <a href="/tags/iOS/" rel="tag"><i class="fa fa-tag"></i> iOS</a>
           </div>
 
         
@@ -800,27 +821,68 @@ if(canvas.getContext){
       <i class="fa fa-coffee"></i>
     </span>
       <span>站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">1:03</span>
+    <span title="站点阅读时长">1:04</span>
   </span>
 </div>
 <div class="busuanzi-count">
-    <span class="post-meta-item" id="busuanzi_container_site_uv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-user"></i>
-      </span>
-      <span class="site-uv" title="总访客量">
-        <span id="busuanzi_value_site_uv"></span>
-      </span>
-    </span>
-    <span class="post-meta-item" id="busuanzi_container_site_pv">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-eye"></i>
-      </span>
-      <span class="site-pv" title="总访问量">
-        <span id="busuanzi_value_site_pv"></span>
-      </span>
-    </span>
 </div>
+
+
+  <div>
+   <span id="sitetime"></span>
+   <span id="year" style="display:none">2023</span> 
+   <span id="month" style="display:none">11</span>   
+   <span id="day" style="display:none">1</span>   
+   <span id="hour" style="display:none">0</span>   
+   <span id="minute" style="display:none">0</span>   
+   <span id="second" style="display:none">0</span>   
+	<script language=javascript>
+	function siteTime(){        
+		window.setTimeout("siteTime()", 1000);
+		var seconds = 1000;
+		var minutes = seconds * 60;
+		var hours = minutes * 60;
+		var days = hours * 24;
+		var years = days * 365;
+		var today = new Date();
+		var todayYear = today.getFullYear();
+		var todayMonth = today.getMonth()+1;
+		var todayDate = today.getDate();
+		var todayHour = today.getHours();
+		var todayMinute = today.getMinutes();
+		var todaySecond = today.getSeconds();
+		/* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+		year - 作为date对象的年份，为4位年份值
+		month - 0-11之间的整数，做为date对象的月份
+		day - 1-31之间的整数，做为date对象的天数
+		hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+		minutes - 0-59之间的整数，做为date对象的分钟数
+		seconds - 0-59之间的整数，做为date对象的秒数
+		microseconds - 0-999之间的整数，做为date对象的毫秒数 */        
+		var year = document.getElementById("year").innerHTML;
+		var month = document.getElementById("month").innerHTML;
+		var day = document.getElementById("day").innerHTML;
+		var hour = document.getElementById("hour").innerHTML;
+		var minute = document.getElementById("minute").innerHTML;
+		var second = document.getElementById("second").innerHTML;//北京时间2018-2-13 00:00:00
+		var t1 = Date.UTC(year,month,day,hour,minute,second); 
+		var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+		var diff = t2-t1;
+		var diffYears = Math.floor(diff/years);
+		var diffDays = Math.floor((diff/days)-diffYears*365);
+		var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+		var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+		var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+		if(diffYears==0){
+		document.getElementById("sitetime").innerHTML=" 本站已安全运行  "/*+diffYears+" 年 "*/+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+		} else{
+		document.getElementById("sitetime").innerHTML=" 本站已安全运行  "+diffYears+" 年 "+diffDays+" 天 "+diffHours+" 小时 "+diffMinutes+" 分钟 "+diffSeconds+" 秒";
+		}
+	}
+	//siteTime(document.getElementById("year").innerHTML,document.getElementById("year").innerHTML,document.getElementById("year").innerHTML,document.getElementById("year").innerHTML,document.getElementById("year").innerHTML,0);
+	siteTime();
+	</script>
+</div>  
 
     </div>
   </footer>

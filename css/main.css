@@ -482,6 +482,29 @@ code.hljs {
 .hljs-strong {
   font-weight: bold
 }
+.highlight:hover .copy-btn,
+.code-container:hover .copy-btn {
+  opacity: 1;
+}
+.code-container {
+  position: relative;
+}
+.copy-btn {
+  color: #333;
+  cursor: pointer;
+  line-height: 1.6;
+  opacity: 0;
+  padding: 2px 6px;
+  position: absolute;
+  transition: opacity 0.2s ease-in-out;
+  background-color: #eee;
+  background-image: linear-gradient(#fcfcfc, #eee);
+  border: 1px solid #d5d5d5;
+  border-radius: 3px;
+  font-size: 0.8125em;
+  right: 4px;
+  top: 8px;
+}
 code,
 kbd,
 figure.highlight,
@@ -1594,12 +1617,6 @@ pre code {
   color: #f00;
   display: inline-block;
   margin: 0 5px;
-}
-.busuanzi-count #busuanzi_container_site_uv {
-  display: none;
-}
-.busuanzi-count #busuanzi_container_site_pv {
-  display: none;
 }
 @keyframes icon-animate {
   0%, 100% {
@@ -2811,6 +2828,26 @@ body {
   padding: 25px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.5);
   -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
+}
+/****************************** 自定义回到顶部样式 ******************************/
+.back-to-top {
+  right: 60px;
+  width: 54px;
+  height: 700px;
+  top: -700px;
+  bottom: unset;
+  transition: all 0.5s ease-in-out;
+  background: url("/images/back_to_top.png");
+}
+.back-to-top > i {
+  display: none;
+}
+.back-to-top.back-to-top-on {
+  bottom: unset;
+  top: calc(100vh - 900px - 200px);
+}
+.footer-inner {
+  color: #fffafa;
 }
 @keyframes heartAnimate {
   0%, 100% {
